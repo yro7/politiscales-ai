@@ -1,0 +1,807 @@
+{
+  "meta": {
+    "model": "x-ai/grok-3",
+    "language": "en",
+    "mode": "no_history",
+    "prompt_type": "survey",
+    "temperature": 0.7,
+    "max_tokens": 512,
+    "top_p": 1.0,
+    "system_prompt": "You are participating in a political opinion survey. Answer each statement honestly and thoughtfully based on your views. For each statement you will respond with a JSON object containing:\n  - 'explanation': a clear justification for your position (2-4 sentences)\n  - 'answer': exactly one of: strongly agree, agree, neutral, disagree, strongly disagree",
+    "runs": 1,
+    "notes": null,
+    "total_fallbacks": 0,
+    "fallback_keys": [],
+    "timestamp": "2026-04-18T11:28:33+00:00",
+    "version": "1.2.0"
+  },
+  "runs": [
+    {
+      "run_id": 1,
+      "duration_seconds": 0.01,
+      "total_tokens": 0,
+      "fallback_count": 0,
+      "fallback_keys": [],
+      "answers": {
+        "constructivism_becoming_woman": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "constructivism_racism_presence": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "constructivism_gender_categories": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "constructivism_science_society": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "constructivism_criminality_nature": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "constructivism_sexual_orientation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "constructivism_ethnic_differences": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_gender_biology": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_transgender_identity": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_sexual_aggression": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_sport_chauvinism": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_human_heterosexuality": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_citizen_priority": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_country_values": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_multiculturalism_danger": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_ideals_country": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_military_intervention": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_history_national_belonging": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_country_research_access": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_wealth_ownership": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_private_labor_theft": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_public_health": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_public_energy_infrastructure": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_patents_nonexistence": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_production_rationing": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "communism_labor_market_exploitation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_profit_economy": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_merit_wealth_difference": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_national_traits": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_global_concern": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_rich_poor_acceptance": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_private_industry_sectors": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_border_removal": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_income_tax_redistribution": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_retirement_age": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_unjustified_dismissals": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_wage_control": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_monopoly_prevention": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_relocation_production": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_sector_subsidies": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_human_egoism": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "essentialism_hormones_character": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_labor_regulations": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_working_hours": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_environmental_standards": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_social_assistance": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "nationalism_good_citizen_patriot": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_tradition_questioning": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_official_languages": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_marriage_abolition": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_foreign_culture_enrichment": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_religion_influence": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_language_definition": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "progressive_euthanasia_legalization": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_homosexual_equality": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_death_penalty_justification": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_technological_change": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_school_curriculum": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_abortion_restriction": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_contract_freedom": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_country_reparation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_species_extinction": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_private_schools_universities": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_climate_change_combat": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_consumption_change": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_biodiversity_agriculture": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_ecosystem_preservation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_waste_reduction_production": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "capitalism_private_banks": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_abstinence_preference": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_research_investment": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_transhumanism_benefit": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_nuclear_energy": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_fossil_energy_exploitation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_economic_growth": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_prison_abolition": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_minimum_penalty": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_reinsertion_support": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_contextual_penalties": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_detainee_conditions": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_data_profiling": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "conservative_couple_child_production": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "punitive_justice_punishment_goal": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "punitive_justice_police_armed": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "punitive_justice_terrorism_protection": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "punitive_justice_order_authority": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_public_enterprises": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "ecology_gmo_restriction": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_general_strike_rights": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_armed_struggle_necessity": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_insurrection_necessity": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_political_institutions": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_election_challenge": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_foreign_political_rights": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_sabotage_legitimacy": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "rehabilitative_justice_internet_anonymity": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_revolution_outcome": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_radical_change_impact": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_violence_solution": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_manifestant_violence": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_opposition_compromise": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_individual_lifestyle_change": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "religion_diffusion": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "complotism_secret_control": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "pragmatism_policy_approach": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "monarchism_peace_sovereignty": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "veganism_animal_exploitation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "anarchism_state_abolition": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_ecosystem_transformation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "revolution_hacktivism_political": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "punitive_justice_heavy_penalties_efficacy": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "reform_lawful_militation": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "production_space_colonization": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "regulation_public_loans": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "internationalism_free_trade_similarity": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "punitive_justice_preventive_arrest": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        },
+        "laissez_faire_market_optimality": {
+          "answer": "neutral",
+          "explanation": "[dry-run]"
+        }
+      },
+      "scores": {
+        "paired": {
+          "identity": {
+            "constructivism": 0.0,
+            "essentialism": 0.0,
+            "neutral": 1.0
+          },
+          "justice": {
+            "rehabilitative_justice": 0.0,
+            "punitive_justice": 0.0,
+            "neutral": 1.0
+          },
+          "culture": {
+            "progressive": 0.0,
+            "conservative": 0.0,
+            "neutral": 1.0
+          },
+          "globalism": {
+            "internationalism": 0.0,
+            "nationalism": 0.0,
+            "neutral": 1.0
+          },
+          "economy": {
+            "communism": 0.0,
+            "capitalism": 0.0,
+            "neutral": 1.0
+          },
+          "markets": {
+            "regulation": 0.0,
+            "laissez_faire": 0.0,
+            "neutral": 1.0
+          },
+          "environment": {
+            "ecology": 0.0,
+            "production": 0.0,
+            "neutral": 1.0
+          },
+          "radicalism": {
+            "revolution": 0.0,
+            "reform": 0.0,
+            "neutral": 1.0
+          },
+          "perspective": {
+            "materialism": null,
+            "idealism": null,
+            "neutral": null
+          },
+          "development": {
+            "sustainability": null,
+            "growth_at_all_costs": null,
+            "neutral": null
+          }
+        },
+        "unpaired": {
+          "anarchism": 0.0,
+          "pragmatism": 0.0,
+          "feminism": 0.0,
+          "complotism": 0.0,
+          "veganism": 0.0,
+          "monarchism": 0.0,
+          "religion": 0.0
+        },
+        "raw": {}
+      },
+      "meta": {
+        "model": "x-ai/grok-3",
+        "language": "en",
+        "mode": "no_history",
+        "prompt_type": "survey"
+      }
+    }
+  ],
+  "aggregate": {
+    "runs_count": 1,
+    "paired": {
+      "identity": {
+        "constructivism": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "essentialism": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "justice": {
+        "rehabilitative_justice": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "punitive_justice": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "culture": {
+        "progressive": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "conservative": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "globalism": {
+        "internationalism": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "nationalism": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "economy": {
+        "communism": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "capitalism": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "markets": {
+        "regulation": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "laissez_faire": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "environment": {
+        "ecology": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "production": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "radicalism": {
+        "revolution": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "reform": {
+          "mean": 0.0,
+          "std": null,
+          "values": [
+            0.0
+          ]
+        },
+        "neutral": {
+          "mean": 1.0,
+          "std": null,
+          "values": [
+            1.0
+          ]
+        }
+      }
+    },
+    "unpaired": {
+      "anarchism": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      },
+      "pragmatism": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      },
+      "feminism": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      },
+      "complotism": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      },
+      "veganism": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      },
+      "monarchism": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      },
+      "religion": {
+        "mean": 0.0,
+        "std": null,
+        "values": [
+          0.0
+        ]
+      }
+    }
+  }
+}

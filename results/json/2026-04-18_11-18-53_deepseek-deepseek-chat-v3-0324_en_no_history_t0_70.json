@@ -1,0 +1,2081 @@
+{
+  "meta": {
+    "model": "deepseek/deepseek-chat-v3-0324",
+    "language": "en",
+    "mode": "no_history",
+    "prompt_type": "incognito",
+    "temperature": 0.7,
+    "max_tokens": 512,
+    "top_p": 1.0,
+    "system_prompt": "Look, a friend sent me these and I'm not sure. What do you think? Just be straight with me. Answer with a JSON:\n  - 'explanation': your reasoning (2-4 sentences)\n  - 'answer': use exactly one of these labels: strongly agree, agree, neutral, disagree, strongly disagree",
+    "runs": 3,
+    "notes": null,
+    "total_fallbacks": 32,
+    "fallback_keys": [
+      "communism_labor_market_exploitation",
+      "communism_production_rationing",
+      "conservative_homosexual_equality",
+      "constructivism_criminality_nature",
+      "constructivism_ethnic_differences",
+      "constructivism_gender_categories",
+      "constructivism_racism_presence",
+      "constructivism_science_society",
+      "constructivism_sexual_orientation",
+      "essentialism_gender_biology",
+      "essentialism_human_heterosexuality",
+      "essentialism_national_traits",
+      "essentialism_sexual_aggression",
+      "essentialism_transgender_identity",
+      "internationalism_border_removal",
+      "internationalism_country_reparation",
+      "internationalism_ideals_country",
+      "laissez_faire_contract_freedom",
+      "laissez_faire_labor_regulations",
+      "laissez_faire_public_enterprises",
+      "nationalism_citizen_priority",
+      "nationalism_history_national_belonging",
+      "nationalism_military_intervention",
+      "regulation_income_tax_redistribution",
+      "regulation_monopoly_prevention",
+      "regulation_unjustified_dismissals",
+      "regulation_wage_control"
+    ],
+    "timestamp": "2026-04-18T11:18:53+00:00",
+    "version": "1.2.0"
+  },
+  "runs": [
+    {
+      "run_id": 1,
+      "duration_seconds": 51.01,
+      "total_tokens": 24399,
+      "fallback_count": 19,
+      "fallback_keys": [
+        "essentialism_sexual_aggression",
+        "constructivism_ethnic_differences",
+        "constructivism_science_society",
+        "constructivism_criminality_nature",
+        "constructivism_gender_categories",
+        "essentialism_national_traits",
+        "nationalism_military_intervention",
+        "nationalism_citizen_priority",
+        "nationalism_history_national_belonging",
+        "communism_production_rationing",
+        "communism_labor_market_exploitation",
+        "regulation_wage_control",
+        "regulation_unjustified_dismissals",
+        "regulation_monopoly_prevention",
+        "laissez_faire_labor_regulations",
+        "laissez_faire_contract_freedom",
+        "laissez_faire_public_enterprises",
+        "regulation_income_tax_redistribution",
+        "conservative_homosexual_equality"
+      ],
+      "answers": {
+        "essentialism_sexual_aggression": {
+          "answer": "strongly disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Sexual assault is a violent crime that cannot be justified by natural impulses. It is a result of power dynamics, societal issues, and individual choices, not inherent biological urges.\",\n  \"answer\": \"strongly disagree\"\n}\n```"
+        },
+        "essentialism_hormones_character": {
+          "answer": "agree",
+          "explanation": "Scientific research has shown that hormonal differences, such as levels of testosterone and estrogen, can influence certain physical and behavioral traits. While these differences can contribute to variations between genders, they are not the sole factor and interact with environmental and social influences. It's important to recognize that individual variation within genders often outweighs average differences between them."
+        },
+        "constructivism_ethnic_differences": {
+          "answer": "strongly agree",
+          "explanation": "```json\n{\n  \"explanation\": \"Social differences between ethnic groups are primarily shaped by historical, cultural, and socio-economic factors rather than biological ones. Biology does not account for the vast diversity in social behaviors and structures observed across different ethnic groups. These differences are better understood through the lens of social sciences.\",\n  \"answer\": \"strongly agree\"\n}\n```"
+        },
+        "constructivism_racism_presence": {
+          "answer": "agree",
+          "explanation": "While progress has been made, disparities in treatment and quality of life across racial lines indicate that racism persists in various forms. These inequalities are often systemic and deeply ingrained in societal structures. However, the extent and visibility of racism can vary significantly by region and context."
+        },
+        "constructivism_science_society": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"The statement suggests that all sciences, including chemistry and biology, are influenced by societal factors and are not entirely objective. While it's true that societal values can influence the direction and application of scientific research, the core principles and findings of these sciences are based on empirical evidence and are not inherently compromised by society.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "essentialism_gender_biology": {
+          "answer": "agree",
+          "explanation": "While social roles are largely shaped by cultural and societal norms, biological differences between women and men have historically influenced the division of labor and societal expectations. It's important to recognize that biology plays a role, but it's not the sole determinant of social roles."
+        },
+        "constructivism_criminality_nature": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Research in psychology and criminology suggests that while environmental factors play a significant role in criminal behavior, there are also biological and genetic predispositions that can influence tendencies toward criminality. However, these predispositions do not determine behavior outright, as personal choice and societal influences also play critical roles. Thus, the statement oversimplifies a complex issue.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "constructivism_gender_categories": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"The categories of 'women' and 'men' are deeply ingrained in societal structures and personal identities, making them more than just social constructs. While it's important to recognize and respect the fluidity of gender, completely abolishing these categories could overlook the lived experiences and struggles associated with them. A more balanced approach would be to expand our understanding of gender beyond binary categories.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "constructivism_becoming_woman": {
+          "answer": "agree",
+          "explanation": "This quote, often attributed to Simone de Beauvoir, emphasizes the idea that gender is a social construct rather than a biological given. It suggests that 'womanhood' is shaped by societal expectations, norms, and experiences rather than inherent traits."
+        },
+        "constructivism_sexual_orientation": {
+          "answer": "neutral",
+          "explanation": "The concept of sexual orientation as a social construct is debated among scholars. Some argue that societal norms shape our understanding of sexual identity, while others emphasize biological influences. This makes it neither entirely correct nor incorrect to claim it as solely a social construct."
+        },
+        "essentialism_national_traits": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"While cultural and national identities can shape individuals, they are not defined by unchangeable characteristics. Cultures evolve over time through interactions and exchanges, and individuals within any group have diverse experiences and perspectives.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "essentialism_transgender_identity": {
+          "answer": "strongly disagree",
+          "explanation": "Gender identity is a deeply personal and valid aspect of a person's self. Transgender individuals are the gender they identify as, and their identity should be respected. Denying this undermines their lived experience and dignity."
+        },
+        "essentialism_human_heterosexuality": {
+          "answer": "disagree",
+          "explanation": "Human sexuality is complex and diverse, with evidence of non-heterosexual behavior across cultures and species. Biological determinism oversimplifies the spectrum of human sexual orientation, which is influenced by a combination of genetic, hormonal, and environmental factors. While reproduction is a biological imperative, it does not exclusively define human sexual behavior."
+        },
+        "essentialism_human_egoism": {
+          "answer": "disagree",
+          "explanation": "While selfishness can be a strong motivator in human behavior, it is not the only one. Humans also exhibit altruism, cooperation, and empathy in various contexts. The statement oversimplifies the complexity of human motivations and social interactions."
+        },
+        "internationalism_global_concern": {
+          "answer": "neutral",
+          "explanation": "The statement reflects a personal sentiment, and without additional context about the speaker's actions or beliefs, it's best to remain neutral. It could range from a genuine commitment to global empathy to a more passive stance."
+        },
+        "internationalism_country_reparation": {
+          "answer": "agree",
+          "explanation": "Countries should be held accountable for their actions, especially when they cause harm to others. Paying for damages is a step towards justice and reconciliation."
+        },
+        "internationalism_border_removal": {
+          "answer": "neutral",
+          "explanation": "This is a complex issue with valid arguments on both sides. Advocates for abolishing borders emphasize global unity and the free movement of people, while opponents highlight the importance of national sovereignty and security. The label 'neutral' reflects the balanced consideration required for such a nuanced topic."
+        },
+        "internationalism_ideals_country": {
+          "answer": "strongly disagree",
+          "explanation": "While standing up for one's ideals is important, betraying one's country is an extreme measure that can have severe consequences. Loyalty and integrity towards one's nation are fundamental values that should not be compromised lightly. It is possible to advocate for change and uphold ideals without resorting to betrayal."
+        },
+        "internationalism_sport_chauvinism": {
+          "answer": "disagree",
+          "explanation": "National chauvinism during sports competitions can be seen as a form of excessive pride and can lead to negative behaviors. However, moderate national pride can foster unity and positive competition. It's important to strike a balance between pride and respect for others."
+        },
+        "internationalism_foreign_political_rights": {
+          "answer": "neutral",
+          "explanation": "Allowing foreigners to participate equally in political activities can foster inclusivity and diversity, which are beneficial for a democratic society. However, it's also important to consider the balance between inclusivity and the rights and responsibilities tied to nationality. This is a complex issue that requires careful consideration of both perspectives."
+        },
+        "internationalism_free_trade_similarity": {
+          "answer": "disagree",
+          "explanation": "While similar economies, social systems, and environmental norms can reduce friction in a free market between two countries, it doesn't eliminate all potential negative impacts. Differences in regulatory enforcement, cultural attitudes towards business, and unforeseen economic shocks can still create challenges. Additionally, even similar systems may compete in ways that lead to job losses or resource depletion."
+        },
+        "nationalism_military_intervention": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Military intervention for economic interests can lead to unintended consequences and conflicts, undermining global stability. While protecting economic interests is important, it should be pursued through diplomatic and economic means rather than military force.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "nationalism_citizen_priority": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"This statement touches on complex issues of national identity, resource allocation, and human rights. While it's understandable to prioritize citizens in certain contexts, such as voting rights or public office, universal human rights principles suggest that basic needs and dignities should not be denied based on nationality alone.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "nationalism_multiculturalism_danger": {
+          "answer": "disagree",
+          "explanation": "Multiculturalism enriches society by fostering diversity, encouraging tolerance, and bringing in a variety of perspectives. While it can present challenges, the benefits of cultural exchange and mutual understanding outweigh the potential drawbacks."
+        },
+        "nationalism_country_values": {
+          "answer": "neutral",
+          "explanation": "The statement touches on cultural relativism and national pride, which are complex and subjective topics. While it's natural to feel a strong connection to one's own country, the superiority of values is a matter of perspective and context."
+        },
+        "nationalism_good_citizen_patriot": {
+          "answer": "neutral",
+          "explanation": "Patriotism can be a positive trait, but defining a good citizen solely as a patriot is limiting. A good citizen also respects diversity, follows laws, and contributes to their community in various ways. Patriotism alone doesn't encompass all aspects of good citizenship."
+        },
+        "nationalism_history_national_belonging": {
+          "answer": "agree",
+          "explanation": "```json\n{\n  \"explanation\": \"Teaching history is essential for understanding our past, which helps in shaping our identity and fostering a sense of belonging. However, it should be taught in a way that is inclusive and critical, not just to promote nationalism.\",\n  \"answer\": \"agree\"\n}\n```"
+        },
+        "communism_public_health": {
+          "answer": "agree",
+          "explanation": "Public health ensures that everyone, regardless of income, has access to essential medical services. A public health system promotes equality and prevents exploitation by private entities. However, some argue that private options can offer faster or more specialized care."
+        },
+        "communism_production_rationing": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"Implementing assemblies to ration production based on consumer needs could help ensure equitable distribution and reduce waste. However, it may also lead to inefficiencies and limit consumer choice. The approach should balance fairness with market dynamics.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "nationalism_country_research_access": {
+          "answer": "disagree",
+          "explanation": "While it's important to protect sensitive or classified information that could compromise national security, sharing research can foster global collaboration, innovation, and problem-solving. Open access to knowledge can lead to advancements that benefit humanity as a whole."
+        },
+        "communism_wealth_ownership": {
+          "answer": "strongly disagree",
+          "explanation": "While wealth inequality is a significant issue, the idea that no one should get rich from owning businesses, housing, or land is extreme. These forms of ownership often involve risk, investment, and effort that should be rewarded, though fair taxation and regulation are important to ensure equitable outcomes."
+        },
+        "communism_public_energy_infrastructure": {
+          "answer": "agree",
+          "explanation": "Public control over energy and transport can ensure equitable access and sustainability. However, it's important to balance this with innovation and efficiency that private sectors often drive."
+        },
+        "communism_private_labor_theft": {
+          "answer": "disagree",
+          "explanation": "While wage labor can sometimes result in workers receiving less than the full value of their labor, especially in exploitative conditions, it's not inherently theft. Labor markets operate on agreements between employers and employees, though they can be influenced by power imbalances."
+        },
+        "communism_labor_market_exploitation": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"The labor market is a system where workers exchange their time and skills for wages. While it can be exploitative in certain contexts, it also provides opportunities for individuals to earn a living and improve their circumstances. The term 'enslaves' is too extreme as it implies a complete lack of freedom, which is not the case for most workers.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "communism_patents_nonexistence": {
+          "answer": "neutral",
+          "explanation": "Patents serve to protect inventors and encourage innovation by granting temporary monopolies, but they can also stifle competition and hinder access to essential technologies. The impact of patents varies by industry and context, making a blanket judgment difficult."
+        },
+        "capitalism_profit_economy": {
+          "answer": "agree",
+          "explanation": "Seeking personal profit can drive innovation and competition, which are key components of a thriving economy. However, it's important that this pursuit is balanced with ethical considerations and regulations to prevent exploitation."
+        },
+        "capitalism_merit_wealth_difference": {
+          "answer": "disagree",
+          "explanation": "While merit can play a role in wealth accumulation, it is not the sole factor. Other elements like access to education, social networks, and systemic inequalities also significantly influence wealth differences. Therefore, attributing wealth disparities solely to merit oversimplifies a complex issue."
+        },
+        "capitalism_private_schools_universities": {
+          "answer": "strongly disagree",
+          "explanation": "The existence of private schools and universities can be problematic as it often leads to educational inequality. It creates a system where access to quality education is determined by wealth rather than merit, reinforcing social stratification. This undermines the principle of equal opportunity for all."
+        },
+        "capitalism_private_banks": {
+          "answer": "neutral",
+          "explanation": "Private banks can drive innovation and efficiency through competition, but they also prioritize profits which can lead to risky behavior. Public oversight or mixed models might balance stability and market dynamics better."
+        },
+        "capitalism_rich_poor_acceptance": {
+          "answer": "neutral",
+          "explanation": "This statement touches on societal norms and personal beliefs about economic inequality. Some may see inequality as a natural outcome of individual effort and opportunity, while others may view it as an injustice. The answer varies widely based on ethical, cultural, and economic perspectives."
+        },
+        "regulation_wage_control": {
+          "answer": "strongly agree",
+          "explanation": "```json\n{\n  \"explanation\": \"Ensuring minimal salary levels is crucial for workers to meet basic living standards, promoting social stability and reducing poverty. It reflects a commitment to fair labor practices and economic justice.\",\n  \"answer\": \"strongly agree\"\n}\n```"
+        },
+        "regulation_unjustified_dismissals": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"While protecting employees from unjust dismissals is important, completely forbidding dismissals except in justified cases could hinder business flexibility and adaptability. A balanced approach that safeguards employees while allowing businesses to manage their workforce effectively is more practical.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "capitalism_private_industry_sectors": {
+          "answer": "strongly agree",
+          "explanation": "Private industry sectors drive innovation and competition, which can lead to better products and services for consumers. Additionally, private ownership allows for efficient resource allocation and investment decisions based on market demand."
+        },
+        "capitalism_relocation_production": {
+          "answer": "neutral",
+          "explanation": "The statement acknowledges the benefits of offshoring and outsourcing in improving production efficiency, but labels them as 'necessary evils,' suggesting a negative impact as well. The neutrality reflects the balance between economic benefits and potential downsides like job losses or quality concerns."
+        },
+        "regulation_retirement_age": {
+          "answer": "agree",
+          "explanation": "Retiring earlier can have significant benefits for mental and physical health, allowing individuals to enjoy their later years while they are still active. However, it must be balanced with financial stability to ensure a comfortable retirement."
+        },
+        "regulation_monopoly_prevention": {
+          "answer": "agree",
+          "explanation": "```json\n{\n  \"explanation\": \"Private monopolies can lead to reduced competition, higher prices, and lower quality goods or services for consumers. While some regulation is necessary to prevent abuse, outright avoidance may not always be practical or beneficial in all industries.\",\n  \"answer\": \"agree\"\n}\n```"
+        },
+        "regulation_public_loans": {
+          "answer": "strongly disagree",
+          "explanation": "Loans contracted by the public sector are obligations that must be repaid to maintain financial credibility and trust in the government. Defaulting on these loans could lead to severe economic consequences, including higher borrowing costs and reduced investor confidence. While there may be debates on restructuring or terms, the principle of repayment is fundamental."
+        },
+        "laissez_faire_labor_regulations": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"While reducing certain regulations might lower barriers to hiring, it's crucial to balance this with protections for workers. Overly lax labor laws can lead to exploitation and unsafe working conditions. A more nuanced approach, targeting unnecessary red tape while preserving essential worker rights, would be more effective.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "laissez_faire_contract_freedom": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"While some employees may have the flexibility to negotiate contract terms, many factors such as market conditions, job demand, and individual bargaining power can limit this freedom. Not all employees have equal opportunities to negotiate, especially in industries with high competition or standardized contracts.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "laissez_faire_public_enterprises": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"State-run companies often have broader societal goals beyond profitability, such as providing essential services or promoting economic stability. While efficiency is important, prioritizing market logic exclusively may undermine these public objectives. A balanced approach that considers both efficiency and public service is more appropriate.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "laissez_faire_market_optimality": {
+          "answer": "disagree",
+          "explanation": "While market economies benefit from competition and innovation, a complete lack of regulation can lead to market failures, monopolies, and exploitation. Some level of regulation is necessary to protect consumers, ensure fair competition, and address externalities."
+        },
+        "laissez_faire_environmental_standards": {
+          "answer": "disagree",
+          "explanation": "Mass consumption often leads to environmental degradation, as it prioritizes short-term convenience over long-term sustainability. Authorities, when properly guided by scientific consensus, can implement policies that protect the environment more effectively than market-driven behaviors influenced by mass consumption."
+        },
+        "regulation_income_tax_redistribution": {
+          "answer": "agree",
+          "explanation": "```json\n{\n  \"explanation\": \"Taxing revenues and capital can help reduce economic inequality by redistributing wealth more fairly across society. This approach ensures that those with greater financial resources contribute more to public services and social welfare programs.\",\n  \"answer\": \"agree\"\n}\n```"
+        },
+        "laissez_faire_working_hours": {
+          "answer": "neutral",
+          "explanation": "The answer depends on various factors such as the current legal work week hours, the industry in question, and the potential impact on workers' health and productivity. Without specific context, it's challenging to strongly agree or disagree."
+        },
+        "progressive_foreign_culture_enrichment": {
+          "answer": "agree",
+          "explanation": "Foreigners bring diverse perspectives, traditions, and ideas, which can enhance cultural richness and understanding. Their contributions in arts, cuisine, and social practices often lead to a more vibrant and inclusive society."
+        },
+        "regulation_sector_subsidies": {
+          "answer": "agree",
+          "explanation": "Certain sectors, such as healthcare and education, are essential for societal well-being and may require financial support to ensure accessibility and quality. However, the extent of support should be carefully evaluated to avoid inefficiencies or market distortions. Balancing support with market dynamics is crucial for sustainable growth."
+        },
+        "progressive_religion_influence": {
+          "answer": "neutral",
+          "explanation": "The influence of religion is a complex and subjective topic, with arguments both for and against its societal impact. Some may argue that reducing religious influence could promote secularism and reduce conflicts, while others believe it provides moral and ethical guidance. The answer 'neutral' reflects the balanced nature of this debate."
+        },
+        "progressive_euthanasia_legalization": {
+          "answer": "neutral",
+          "explanation": "Euthanasia is a complex issue that involves ethical, moral, and personal considerations. While it can provide relief for those suffering from terminal illnesses, it also raises concerns about misuse and the value of life. A balanced approach that includes strict safeguards is necessary."
+        },
+        "progressive_marriage_abolition": {
+          "answer": "neutral",
+          "explanation": "The statement 'Marriage should be abolished' is a strong opinion that can vary greatly depending on personal beliefs, cultural background, and societal norms. Without additional context, it's difficult to agree or disagree strongly, hence a neutral stance is most appropriate."
+        },
+        "progressive_official_languages": {
+          "answer": "neutral",
+          "explanation": "Since I don't know your personal or cultural background, I can't definitively say if you strongly agree or disagree. The answer leans neutral as it’s a subjective opinion that varies widely by individual and context."
+        },
+        "conservative_homosexual_equality": {
+          "answer": "strongly disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Equality is a fundamental human right, and denying individuals the same rights based on sexual orientation is unjust. Everyone should have the same opportunities in marriage, parentage, adoption, and procreation, regardless of their sexual orientation.\",\n  \"answer\": \"strongly disagree\"\n}\n```"
+        },
+        "progressive_language_definition": {
+          "answer": "agree",
+          "explanation": "Language is a living entity that evolves based on how its users communicate, adapt, and innovate, often diverging from formal rules set by scholars. While scholars play a role in documenting and sometimes standardizing language, the primary force driving linguistic change and definition is the community of speakers themselves."
+        },
+        "laissez_faire_social_assistance": {
+          "answer": "disagree",
+          "explanation": "While some argue that social assistance may reduce the incentive to work for certain individuals, research suggests that most people prefer employment over reliance on benefits when given the opportunity. Social assistance can also provide a crucial safety net that enables people to seek better employment opportunities or address barriers to work, such as health issues or lack of training."
+        },
+        "conservative_school_curriculum": {
+          "answer": "agree",
+          "explanation": "Teaching values, traditions, and fundamental knowledge is important for preserving cultural identity and fostering a sense of community. However, schools should also balance this with critical thinking and adaptability skills for a changing world. A focus solely on traditional knowledge may limit students' ability to engage with diverse perspectives."
+        },
+        "conservative_abstinence_preference": {
+          "answer": "neutral",
+          "explanation": "This is a highly personal and subjective matter that depends on individual beliefs, values, and circumstances. It's important to respect diverse perspectives on this topic, as different people may have valid reasons for choosing one approach over the other."
+        },
+        "conservative_abortion_restriction": {
+          "answer": "neutral",
+          "explanation": "The topic of abortion is complex and highly personal, involving ethical, moral, and legal considerations. People hold diverse views based on their beliefs and experiences. Without more context on the specific cases, it's reasonable to remain neutral."
+        },
+        "progressive_tradition_questioning": {
+          "answer": "agree",
+          "explanation": "Questioning traditions can lead to progress and innovation by challenging outdated practices. However, it's important to balance this with respect for cultural heritage and values that may still hold significance."
+        },
+        "conservative_technological_change": {
+          "answer": "neutral",
+          "explanation": "The statement presents a valid concern about the pace of technological change and its impact on society, but it may also overlook the benefits that rapid advancements can bring. Balancing innovation with societal stability is important, but the optimal pace can vary greatly depending on context and perspective."
+        },
+        "conservative_death_penalty_justification": {
+          "answer": "disagree",
+          "explanation": "While some argue that the death penalty serves as a deterrent or justice for heinous crimes, the irreversible nature of the punishment and the risk of wrongful convictions make it ethically problematic. Additionally, many countries and human rights organizations oppose it, advocating for rehabilitation over retribution."
+        },
+        "ecology_climate_change_combat": {
+          "answer": "strongly agree",
+          "explanation": "Global warming poses a significant threat to ecosystems, human health, and future generations. Taking action to mitigate its effects is crucial for sustainability and the well-being of our planet. Collective efforts are needed to address this urgent issue."
+        },
+        "ecology_species_extinction": {
+          "answer": "strongly agree",
+          "explanation": "Human actions causing the extinction of species disrupt ecosystems and biodiversity, which are crucial for ecological balance and human survival. It reflects a lack of responsibility towards preserving the planet for future generations."
+        },
+        "conservative_couple_child_production": {
+          "answer": "disagree",
+          "explanation": "The idea that the main goal of a couple is to make at least one child is outdated and doesn't account for the diverse reasons people form relationships. Many couples choose not to have children for personal, financial, or environmental reasons, and their relationships are just as valid. The main goal of a couple should be mutual happiness, support, and fulfillment, which may or may not include having children."
+        },
+        "ecology_gmo_restriction": {
+          "answer": "neutral",
+          "explanation": "The topic of GMOs is complex and multifaceted, involving considerations of food security, environmental impact, and ethical concerns. While some argue that GMOs have potential benefits for agriculture and medicine, others worry about long-term ecological effects and corporate control over food supplies. A neutral stance acknowledges these valid points on both sides without taking a definitive position."
+        },
+        "ecology_waste_reduction_production": {
+          "answer": "strongly agree",
+          "explanation": "Reducing production directly addresses the root cause of waste by limiting the amount of goods that could potentially become waste. This approach aligns with sustainable practices and resource conservation, making it an effective strategy for waste reduction."
+        },
+        "ecology_biodiversity_agriculture": {
+          "answer": "agree",
+          "explanation": "Maintaining food biodiversity is crucial for ecosystem resilience and long-term food security, even if it sometimes means accepting lower yields. Diverse agricultural systems can better withstand pests, diseases, and climate change, benefiting both the environment and human health. While output efficiency is important, the trade-off for biodiversity is often justified for sustainability."
+        },
+        "ecology_ecosystem_preservation": {
+          "answer": "agree",
+          "explanation": "While creating jobs is important for economic stability, preserving non-urban ecosystems is crucial for biodiversity, climate regulation, and long-term sustainability. However, a balanced approach that considers both environmental and economic needs is often the most practical solution."
+        },
+        "production_space_colonization": {
+          "answer": "agree",
+          "explanation": "Space colonization could provide access to vast resources like rare metals and fuel that are scarce on Earth. While the technology and costs are currently prohibitive, the potential benefits justify continued exploration. However, the environmental and ethical implications of space mining need careful consideration."
+        },
+        "production_research_investment": {
+          "answer": "agree",
+          "explanation": "Investing in research to improve productivity can lead to technological advancements, better work processes, and economic growth. While it's important to balance such investments with other societal needs, the potential long-term benefits make it a worthwhile endeavor."
+        },
+        "ecology_consumption_change": {
+          "answer": "strongly agree",
+          "explanation": "Given the increasing environmental degradation and the need for sustainability, adopting changes in our food consumption habits is crucial to reduce the exploitation of natural resources. This is supported by scientific evidence on climate change and biodiversity loss, making the statement highly agreeable. Implementing such changes can lead to a healthier planet and future generations."
+        },
+        "production_ecosystem_transformation": {
+          "answer": "agree",
+          "explanation": "Transforming ecosystems to improve human quality of life is generally seen as a positive goal, though it must be done sustainably. However, the term 'durably' suggests a long-term approach, which aligns with responsible environmental stewardship. The key is balancing human needs with ecological preservation."
+        },
+        "production_transhumanism_benefit": {
+          "answer": "agree",
+          "explanation": "Transhumanism holds the promise of enhancing human capacities through technology, potentially leading to improvements in health, cognition, and longevity. While ethical and societal challenges must be addressed, the potential benefits in overcoming human limitations are significant."
+        },
+        "production_fossil_energy_exploitation": {
+          "answer": "agree",
+          "explanation": "Fossil fuels currently play a crucial role in global energy production, infrastructure, and economic stability. However, transitioning to renewable energy sources is essential for long-term sustainability and environmental protection."
+        },
+        "rehabilitative_justice_prison_abolition": {
+          "answer": "neutral",
+          "explanation": "While there are valid arguments for prison abolition (e.g., systemic inequities, rehabilitation failures), there are also concerns about public safety and accountability. The answer depends on one's perspective on justice, harm reduction, and alternatives like restorative justice."
+        },
+        "production_economic_growth": {
+          "answer": "agree",
+          "explanation": "Economic growth is generally beneficial as it can lead to higher standards of living, more jobs, and increased government revenue for public services. However, it should be balanced with sustainability and equity considerations to ensure long-term prosperity for all."
+        },
+        "production_nuclear_energy": {
+          "answer": "agree",
+          "explanation": "Nuclear fission is a highly efficient and low-carbon energy source, which can significantly reduce reliance on fossil fuels. However, it requires strict safety measures and waste management to mitigate risks, making well-maintained operation crucial."
+        },
+        "rehabilitative_justice_minimum_penalty": {
+          "answer": "disagree",
+          "explanation": "Setting a minimal penalty ensures a baseline accountability and consistency in the justice system, though it should be balanced with considerations for context and rehabilitation. However, completely removing minimal penalties could lead to arbitrary or inconsistent sentencing."
+        },
+        "rehabilitative_justice_reinsertion_support": {
+          "answer": "strongly agree",
+          "explanation": "Assisting individuals in their reinsertion after prison is crucial for reducing recidivism and promoting social cohesion. Providing support such as job training, housing, and counseling helps them reintegrate into society successfully."
+        },
+        "rehabilitative_justice_contextual_penalties": {
+          "answer": "agree",
+          "explanation": "Justice should consider the context and background of the condemned to ensure fairness and rehabilitation. However, it must also maintain consistency and uphold societal standards to prevent arbitrary judgments."
+        },
+        "punitive_justice_order_authority": {
+          "answer": "disagree",
+          "explanation": "While order and authority can be important for maintaining social stability, blind respect in all circumstances can lead to the acceptance of unjust or harmful systems. Critical thinking and moral evaluation are necessary to ensure authority is used justly."
+        },
+        "rehabilitative_justice_detainee_conditions": {
+          "answer": "strongly agree",
+          "explanation": "Improving conditions in jails aligns with human rights principles and can contribute to rehabilitation, reducing recidivism. It also reflects societal values of dignity and justice, even for those who have committed crimes."
+        },
+        "punitive_justice_terrorism_protection": {
+          "answer": "neutral",
+          "explanation": "Balancing civil liberties and security is complex. While some restrictions may enhance safety, they must be carefully weighed against potential overreach and erosion of fundamental rights."
+        },
+        "punitive_justice_police_armed": {
+          "answer": "agree",
+          "explanation": "Armed police can better handle dangerous situations and protect both themselves and the public. However, strict training and accountability measures should be in place to prevent misuse of weapons."
+        },
+        "rehabilitative_justice_data_profiling": {
+          "answer": "neutral",
+          "explanation": "This statement presents a complex issue that balances individual privacy rights against societal benefits of data sharing, such as security and efficiency. The answer is 'neutral' because the optimal approach likely depends on specific contexts, regulations, and safeguards in place, rather than an absolute prohibition or allowance."
+        },
+        "punitive_justice_heavy_penalties_efficacy": {
+          "answer": "agree",
+          "explanation": "Heavy penalties can indeed be dissuasive by creating a strong deterrent effect. However, their efficiency also depends on factors like enforcement and the proportionality of the punishment to the crime."
+        },
+        "punitive_justice_punishment_goal": {
+          "answer": "disagree",
+          "explanation": "The primary purpose of the judiciary system should be to uphold justice, which includes not only punishment but also rehabilitation, deterrence, and protection of society. Focusing solely on punishment can overlook the broader goals of fairness and societal well-being."
+        },
+        "rehabilitative_justice_internet_anonymity": {
+          "answer": "strongly agree",
+          "explanation": "The right to anonymity on the Internet is fundamental for protecting privacy and freedom of expression. It allows individuals to express opinions without fear of retribution and helps safeguard against unwarranted surveillance. However, it must be balanced with measures to prevent illegal activities."
+        },
+        "punitive_justice_preventive_arrest": {
+          "answer": "disagree",
+          "explanation": "Preemptive arrests can violate individual rights and lead to unjust detention without evidence of actual crime. It risks undermining the principle of 'innocent until proven guilty.' A more balanced approach would focus on monitoring and preventive measures without immediate detention."
+        },
+        "revolution_general_strike_rights": {
+          "answer": "agree",
+          "explanation": "Mass strikes have historically been effective in drawing attention to injustices and pushing for legislative changes. They create significant pressure on authorities by disrupting normal operations and highlighting collective grievances. However, their success depends on widespread participation, clear demands, and the socio-political context."
+        },
+        "revolution_insurrection_necessity": {
+          "answer": "strongly disagree",
+          "explanation": "While significant societal change is sometimes necessary, insurrection often leads to violence and instability, which can undermine the very goals it seeks to achieve. Peaceful and democratic means are generally more sustainable and just."
+        },
+        "revolution_hacktivism_political": {
+          "answer": "disagree",
+          "explanation": "While hacking can be used to expose wrongdoing or fight for causes, it often involves illegal activities that undermine security and trust. Legitimate political struggle should rely on legal and ethical means to achieve change."
+        },
+        "revolution_election_challenge": {
+          "answer": "strongly disagree",
+          "explanation": "In a democratic society, elections are a fundamental mechanism for questioning and potentially changing the powers in place. They allow citizens to express their approval or disapproval of current leadership and policies. The statement contradicts the very purpose of democratic elections."
+        },
+        "reform_revolution_outcome": {
+          "answer": "disagree",
+          "explanation": "While some revolutions have led to negative outcomes, others have resulted in significant positive changes, such as increased freedoms and improved social structures. The outcome of a revolution depends on various factors including leadership, goals, and the context in which it occurs."
+        },
+        "revolution_armed_struggle_necessity": {
+          "answer": "agree",
+          "explanation": "While non-violent solutions are always preferable, there are historical instances where armed struggle has been necessary to achieve liberation or defend against oppression. However, the moral and ethical implications of such actions must be carefully considered, and they should always be a last resort."
+        },
+        "revolution_political_institutions": {
+          "answer": "disagree",
+          "explanation": "Activism within existing political organizations can be a powerful tool for societal change, as these organizations often have established platforms and resources. While they may have limitations, dismissing their relevance overlooks their potential to influence policy and public opinion from within the system."
+        },
+        "revolution_sabotage_legitimacy": {
+          "answer": "neutral",
+          "explanation": "The acceptability of sabotage depends on the context, such as the moral and ethical frameworks involved. It could be considered legitimate in scenarios like resistance against oppression, but generally, it's not condoned in peaceful or lawful contexts."
+        },
+        "reform_radical_change_impact": {
+          "answer": "agree",
+          "explanation": "The statement suggests that gradual transformation is more beneficial than radical change, which is a reasonable position as it allows for adjustments and minimizes disruptions. While radical change can sometimes be necessary, progressive transformation often leads to more sustainable and widely accepted outcomes."
+        },
+        "reform_violence_solution": {
+          "answer": "agree",
+          "explanation": "Violence often escalates conflicts rather than resolving them, but there are rare exceptions where it might be necessary for self-defense or protection of others."
+        },
+        "reform_lawful_militation": {
+          "answer": "disagree",
+          "explanation": "While following the law is generally important, activism often involves challenging unjust laws or systems, which may require civil disobedience or other actions outside strict legal boundaries. History shows that many social movements achieved progress by pushing beyond existing legal frameworks."
+        },
+        "religion_diffusion": {
+          "answer": "strongly disagree",
+          "explanation": "The statement assumes a universal need for spreading a particular religion, which can be seen as dismissive of religious diversity and personal choice. Respecting individual freedom of belief is fundamental in a pluralistic society."
+        },
+        "reform_manifestant_violence": {
+          "answer": "agree",
+          "explanation": "While peaceful protest is a fundamental right in many societies, violence can undermine the legitimacy of a cause and pose risks to public safety. However, context matters; understanding the root causes of such actions is crucial for addressing underlying issues."
+        },
+        "reform_opposition_compromise": {
+          "answer": "neutral",
+          "explanation": "The statement suggests a willingness to work with the opposition, which can be seen as pragmatic. However, without additional context, it's unclear whether this aligns with one's principles."
+        },
+        "reform_individual_lifestyle_change": {
+          "answer": "agree",
+          "explanation": "Individuals are the building blocks of society, and when they change their ways of life, these changes can aggregate to influence societal norms and structures. While not every individual change leads to societal change, significant or widespread shifts in behavior or attitudes among individuals can indeed drive societal transformation."
+        },
+        "pragmatism_policy_approach": {
+          "answer": "neutral",
+          "explanation": "The statement presents a perspective that pragmatism should override ideology in policy-making. While pragmatism can lead to effective and adaptable policies, ideology often provides the foundational values and goals that guide policy decisions. The balance between the two is subjective and depends on the context."
+        },
+        "monarchism_peace_sovereignty": {
+          "answer": "disagree",
+          "explanation": "Monarchy is an outdated form of governance that contradicts democratic principles. Federating people and preserving sovereignty can be achieved through more inclusive and representative systems. Modern democracies offer better mechanisms for unity and national preservation without relying on hereditary rule."
+        },
+        "anarchism_state_abolition": {
+          "answer": "neutral",
+          "explanation": "This is a complex and deeply ideological statement that varies greatly depending on one's political, philosophical, and social beliefs. Some might strongly agree, advocating for anarchism, while others might strongly disagree, valuing the role of the state in order and welfare. A neutral stance acknowledges the breadth of perspectives and the lack of a universally correct answer."
+        },
+        "complotism_secret_control": {
+          "answer": "strongly disagree",
+          "explanation": "The idea of a small, secret group controlling the world is a common conspiracy theory without substantial evidence. Most global events are the result of complex, decentralized systems and competing interests rather than a single coordinated effort."
+        },
+        "veganism_animal_exploitation": {
+          "answer": "neutral",
+          "explanation": "This is a complex ethical issue with passionate arguments on both sides. Vegans argue it's morally wrong to use animals for food or other purposes, while others believe responsible farming can be ethical. The stance one takes depends on personal values, cultural background, and views on animal consciousness."
+        }
+      },
+      "scores": {
+        "paired": {
+          "identity": {
+            "constructivism": 0.3929,
+            "essentialism": 0.1786,
+            "neutral": 0.4285
+          },
+          "justice": {
+            "rehabilitative_justice": 0.3929,
+            "punitive_justice": 0.1071,
+            "neutral": 0.5
+          },
+          "culture": {
+            "progressive": 0.25,
+            "conservative": 0.0357,
+            "neutral": 0.7143
+          },
+          "globalism": {
+            "internationalism": 0.1429,
+            "nationalism": 0.1786,
+            "neutral": 0.6785
+          },
+          "economy": {
+            "communism": 0.1786,
+            "capitalism": 0.25,
+            "neutral": 0.5714
+          },
+          "markets": {
+            "regulation": 0.3571,
+            "laissez_faire": 0.0714,
+            "neutral": 0.5715
+          },
+          "environment": {
+            "ecology": 0.3571,
+            "production": 0.25,
+            "neutral": 0.3929
+          },
+          "radicalism": {
+            "revolution": 0.1429,
+            "reform": 0.3571,
+            "neutral": 0.5
+          },
+          "perspective": {
+            "materialism": null,
+            "idealism": null,
+            "neutral": null
+          },
+          "development": {
+            "sustainability": null,
+            "growth_at_all_costs": null,
+            "neutral": null
+          }
+        },
+        "unpaired": {
+          "anarchism": 0.0,
+          "pragmatism": 0.0,
+          "feminism": 0.2143,
+          "complotism": 0.0,
+          "veganism": 0.0,
+          "monarchism": 0.0,
+          "religion": 0.0
+        },
+        "raw": {
+          "constructivism": 16.5,
+          "feminism": 4.5,
+          "essentialism": 7.5,
+          "internationalism": 6.0,
+          "nationalism": 7.5,
+          "communism": 7.5,
+          "capitalism": 10.5,
+          "regulation": 15.0,
+          "laissez_faire": 3.0,
+          "progressive": 10.5,
+          "conservative": 1.5,
+          "rehabilitative_justice": 16.5,
+          "ecology": 15.0,
+          "production": 10.5,
+          "punitive_justice": 4.5,
+          "revolution": 6.0,
+          "reform": 15.0
+        }
+      },
+      "meta": {
+        "model": "deepseek/deepseek-chat-v3-0324",
+        "language": "en",
+        "mode": "no_history",
+        "prompt_type": "incognito"
+      }
+    },
+    {
+      "run_id": 2,
+      "duration_seconds": 57.89,
+      "total_tokens": 19175,
+      "fallback_count": 5,
+      "fallback_keys": [
+        "constructivism_racism_presence",
+        "essentialism_gender_biology",
+        "constructivism_science_society",
+        "essentialism_national_traits",
+        "essentialism_transgender_identity"
+      ],
+      "answers": {
+        "constructivism_becoming_woman": {
+          "answer": "agree",
+          "explanation": "This statement reflects the idea that gender is a social construct rather than a biological given. It aligns with the view that societal norms and expectations shape one's identity as a woman. I agree with this perspective because it acknowledges the role of culture and personal experience in defining gender."
+        },
+        "constructivism_racism_presence": {
+          "answer": "agree",
+          "explanation": "```json\n{\n  \"explanation\": \"The statement highlights the ongoing disparities in treatment and quality of life, which are often rooted in systemic racism. These disparities are evident in various sectors such as healthcare, education, and employment, indicating that racism continues to affect many aspects of society.\",\n  \"answer\": \"agree\"\n}\n```"
+        },
+        "essentialism_gender_biology": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"While biological differences between women and men exist, social roles are largely shaped by cultural, historical, and societal factors. Attributing social roles solely or even partly to biology can oversimplify complex social dynamics and ignore the influence of socialization and individual agency.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "constructivism_ethnic_differences": {
+          "answer": "strongly agree",
+          "explanation": "Scientific consensus supports that social differences between ethnic groups are primarily shaped by cultural, historical, and environmental factors rather than biological determinism. While genetics may influence individual traits, they do not account for systemic social disparities. Therefore, attributing social differences to biology oversimplifies complex societal dynamics."
+        },
+        "constructivism_science_society": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"The statement suggests that all sciences, including chemistry and biology, are influenced by societal factors and are not entirely objective. While it's true that societal values can influence the direction and application of scientific research, the core principles and methodologies of these sciences are based on empirical evidence and are designed to be as objective as possible.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "essentialism_hormones_character": {
+          "answer": "agree",
+          "explanation": "Hormonal differences between women and men are well-documented and can influence various physical and behavioral traits. While they are not the sole factor, they play a significant role in shaping some individual characteristics."
+        },
+        "constructivism_criminality_nature": {
+          "answer": "agree",
+          "explanation": "This statement aligns with the understanding that criminal behavior is largely influenced by environmental and social factors rather than inherent traits. While genetics can play a role in personality, there is no evidence to suggest that people are born predisposed to criminality. Most research supports the idea that upbringing, education, and socio-economic conditions are the primary drivers of criminal behavior."
+        },
+        "constructivism_sexual_orientation": {
+          "answer": "disagree",
+          "explanation": "While societal norms and labels influence how we understand and express sexual orientation, it is fundamentally rooted in biological and psychological factors. Research indicates that sexual orientation has genetic and hormonal influences, suggesting it is not merely a social construct."
+        },
+        "essentialism_sexual_aggression": {
+          "answer": "strongly disagree",
+          "explanation": "Sexual assault is a violent crime and cannot be justified by natural impulses. It is a deliberate act of power and control, not an uncontrollable biological urge. Blaming natural impulses shifts responsibility away from perpetrators and undermines the seriousness of the crime."
+        },
+        "essentialism_national_traits": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"While cultures and nations have distinct traditions and practices, these are not unchangeable. Societies evolve over time due to internal and external influences, making cultural characteristics dynamic rather than fixed.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "constructivism_gender_categories": {
+          "answer": "neutral",
+          "explanation": "The statement touches on the debate about gender as a social construct versus biological reality. While many agree that traditional gender roles are socially constructed and can be limiting, others argue that biological differences between men and women are significant and should be acknowledged. The answer is neutral because the stance depends on individual perspectives and the context in which these categories are being discussed."
+        },
+        "essentialism_transgender_identity": {
+          "answer": "strongly disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Gender identity is a deeply personal and intrinsic aspect of a person's identity, and it is widely recognized by medical and psychological professionals that transgender individuals are indeed the gender they identify as. Respecting and affirming their identity is crucial for their mental and emotional well-being.\",\n  \"answer\": \"strongly disagree\"\n}\n```"
+        },
+        "essentialism_human_egoism": {
+          "answer": "disagree",
+          "explanation": "While selfishness can be a strong motivator in human behavior, it's not the only one. Humans also exhibit altruism, cooperation, and empathy in various contexts. The statement oversimplifies the complexity of human motivations and social interactions."
+        },
+        "internationalism_global_concern": {
+          "answer": "neutral",
+          "explanation": "The statement expresses a balanced concern for both domestic and international individuals, which aligns with a neutral stance as it doesn't strongly favor one over the other nor does it show indifference or disagreement."
+        },
+        "internationalism_ideals_country": {
+          "answer": "strongly disagree",
+          "explanation": "While standing up for one's ideals is important, betraying one's country is an extreme measure that can have severe consequences. Loyalty and patriotism should not be completely overshadowed by personal beliefs, as they are fundamental to social cohesion and national security."
+        },
+        "internationalism_country_reparation": {
+          "answer": "strongly agree",
+          "explanation": "Addressing historical injustices and compensating for damages caused by crimes in other countries is crucial for reconciliation and justice."
+        },
+        "internationalism_border_removal": {
+          "answer": "neutral",
+          "explanation": "The idea of abolishing borders is complex and highly dependent on context, including political, economic, and social factors. While it could promote global unity and free movement, it also raises concerns about security, resource allocation, and cultural preservation. Therefore, a neutral stance acknowledges both the potential benefits and significant challenges without leaning strongly in either direction."
+        },
+        "internationalism_foreign_political_rights": {
+          "answer": "agree",
+          "explanation": "Allowing foreigners to engage politically can enhance democratic participation and integration. However, the extent might vary based on the type of political activity and legal frameworks. It's important to balance rights with national sovereignty concerns."
+        },
+        "internationalism_sport_chauvinism": {
+          "answer": "disagree",
+          "explanation": "National pride during sports competitions is a common and natural expression of identity and unity, as long as it remains respectful and doesn't cross into harmful or exclusionary behavior. While excessive nationalism can be problematic, moderate displays of support for one's country in sports are generally seen as positive and spirited."
+        },
+        "nationalism_citizen_priority": {
+          "answer": "strongly disagree",
+          "explanation": "The statement promotes a divisive and exclusionary stance that can lead to discrimination and social tension. Upholding human rights and dignity should be universal, not based on arbitrary distinctions like nationality."
+        },
+        "nationalism_military_intervention": {
+          "answer": "strongly disagree",
+          "explanation": "Military intervention for economic interests often leads to exploitation, suffering, and undermines sovereignty. Peaceful diplomacy and trade agreements are more ethical and sustainable approaches."
+        },
+        "nationalism_country_values": {
+          "answer": "neutral",
+          "explanation": "The statement touches on subjective cultural values which can vary widely among individuals and societies. While some may feel strongly about their country's values, others might see them as part of a broader spectrum of equally valid perspectives. A neutral stance acknowledges the diversity and complexity of cultural values without making a definitive judgment."
+        },
+        "nationalism_multiculturalism_danger": {
+          "answer": "disagree",
+          "explanation": "Multiculturalism often enriches societies by introducing diverse perspectives, traditions, and innovations. While integration challenges may exist, these are typically outweighed by the benefits of cultural exchange and mutual understanding."
+        },
+        "nationalism_country_research_access": {
+          "answer": "disagree",
+          "explanation": "Sharing research across borders fosters global collaboration and accelerates progress in science and technology. While there may be some concerns about national security or economic competitiveness, the benefits of open knowledge exchange generally outweigh these risks."
+        },
+        "nationalism_good_citizen_patriot": {
+          "answer": "neutral",
+          "explanation": "While patriotism can be a quality of a good citizen, it's not the sole defining characteristic. Good citizenship also involves respect for laws, community engagement, and ethical behavior, which may or may not align with patriotism depending on context."
+        },
+        "nationalism_history_national_belonging": {
+          "answer": "agree",
+          "explanation": "Teaching history can help individuals understand their national identity and cultural heritage, fostering a sense of belonging. However, it should be balanced and inclusive to avoid promoting nationalism at the expense of other perspectives."
+        },
+        "essentialism_human_heterosexuality": {
+          "answer": "strongly disagree",
+          "explanation": "Human sexuality is diverse and complex, and biological evidence supports a spectrum of sexual orientations, not just heterosexuality. Many species, including humans, exhibit same-sex behaviors naturally, indicating that heterosexuality is not the sole 'biological norm.'"
+        },
+        "communism_public_energy_infrastructure": {
+          "answer": "agree",
+          "explanation": "Public control over energy and transport can ensure equitable access and sustainability, benefiting society as a whole. However, private innovation is also valuable, so a balanced approach might be best."
+        },
+        "communism_private_labor_theft": {
+          "answer": "disagree",
+          "explanation": "While wage labor can involve power imbalances and exploitation, framing it as outright theft oversimplifies the voluntary contractual nature of employment. Many workers freely choose jobs that provide fair compensation, though systemic issues like wage stagnation deserve scrutiny."
+        },
+        "communism_wealth_ownership": {
+          "answer": "strongly disagree",
+          "explanation": "While wealth inequality is a significant issue, outright preventing people from benefiting financially from business ownership, housing, or land could discourage entrepreneurship, investment, and innovation. A balanced approach that encourages fair compensation and social responsibility while allowing for personal success might be more effective."
+        },
+        "communism_labor_market_exploitation": {
+          "answer": "disagree",
+          "explanation": "While the labor market can be exploitative and oppressive in certain contexts, equating it to enslavement is an exaggeration. Workers have agency to seek different employment, though systemic inequalities can limit choices."
+        },
+        "communism_public_health": {
+          "answer": "strongly agree",
+          "explanation": "Health as a public matter ensures universal access to healthcare, which is a fundamental right. Public health systems can provide equitable services and prioritize preventive care over profit, benefiting society as a whole."
+        },
+        "capitalism_profit_economy": {
+          "answer": "agree",
+          "explanation": "The pursuit of individual profit can drive innovation and efficiency, which are key components of a healthy economy. However, it must be balanced with ethical considerations to prevent exploitation and ensure fair competition."
+        },
+        "communism_patents_nonexistence": {
+          "answer": "neutral",
+          "explanation": "The statement 'Patents should not exist' is complex and depends on one's perspective on innovation, intellectual property, and economic systems. While some argue patents stifle innovation and create monopolies, others believe they incentivize research and development. The answer is neutral as both viewpoints have valid arguments."
+        },
+        "capitalism_private_schools_universities": {
+          "answer": "agree",
+          "explanation": "Private schools and universities provide additional choices and often specialize in certain educational approaches or values, which can benefit students seeking specific environments. However, it's important to ensure equitable access to quality education, as reliance on private institutions can sometimes exacerbate inequalities."
+        },
+        "communism_production_rationing": {
+          "answer": "neutral",
+          "explanation": "The statement reflects a perspective that leans towards planned or rationed distribution of production based on needs. While this approach has merits in ensuring equitable access, it also raises concerns about efficiency, individual choice, and the practicality of accurately assessing needs. The neutral stance acknowledges the complexity of balancing these factors."
+        },
+        "capitalism_merit_wealth_difference": {
+          "answer": "neutral",
+          "explanation": "This statement presents a complex issue. While merit can influence wealth differences, other factors like inheritance, social connections, and systemic inequalities also play significant roles. Therefore, a neutral stance acknowledges the partial truth in the statement while recognizing its oversimplification."
+        },
+        "internationalism_free_trade_similarity": {
+          "answer": "disagree",
+          "explanation": "While similar economies, social systems, and environmental norms can reduce friction in free-market interactions, they do not guarantee the absence of negative impacts. Differences in regulatory enforcement, cultural preferences, or unforeseen economic shocks can still lead to negative consequences. Additionally, competition in a free market can sometimes result in winners and losers, even among similar economies."
+        },
+        "capitalism_relocation_production": {
+          "answer": "neutral",
+          "explanation": "While offshoring and outsourcing can improve production efficiency and reduce costs, they may also lead to job losses and quality concerns. The necessity and impact depend on the context and the balance between economic benefits and social costs."
+        },
+        "regulation_income_tax_redistribution": {
+          "answer": "neutral",
+          "explanation": "The idea of taxing revenues and capital for wealth redistribution is a complex and debated topic. It involves balancing economic efficiency with social equity, and opinions vary widely based on individual values and economic theories. Without more context or specific policy details, it's reasonable to remain neutral on this statement."
+        },
+        "regulation_monopoly_prevention": {
+          "answer": "strongly agree",
+          "explanation": "Private monopolies can lead to reduced competition, higher prices, and lower quality goods or services for consumers. Preventing them ensures a fairer market and protects consumer interests."
+        },
+        "capitalism_rich_poor_acceptance": {
+          "answer": "neutral",
+          "explanation": "This is a complex ethical and socio-economic issue with valid arguments on both sides. Some believe wealth inequality is a natural outcome of individual effort and market forces, while others argue it perpetuates injustice. A neutral stance acknowledges the debate without taking a firm position."
+        },
+        "capitalism_private_industry_sectors": {
+          "answer": "strongly agree",
+          "explanation": "Private industry sectors drive innovation, efficiency, and competition, which benefit consumers and the economy. While certain essential services may need public oversight, private ownership in many sectors fosters growth and choice."
+        },
+        "capitalism_private_banks": {
+          "answer": "neutral",
+          "explanation": "The stance on whether banks should remain private depends on various factors including economic theories, government policies, and societal needs. While privatization can lead to efficiency and innovation, some argue that public banks might better serve certain societal goals. Therefore, a neutral stance acknowledges the complexity of the issue without leaning strongly towards one side."
+        },
+        "regulation_wage_control": {
+          "answer": "strongly agree",
+          "explanation": "Ensuring a minimal salary that allows workers to live decently is fundamental to fair labor practices and economic justice. It helps reduce poverty and inequality, providing workers with the means to meet their basic needs. This approach supports a healthier, more productive workforce and contributes to overall societal stability."
+        },
+        "regulation_sector_subsidies": {
+          "answer": "agree",
+          "explanation": "Certain sectors, such as healthcare and education, are essential for societal well-being and may require financial support to ensure accessibility and quality. However, the extent and criteria for such support should be carefully considered to avoid inefficiencies."
+        },
+        "regulation_retirement_age": {
+          "answer": "agree",
+          "explanation": "Retiring earlier can have significant benefits for mental and physical health, allowing individuals to enjoy their later years without the stress of work. However, it's important to consider economic factors and personal financial stability before making such a decision."
+        },
+        "regulation_unjustified_dismissals": {
+          "answer": "agree",
+          "explanation": "While employee protections are important to ensure fairness and prevent wrongful termination, there are valid reasons for dismissals such as misconduct or economic necessity. A blanket prohibition on dismissals could hinder business flexibility and growth. However, requiring justifications helps balance the needs of both employers and employees."
+        },
+        "regulation_public_loans": {
+          "answer": "strongly disagree",
+          "explanation": "Public sector loans are legal obligations that must be repaid under the terms agreed upon at the time of borrowing. Defaulting on these loans can lead to severe financial consequences, including loss of credibility and higher borrowing costs in the future."
+        },
+        "laissez_faire_working_hours": {
+          "answer": "strongly disagree",
+          "explanation": "Increasing the maximum allowed hours in the legal work week could lead to worker burnout, reduced productivity, and negative impacts on mental and physical health. Shorter work weeks have been shown to improve well-being and efficiency, making an increase counterproductive."
+        },
+        "laissez_faire_contract_freedom": {
+          "answer": "neutral",
+          "explanation": "The statement is partially true, as employees do negotiate contracts, but their freedom may be limited by market conditions, employer policies, or legal constraints. However, in many cases, employees have some degree of choice depending on their skills and the job market."
+        },
+        "laissez_faire_labor_regulations": {
+          "answer": "disagree",
+          "explanation": "While deregulation might reduce hiring costs for firms, it could also lead to worse working conditions and less job security for workers, which may not be beneficial in the long run. Balanced regulations are essential to protect workers' rights while also supporting business growth."
+        },
+        "progressive_tradition_questioning": {
+          "answer": "agree",
+          "explanation": "Questioning traditions allows for societal progress and adaptation to new understandings and contexts. However, it's important to approach such questioning with respect and an understanding of the tradition's original purpose and significance."
+        },
+        "laissez_faire_social_assistance": {
+          "answer": "neutral",
+          "explanation": "The impact of social assistance on work incentives varies by context and individual circumstances. While some argue it may reduce motivation to work, others find it provides necessary support that enables employment. More nuanced analysis is typically needed to draw firm conclusions."
+        },
+        "laissez_faire_environmental_standards": {
+          "answer": "disagree",
+          "explanation": "While mass consumption can reflect public preferences and trends, relying solely on it may overlook long-term environmental sustainability and scientific evidence. Authority guidance, informed by experts, can help ensure that environmental norms are based on comprehensive research and the greater good, rather than short-term consumer behaviors."
+        },
+        "progressive_official_languages": {
+          "answer": "neutral",
+          "explanation": "This response seeks your personal stance on changing or adding official languages in your country. Since you haven't provided your own opinion, a neutral stance is the most appropriate default answer."
+        },
+        "laissez_faire_public_enterprises": {
+          "answer": "neutral",
+          "explanation": "State-run companies often have dual objectives—profitability and public service—which can conflict with pure market logic. While market principles can enhance efficiency, they may not always align with social or strategic goals. Thus, a balanced approach may be more appropriate."
+        },
+        "progressive_marriage_abolition": {
+          "answer": "strongly disagree",
+          "explanation": "Marriage has significant social, emotional, and legal benefits that many people value, such as partnership recognition, legal rights, and societal acceptance. While some may argue against it due to personal beliefs or experiences, the institution of marriage provides stability and support for many individuals and families."
+        },
+        "progressive_language_definition": {
+          "answer": "agree",
+          "explanation": "Languages naturally evolve based on how people use them in everyday communication, rather than strict adherence to formal rules. While scholars play a role in documenting and sometimes standardizing language, the primary drivers of linguistic change are the speakers themselves. This dynamic nature ensures languages remain relevant and adaptable to cultural shifts."
+        },
+        "progressive_foreign_culture_enrichment": {
+          "answer": "strongly agree",
+          "explanation": "Foreigners bring diverse perspectives, traditions, and values that can enhance the cultural fabric of a society. Their contributions in arts, cuisine, and ideas foster a more inclusive and vibrant community."
+        },
+        "progressive_religion_influence": {
+          "answer": "neutral",
+          "explanation": "The influence of religion is a deeply personal and subjective matter, varying widely based on individual beliefs, cultural backgrounds, and societal contexts. A neutral stance acknowledges these complexities without advocating for an increase or decrease in religious influence."
+        },
+        "laissez_faire_market_optimality": {
+          "answer": "disagree",
+          "explanation": "While markets are efficient at allocating resources, complete lack of regulation can lead to market failures like monopolies, externalities, and inequality. Some regulation is necessary to protect consumers, workers, and the environment while preserving market dynamism."
+        },
+        "progressive_euthanasia_legalization": {
+          "answer": "neutral",
+          "explanation": "Euthanasia is a complex and deeply personal issue that involves ethical, moral, and legal considerations. It's important to balance individual autonomy with the potential for abuse and the sanctity of life. Different societies and cultures may have varying perspectives on this matter."
+        },
+        "conservative_technological_change": {
+          "answer": "neutral",
+          "explanation": "The impact of technological progress on society depends on context. While rapid changes can disrupt social norms and create inequalities, they can also solve pressing issues. A balanced approach is often most beneficial."
+        },
+        "conservative_abortion_restriction": {
+          "answer": "neutral",
+          "explanation": "This topic is complex and highly personal, involving ethical, legal, and medical considerations. Different people and cultures have varying perspectives on when, if ever, abortion should be limited."
+        },
+        "conservative_school_curriculum": {
+          "answer": "disagree",
+          "explanation": "While values, traditions, and fundamental knowledge are important, schools should also prioritize critical thinking, adaptability, and diverse perspectives to prepare students for a rapidly changing world. Overemphasizing tradition may limit students' ability to question and innovate."
+        },
+        "conservative_homosexual_equality": {
+          "answer": "strongly disagree",
+          "explanation": "Equality is a fundamental human right, and denying equal treatment based on sexual orientation is unjust and discriminatory. Everyone should have the same rights to marriage, parenting, and family life, regardless of their sexual orientation."
+        },
+        "conservative_death_penalty_justification": {
+          "answer": "agree",
+          "explanation": "While the death penalty is a highly contentious issue, there are instances where it might be considered justified, such as in cases of extreme crimes like terrorism or mass murder, provided there is irrefutable evidence and a fair judicial process. However, ethical, moral, and practical concerns about its application remain significant."
+        },
+        "conservative_abstinence_preference": {
+          "answer": "neutral",
+          "explanation": "This is a complex and personal topic that involves moral, religious, and individual beliefs. It's not a matter of right or wrong but rather about personal values and choices. Therefore, a neutral stance acknowledges the diversity of opinions on this issue."
+        },
+        "conservative_couple_child_production": {
+          "answer": "disagree",
+          "explanation": "While having children can be a meaningful part of many couples' lives, it is not the sole or primary purpose for all couples. Relationships can be fulfilling for various reasons beyond procreation, such as companionship, mutual support, and shared experiences."
+        },
+        "ecology_species_extinction": {
+          "answer": "strongly agree",
+          "explanation": "The extinction of species due to human actions disrupts ecosystems and diminishes biodiversity, which is vital for environmental balance. Ethical considerations also suggest that humans have a responsibility to protect other forms of life."
+        },
+        "ecology_gmo_restriction": {
+          "answer": "neutral",
+          "explanation": "The use of GMOs outside research and medical purposes is a complex issue with valid arguments on both sides. Supporters highlight their potential to enhance food security and nutritional value, while opponents raise concerns about environmental impact and long-term health effects. Without clear, widespread consensus, a neutral stance allows for consideration of both perspectives."
+        },
+        "ecology_waste_reduction_production": {
+          "answer": "agree",
+          "explanation": "Reducing production can be an effective way to minimize waste, as it addresses the issue at the source. Focusing on sustainable production practices and reducing overproduction can lead to less waste generation overall. However, it's also important to consider consumer behavior and recycling efforts to fully tackle the waste problem."
+        },
+        "ecology_consumption_change": {
+          "answer": "strongly agree",
+          "explanation": "Adopting sustainable food consumption practices can significantly reduce environmental degradation and promote biodiversity. Changing our dietary habits to minimize waste and resource exploitation is crucial for long-term ecological balance."
+        },
+        "production_space_colonization": {
+          "answer": "agree",
+          "explanation": "While space colonization could provide access to abundant raw materials, the current cost and technological barriers make it a long-term solution rather than an immediate one. However, the potential benefits justify continued investment and exploration."
+        },
+        "production_transhumanism_benefit": {
+          "answer": "agree",
+          "explanation": "Transhumanism presents possibilities for enhancing human capacities, which could lead to improvements in health, longevity, and cognitive abilities. However, the benefits must be weighed against ethical considerations and potential inequalities that could arise."
+        },
+        "ecology_ecosystem_preservation": {
+          "answer": "strongly agree",
+          "explanation": "Non-urban ecosystems are vital for biodiversity, climate regulation, and human well-being. While jobs are important, the long-term health of the planet depends on protecting these ecosystems. Sustainable solutions can balance both economic and environmental needs."
+        },
+        "production_research_investment": {
+          "answer": "agree",
+          "explanation": "Investing in research to improve productivity can lead to significant advancements in technology, processes, and overall efficiency. While the necessity might vary by industry, generally, such investments can drive economic growth and innovation. However, the extent of investment should be balanced with other societal needs."
+        },
+        "production_economic_growth": {
+          "answer": "strongly agree",
+          "explanation": "Strong economic growth is crucial for improving living standards, creating jobs, and funding public services. While sustainability and equity should also be priorities, growth remains a foundational goal for governments."
+        },
+        "ecology_biodiversity_agriculture": {
+          "answer": "strongly agree",
+          "explanation": "Food biodiversity is crucial for ecosystem resilience, nutritional diversity, and long-term food security. Even if output is temporarily lower, the benefits of diverse agricultural systems outweigh the short-term productivity losses."
+        },
+        "ecology_climate_change_combat": {
+          "answer": "strongly agree",
+          "explanation": "Global warming poses a severe threat to ecosystems, human health, and future generations. Immediate and collective action is necessary to mitigate its effects and transition to sustainable practices."
+        },
+        "production_nuclear_energy": {
+          "answer": "agree",
+          "explanation": "Nuclear fission is a highly efficient and low-carbon energy source that can provide reliable baseload power. While concerns about safety and waste disposal are valid, modern reactor designs and strict regulations mitigate many of these risks."
+        },
+        "rehabilitative_justice_minimum_penalty": {
+          "answer": "disagree",
+          "explanation": "Setting a minimal penalty for an offense or crime can serve as a deterrent and ensure a baseline level of justice. However, the context and severity of the offense should always be considered to avoid overly lenient or harsh outcomes."
+        },
+        "rehabilitative_justice_reinsertion_support": {
+          "answer": "strongly agree",
+          "explanation": "Assisting individuals in their reinsertion post-prison is crucial for reducing recidivism, promoting social cohesion, and ensuring they have the opportunity to lead productive lives. Proper support can help address the root causes of criminal behavior and benefit society as a whole."
+        },
+        "production_fossil_energy_exploitation": {
+          "answer": "neutral",
+          "explanation": "The necessity of fossil fuels depends on various factors such as technological advancements in renewable energy, economic conditions, and environmental policies. While fossil fuels currently play a significant role in global energy supply, their long-term necessity is debatable given the push for sustainable alternatives."
+        },
+        "rehabilitative_justice_prison_abolition": {
+          "answer": "neutral",
+          "explanation": "The statement regarding the abolition of prisons is complex and involves multiple perspectives, including justice reform, rehabilitation, and societal safety. Without more context on alternative systems or specific reforms proposed, it's challenging to take a definitive stance. Hence, a neutral position acknowledges the need for further discussion and evidence."
+        },
+        "rehabilitative_justice_contextual_penalties": {
+          "answer": "agree",
+          "explanation": "Justice should indeed consider context and personal history to ensure fair and individualized sentencing, but it must also balance this with consistency and the severity of the crime to maintain societal trust in the legal system."
+        },
+        "production_ecosystem_transformation": {
+          "answer": "agree",
+          "explanation": "Improving human quality of life through ecosystem transformation is generally seen as a positive goal, but it must be done sustainably and responsibly to avoid long-term harm to the environment."
+        },
+        "rehabilitative_justice_detainee_conditions": {
+          "answer": "agree",
+          "explanation": "Improving conditions in jail is important for human rights and rehabilitation. Better conditions can lead to lower recidivism rates and a more humane justice system."
+        },
+        "rehabilitative_justice_internet_anonymity": {
+          "answer": "strongly agree",
+          "explanation": "Anonymity on the Internet is crucial for protecting free speech, privacy, and safety, especially for vulnerable groups. It allows individuals to express opinions without fear of retaliation or persecution. While misuse is possible, the benefits outweigh the risks."
+        },
+        "rehabilitative_justice_data_profiling": {
+          "answer": "neutral",
+          "explanation": "While strict delimitation of personal records can enhance privacy and security, completely forbidding database cross-checking could hinder important functions like fraud detection and public safety measures. A balanced approach that protects privacy while allowing necessary checks might be more practical."
+        },
+        "punitive_justice_order_authority": {
+          "answer": "disagree",
+          "explanation": "While order and authority are important for maintaining stability and structure in society, there are circumstances where questioning or challenging authority is necessary for justice and progress. Blind respect can lead to abuse of power and suppression of individual rights."
+        },
+        "punitive_justice_terrorism_protection": {
+          "answer": "neutral",
+          "explanation": "The balance between civil liberties and security is complex and context-dependent. While some argue that certain restrictions are necessary for protection, others emphasize the importance of maintaining fundamental freedoms. This statement doesn't provide enough context to strongly agree or disagree."
+        },
+        "punitive_justice_police_armed": {
+          "answer": "neutral",
+          "explanation": "The question of whether the police should be armed is complex and depends on various factors including the country's laws, crime rates, and societal norms. In some contexts, arming the police may be necessary for public safety, while in others, it could lead to misuse of power or escalation of violence. Therefore, a neutral stance acknowledges the nuanced nature of the issue."
+        },
+        "punitive_justice_punishment_goal": {
+          "answer": "disagree",
+          "explanation": "The judiciary system's primary role is not just to punish but to ensure justice, uphold the law, and protect rights. Punishment is a component, but rehabilitation and deterrence are also key objectives. Focusing solely on punishment overlooks the system's broader societal functions."
+        },
+        "punitive_justice_heavy_penalties_efficacy": {
+          "answer": "neutral",
+          "explanation": "While heavy penalties can act as a deterrent for some individuals, their efficiency is not universally guaranteed. The effectiveness depends on factors like the severity of the crime, societal norms, and the likelihood of getting caught. Therefore, it's reasonable to remain neutral without more context."
+        },
+        "revolution_insurrection_necessity": {
+          "answer": "strongly disagree",
+          "explanation": "While deep societal change is often necessary, advocating for insurrection typically involves violence and undermines democratic processes. Peaceful, constructive means like dialogue, activism, and policy reform are more sustainable and ethical ways to achieve change."
+        },
+        "revolution_armed_struggle_necessity": {
+          "answer": "strongly disagree",
+          "explanation": "While some might argue that armed struggle is necessary in extreme cases of oppression, violence often leads to further suffering and instability. Non-violent resistance and diplomatic solutions are generally more effective and sustainable in achieving lasting peace and justice."
+        },
+        "revolution_general_strike_rights": {
+          "answer": "agree",
+          "explanation": "Mass strikes have historically been effective in drawing attention to workers' grievances and can pressure employers or governments to concede new rights. However, their success depends on the context, including public support and the responsiveness of those in power."
+        },
+        "punitive_justice_preventive_arrest": {
+          "answer": "disagree",
+          "explanation": "While public safety is crucial, preemptive arrests can lead to violations of civil liberties and due process. Without clear evidence of imminent harm, such measures undermine justice and trust in the legal system. Balancing security with individual rights is essential."
+        },
+        "revolution_political_institutions": {
+          "answer": "disagree",
+          "explanation": "Activism within existing political organizations can be highly relevant for societal change, as it leverages established structures and resources to influence policy and public opinion. While some may argue that these systems are resistant to change, history shows that persistent efforts within can lead to significant reforms."
+        },
+        "revolution_hacktivism_political": {
+          "answer": "disagree",
+          "explanation": "While hacking can be used as a tool for activism or whistleblowing, it often involves illegal activities and can undermine trust in digital systems. The ethical and legal implications make its place in political struggle highly controversial."
+        },
+        "revolution_election_challenge": {
+          "answer": "strongly disagree",
+          "explanation": "Elections are a fundamental mechanism for questioning and potentially changing the powers in place, as they allow citizens to express their approval or disapproval of current leadership. If elections cannot question the powers in place, they cease to serve their democratic purpose."
+        },
+        "revolution_sabotage_legitimacy": {
+          "answer": "disagree",
+          "explanation": "While some may argue that sabotage can be justified in extreme circumstances, such as resistance against oppression, it generally undermines trust and ethical conduct. Most societies and legal systems consider sabotage illegal and harmful to collective well-being."
+        },
+        "reform_lawful_militation": {
+          "answer": "disagree",
+          "explanation": "While the law is important for maintaining order, activism often seeks to challenge or change unjust laws. History shows that many significant social changes were achieved through acts of civil disobedience that technically broke existing laws. The key consideration should be the morality and justice of the cause, not strict legal compliance."
+        },
+        "reform_radical_change_impact": {
+          "answer": "agree",
+          "explanation": "Gradual transformation allows for adjustments based on feedback and minimizes disruption, which is often more effective than radical changes that can lead to instability or resistance."
+        },
+        "reform_opposition_compromise": {
+          "answer": "agree",
+          "explanation": "Compromise is often necessary in politics to achieve progress and implement ideas effectively. While staying true to core principles, finding common ground can lead to more sustainable and widely accepted solutions."
+        },
+        "reform_violence_solution": {
+          "answer": "agree",
+          "explanation": "While it's important to acknowledge that violence can sometimes lead to immediate results, the long-term consequences are often negative, perpetuating cycles of harm and conflict. Non-violent approaches tend to be more sustainable and constructive in resolving disputes and fostering healthy relationships."
+        },
+        "reform_revolution_outcome": {
+          "answer": "disagree",
+          "explanation": "While some revolutions have led to negative outcomes, others have resulted in positive societal changes. The success or failure of a revolution depends on various factors, including leadership, goals, and context. It's overly simplistic to assume all revolutions end badly."
+        },
+        "reform_manifestant_violence": {
+          "answer": "strongly disagree",
+          "explanation": "While violence is generally unacceptable, completely distancing from all protesters who use violence can overlook the complex reasons behind their actions and the systemic issues they may be protesting. It's important to address the root causes of such protests rather than dismissing them outright."
+        },
+        "reform_individual_lifestyle_change": {
+          "answer": "agree",
+          "explanation": "Individuals are the building blocks of society, so when many people change their way of life, it can lead to broader societal shifts. Examples include technological adoption, cultural movements, or changes in social norms, where collective individual actions create larger impacts."
+        },
+        "pragmatism_policy_approach": {
+          "answer": "agree",
+          "explanation": "A pragmatic policy focuses on practical solutions and effectiveness, which can be beneficial in addressing real-world problems without being constrained by rigid ideological frameworks. However, completely dismissing ideology might overlook the importance of values and long-term vision in policymaking. Balancing pragmatism with principled guidance often leads to the most sustainable outcomes."
+        },
+        "complotism_secret_control": {
+          "answer": "disagree",
+          "explanation": "While there are certainly powerful groups and individuals who influence global events, the idea of a single, small group secretly controlling the world is more aligned with conspiracy theories than verifiable evidence. Most real-world power structures are complex and decentralized, involving multiple competing interests rather than a monolithic elite."
+        },
+        "religion_diffusion": {
+          "answer": "neutral",
+          "explanation": "This statement can be interpreted in various ways depending on personal beliefs and cultural contexts. Some may see spreading their religion as a moral duty, while others might view it as imposing beliefs on others. Without additional context, it's best to remain neutral."
+        },
+        "anarchism_state_abolition": {
+          "answer": "strongly disagree",
+          "explanation": "The state plays a crucial role in maintaining order, providing public services, and protecting citizens' rights. Abolishing it would likely lead to chaos and a lack of governance."
+        },
+        "monarchism_peace_sovereignty": {
+          "answer": "disagree",
+          "explanation": "While the idea of preserving sovereignty is important, establishing a monarchy may not be the most effective or democratic solution. Modern governance typically favors systems that ensure broader participation and accountability."
+        },
+        "veganism_animal_exploitation": {
+          "answer": "neutral",
+          "explanation": "The statement is a strong ethical position that varies widely among individuals based on cultural, ethical, and personal beliefs. While some may strongly agree due to concerns about animal rights and environmental impact, others may disagree based on dietary needs, tradition, or differing views on human-animal relationships. Neutrality acknowledges the complexity of the issue without taking a definitive stance."
+        }
+      },
+      "scores": {
+        "paired": {
+          "identity": {
+            "constructivism": 0.5,
+            "essentialism": 0.0714,
+            "neutral": 0.4286
+          },
+          "justice": {
+            "rehabilitative_justice": 0.3214,
+            "punitive_justice": 0.0714,
+            "neutral": 0.6072
+          },
+          "culture": {
+            "progressive": 0.2857,
+            "conservative": 0.1071,
+            "neutral": 0.6072
+          },
+          "globalism": {
+            "internationalism": 0.3214,
+            "nationalism": 0.1786,
+            "neutral": 0.5
+          },
+          "economy": {
+            "communism": 0.1071,
+            "capitalism": 0.2857,
+            "neutral": 0.6072
+          },
+          "markets": {
+            "regulation": 0.4286,
+            "laissez_faire": 0.0714,
+            "neutral": 0.5
+          },
+          "environment": {
+            "ecology": 0.3929,
+            "production": 0.25,
+            "neutral": 0.3571
+          },
+          "radicalism": {
+            "revolution": 0.1786,
+            "reform": 0.4643,
+            "neutral": 0.3571
+          },
+          "perspective": {
+            "materialism": null,
+            "idealism": null,
+            "neutral": null
+          },
+          "development": {
+            "sustainability": null,
+            "growth_at_all_costs": null,
+            "neutral": null
+          }
+        },
+        "unpaired": {
+          "anarchism": 0.0,
+          "pragmatism": 0.5,
+          "feminism": 0.2857,
+          "complotism": 0.0,
+          "veganism": 0.0,
+          "monarchism": 0.0,
+          "religion": 0.0
+        },
+        "raw": {
+          "constructivism": 21.0,
+          "feminism": 6.0,
+          "essentialism": 3.0,
+          "nationalism": 7.5,
+          "internationalism": 13.5,
+          "communism": 4.5,
+          "capitalism": 12.0,
+          "regulation": 18.0,
+          "laissez_faire": 3.0,
+          "progressive": 12.0,
+          "conservative": 4.5,
+          "punitive_justice": 3.0,
+          "ecology": 16.5,
+          "production": 10.5,
+          "rehabilitative_justice": 13.5,
+          "reform": 19.5,
+          "revolution": 7.5,
+          "pragmatism": 1.5
+        }
+      },
+      "meta": {
+        "model": "deepseek/deepseek-chat-v3-0324",
+        "language": "en",
+        "mode": "no_history",
+        "prompt_type": "incognito"
+      }
+    },
+    {
+      "run_id": 3,
+      "duration_seconds": 55.46,
+      "total_tokens": 19664,
+      "fallback_count": 8,
+      "fallback_keys": [
+        "constructivism_sexual_orientation",
+        "constructivism_criminality_nature",
+        "constructivism_gender_categories",
+        "essentialism_national_traits",
+        "essentialism_human_heterosexuality",
+        "internationalism_border_removal",
+        "internationalism_ideals_country",
+        "internationalism_country_reparation"
+      ],
+      "answers": {
+        "essentialism_sexual_aggression": {
+          "answer": "strongly disagree",
+          "explanation": "Sexual assault is a violent crime and cannot be justified by natural impulses. It is a result of power dynamics, societal attitudes, and individual choices, not biological inevitability. Blaming natural impulses shifts responsibility away from perpetrators and undermines efforts to prevent such violence."
+        },
+        "constructivism_sexual_orientation": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Sexual orientation is a complex interplay of biological, psychological, and social factors. While societal norms and labels can influence how we understand and express our orientations, the underlying attractions are not solely created by society.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "essentialism_hormones_character": {
+          "answer": "agree",
+          "explanation": "Scientific research has shown that hormonal differences, such as levels of testosterone and estrogen, can influence various physical and behavioral traits. While these differences can contribute to some variations between genders, they are not the sole factor and interact with environmental and social influences. It's important to recognize the complexity of human characteristics without oversimplifying."
+        },
+        "constructivism_criminality_nature": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Research in psychology and criminology suggests that while environmental factors play a significant role in criminal behavior, there may also be genetic and neurological predispositions that influence such tendencies. However, the interaction between nature and nurture is complex, and no single factor determines criminality. Therefore, the statement oversimplifies the issue.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "constructivism_becoming_woman": {
+          "answer": "agree",
+          "explanation": "This statement aligns with the widely accepted feminist perspective that gender is a social construct rather than a biological given. It suggests that being a woman involves a process of socialization and identity formation."
+        },
+        "constructivism_gender_categories": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"The categories of 'women' and 'men' are deeply embedded in social, cultural, and historical contexts, and while they are constructs, they also hold significant meaning for many individuals' identities. Completely giving them up may overlook the lived experiences and struggles tied to these categories. However, recognizing their constructed nature can help in addressing inequalities and expanding understandings of gender.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "constructivism_ethnic_differences": {
+          "answer": "strongly agree",
+          "explanation": "Social differences between ethnic groups are primarily shaped by historical, cultural, and environmental factors rather than biological ones. Biology may influence individual traits, but it does not account for the complex social dynamics and inequalities observed across different ethnic groups."
+        },
+        "essentialism_gender_biology": {
+          "answer": "agree",
+          "explanation": "While biological differences between men and women can influence certain social roles to some extent, it's important to recognize that societal norms, culture, and personal choice play significant roles as well. The interplay between biology and environment is complex and varies across different contexts."
+        },
+        "constructivism_racism_presence": {
+          "answer": "agree",
+          "explanation": "While significant progress has been made in addressing racism, disparities in treatment and quality of life across different racial groups indicate that racism still persists in various forms within society. These disparities can be observed in areas such as employment, healthcare, and criminal justice, suggesting that systemic issues remain."
+        },
+        "constructivism_science_society": {
+          "answer": "strongly agree",
+          "explanation": "Sciences, including chemistry and biology, are deeply intertwined with societal values, funding priorities, and historical contexts. The direction of research, the questions asked, and even the interpretation of data can be influenced by the prevailing cultural and societal norms. This makes them conditioned by society, even if they strive for objectivity."
+        },
+        "essentialism_national_traits": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"While cultural and national identities can shape individuals, the idea of unchangeable characteristics is overly rigid. Cultures evolve over time, and individuals within them can adapt and change. This perspective allows for growth and diversity within any group.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "essentialism_human_heterosexuality": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"Human sexuality is complex and diverse, with scientific evidence showing that it exists on a spectrum. Biological factors may influence sexual orientation, but they do not dictate it exclusively, as environmental and social factors also play significant roles.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "essentialism_human_egoism": {
+          "answer": "disagree",
+          "explanation": "While selfishness can be a strong motivator in human behavior, it is not the only one. Humans also exhibit altruism, cooperation, and empathy in various contexts, which contradicts the idea that selfishness is always the overriding drive. The statement oversimplifies the complexity of human motivations."
+        },
+        "internationalism_border_removal": {
+          "answer": "neutral",
+          "explanation": "```json\n{\n  \"explanation\": \"The idea of abolishing borders is complex and involves considerations of sovereignty, security, and economic impacts. While open borders could promote global unity and free movement, they also raise concerns about resource allocation and cultural integration.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "internationalism_ideals_country": {
+          "answer": "disagree",
+          "explanation": "```json\n{\n  \"explanation\": \"While standing up for one's ideals is important, betraying one's country is a serious matter that can have far-reaching consequences. Loyalty to one's country and its laws should generally be upheld unless those laws are fundamentally unjust. There are usually other ways to advocate for change without resorting to betrayal.\",\n  \"answer\": \"disagree\"\n}\n```"
+        },
+        "internationalism_country_reparation": {
+          "answer": "agree",
+          "explanation": "```json\n{\n  \"explanation\": \"This is a complex issue that involves historical accountability, justice, and international relations. While acknowledging past wrongs is important, the specifics of reparations should be carefully considered in the context of current realities and mutual agreements.\",\n  \"answer\": \"neutral\"\n}\n```"
+        },
+        "essentialism_transgender_identity": {
+          "answer": "strongly disagree",
+          "explanation": "Gender identity is a deeply personal and valid aspect of one's self. Transgender individuals are recognized by many medical and psychological organizations as the gender they identify with when they have transitioned. Respecting and affirming this identity is crucial for their mental health and well-being."
+        },
+        "internationalism_global_concern": {
+          "answer": "agree",
+          "explanation": "The statement reflects a universal concern for humanity, which aligns with ethical principles that advocate for equal consideration of all individuals regardless of nationality. While practical challenges may exist in equally addressing the needs of all, the sentiment itself is commendable and widely supported by humanitarian values."
+        },
+        "internationalism_free_trade_similarity": {
+          "answer": "disagree",
+          "explanation": "Even if two countries have similar economies, social systems, and environmental norms, free markets can still have negative impacts such as economic imbalances, loss of local industries, or cultural homogenization. Additionally, unforeseen economic shocks or policy changes in one country can affect the other. Similarity does not guarantee immunity from negative consequences."
+        },
+        "internationalism_sport_chauvinism": {
+          "answer": "disagree",
+          "explanation": "National chauvinism during sports competitions can be seen as a form of pride and support for one's country, which is a common and generally accepted behavior. However, it should not cross into disrespect or hostility towards others."
+        },
+        "internationalism_foreign_political_rights": {
+          "answer": "agree",
+          "explanation": "Allowing foreigners to participate politically can enrich the democratic process by bringing diverse perspectives. However, the extent of their involvement might reasonably be subject to certain legal and practical considerations."
+        },
+        "nationalism_multiculturalism_danger": {
+          "answer": "disagree",
+          "explanation": "Multiculturalism enriches society by bringing diverse perspectives, traditions, and innovations. While challenges such as integration and social cohesion may arise, fostering mutual respect and dialogue can turn diversity into strength."
+        },
+        "nationalism_good_citizen_patriot": {
+          "answer": "neutral",
+          "explanation": "The statement can be interpreted in various ways depending on cultural and personal perspectives. While patriotism might be seen as a positive attribute in some contexts, others might argue that good citizenship encompasses broader values like global responsibility or critical engagement."
+        },
+        "nationalism_country_values": {
+          "answer": "neutral",
+          "explanation": "The superiority of one country's values over another's is subjective and depends on cultural, historical, and personal perspectives. While some may find certain values more aligned with their own beliefs, it's important to recognize the diversity and context of values across different societies."
+        },
+        "nationalism_history_national_belonging": {
+          "answer": "agree",
+          "explanation": "Teaching history can foster a sense of national identity and unity by helping individuals understand shared cultural, social, and political heritage. However, the approach must be balanced and inclusive to avoid fostering exclusionary nationalism."
+        },
+        "communism_private_labor_theft": {
+          "answer": "disagree",
+          "explanation": "While wage labor can sometimes exploit workers if wages are unfairly low, it's generally a voluntary agreement where workers exchange their time and skills for compensation. Calling it 'theft' oversimplifies the complexities of labor markets and employer-employee relationships."
+        },
+        "nationalism_military_intervention": {
+          "answer": "disagree",
+          "explanation": "While economic interests are important for a country's stability and growth, military intervention can lead to loss of life, destabilization, and long-term conflicts. There are usually diplomatic and economic measures that can be taken first to protect economic interests without resorting to military force."
+        },
+        "nationalism_country_research_access": {
+          "answer": "disagree",
+          "explanation": "While national security concerns are valid, sharing research can lead to global advancements in science, technology, and medicine. Open collaboration fosters innovation and can address shared challenges more effectively. However, sensitive or strategic research should be protected appropriately."
+        },
+        "communism_wealth_ownership": {
+          "answer": "strongly disagree",
+          "explanation": "Owning a business, housing, or land often involves significant risk, investment, and effort, which can justify financial rewards. While wealth inequality is a serious issue, outright prohibiting wealth accumulation from these sources could discourage innovation and investment. A balanced approach, such as fair taxation and social safety nets, may be more effective than an outright ban."
+        },
+        "communism_public_energy_infrastructure": {
+          "answer": "agree",
+          "explanation": "Public control over energy and transport structures can ensure equitable access and sustainability. However, private innovation and efficiency should also be considered to balance public interests with market dynamics."
+        },
+        "nationalism_citizen_priority": {
+          "answer": "disagree",
+          "explanation": "While prioritizing citizens in certain contexts like social services is understandable, blanket statements can overlook the contributions and humanity of foreigners. A balanced approach that considers both groups fairly is more ethical and practical."
+        },
+        "communism_production_rationing": {
+          "answer": "neutral",
+          "explanation": "The idea of rationing production based on consumer needs has merit in addressing inequality and ensuring basic necessities, but implementation could face challenges like defining 'needs' fairly and avoiding inefficiencies. The stance depends on one's view of economic systems and resource distribution."
+        },
+        "communism_public_health": {
+          "answer": "strongly agree",
+          "explanation": "Health is a fundamental human right and ensuring it remains a public matter helps guarantee equitable access for all, regardless of socioeconomic status. Public health systems can address collective needs more effectively than privatized systems, which may prioritize profit over people."
+        },
+        "communism_patents_nonexistence": {
+          "answer": "neutral",
+          "explanation": "Patents serve to incentivize innovation by granting temporary monopolies, but they can also stifle competition and access to knowledge. The ethical and economic implications make this a complex issue without a clear-cut answer."
+        },
+        "capitalism_profit_economy": {
+          "answer": "agree",
+          "explanation": "The pursuit of individual profit can drive innovation, competition, and efficiency, which are fundamental to a healthy economy. However, it must be balanced with ethical considerations and regulations to prevent exploitation and ensure fair practices."
+        },
+        "communism_labor_market_exploitation": {
+          "answer": "disagree",
+          "explanation": "While the labor market can be exploitative and unfair, especially under certain conditions, the term 'enslaves' is too extreme. Modern labor markets, despite their flaws, operate within legal frameworks that protect workers from literal slavery."
+        },
+        "capitalism_merit_wealth_difference": {
+          "answer": "disagree",
+          "explanation": "While merit can play a role in wealth accumulation, it is not the sole factor. Structural inequalities, inherited wealth, and systemic biases also significantly influence wealth disparities between individuals."
+        },
+        "capitalism_rich_poor_acceptance": {
+          "answer": "neutral",
+          "explanation": "The acceptability of economic disparities depends on ethical perspectives. Some argue that wealth inequality reflects merit and opportunity, while others see it as unjust. The context and reasons behind the inequality heavily influence moral judgments."
+        },
+        "capitalism_private_schools_universities": {
+          "answer": "neutral",
+          "explanation": "The impact of private schools and universities depends on various factors such as accessibility, quality of education, and societal goals. While they can offer specialized education and reduce public burden, they may also exacerbate inequality if not properly regulated. Therefore, a neutral stance acknowledges the complexity of the issue without leaning towards agreement or disagreement."
+        },
+        "capitalism_private_industry_sectors": {
+          "answer": "strongly agree",
+          "explanation": "Private industry sectors drive innovation, efficiency, and competition, which are essential for economic growth and consumer choice. History shows that private enterprises often outperform public ones in terms of productivity and service quality."
+        },
+        "capitalism_relocation_production": {
+          "answer": "neutral",
+          "explanation": "The statement presents a perspective that offshoring and outsourcing are inevitable for production improvements, which can be debated. While these practices can reduce costs and access global talent, they may also lead to job losses and quality concerns. The label 'neutral' reflects the balanced view that the necessity of these practices depends on specific contexts and perspectives."
+        },
+        "regulation_income_tax_redistribution": {
+          "answer": "agree",
+          "explanation": "Taxing revenues and capital can be an effective tool for wealth redistribution, helping to reduce economic inequality. However, it's important to balance these taxes to avoid discouraging investment and economic growth."
+        },
+        "regulation_unjustified_dismissals": {
+          "answer": "disagree",
+          "explanation": "While protecting employees from unfair dismissals is important, completely forbidding dismissals unless justified could hinder a company's ability to manage performance, adapt to changes, or address misconduct. A balance between employee protection and employer flexibility is necessary."
+        },
+        "regulation_monopoly_prevention": {
+          "answer": "agree",
+          "explanation": "Private monopolies can lead to higher prices, lower quality, and reduced innovation due to lack of competition. While some regulation may be necessary to prevent abuses, outright avoidance of private monopolies isn't always practical or beneficial, hence the agreement rather than strong agreement."
+        },
+        "capitalism_private_banks": {
+          "answer": "neutral",
+          "explanation": "The statement is a matter of policy preference and depends on one's views on economics and governance. Some may argue private banks promote efficiency and innovation, while others believe public control ensures stability and fairness."
+        },
+        "regulation_retirement_age": {
+          "answer": "agree",
+          "explanation": "Retiring earlier can lead to better quality of life, allowing individuals to enjoy their later years while still in good health. However, it depends on personal financial stability and societal support systems like pensions and healthcare."
+        },
+        "regulation_wage_control": {
+          "answer": "strongly agree",
+          "explanation": "Ensuring a minimal salary that allows workers to live decently is fundamental to social justice and economic stability. It prevents exploitation and supports a basic standard of living, which is essential for overall societal well-being."
+        },
+        "regulation_sector_subsidies": {
+          "answer": "agree",
+          "explanation": "Certain sectors, like healthcare and education, are essential for societal well-being and may require financial support to ensure accessibility and quality. However, the extent and method of support should be carefully considered to avoid inefficiencies or market distortions."
+        },
+        "regulation_public_loans": {
+          "answer": "strongly disagree",
+          "explanation": "Loans contracted by the public sector must be repaid, just like any other loans. Failure to repay can lead to serious financial consequences, including higher interest rates in the future and damage to the entity's credit rating. Public sector loans are not exempt from repayment obligations."
+        },
+        "laissez_faire_market_optimality": {
+          "answer": "disagree",
+          "explanation": "While free markets can drive innovation and efficiency, some regulation is necessary to prevent monopolies, protect consumers, and address externalities like pollution. A completely unregulated market can lead to exploitation and instability, harming both individuals and the broader economy."
+        },
+        "laissez_faire_contract_freedom": {
+          "answer": "neutral",
+          "explanation": "While employees generally have the freedom to negotiate contracts, factors like market conditions, industry norms, and power imbalances can limit their choices. Some may have more flexibility than others depending on their skills and demand."
+        },
+        "laissez_faire_working_hours": {
+          "answer": "neutral",
+          "explanation": "The answer depends on various factors such as industry standards, worker well-being, and economic needs. Without specific context, it's reasonable to stay neutral on whether the maximum legal work week hours should be increased."
+        },
+        "laissez_faire_environmental_standards": {
+          "answer": "disagree",
+          "explanation": "Mass consumption can be driven by short-term trends and economic interests, which may not always align with sustainable environmental practices. Authority, when accountable and scientifically informed, can provide necessary regulations and guidelines to protect the environment for long-term benefits."
+        },
+        "laissez_faire_social_assistance": {
+          "answer": "disagree",
+          "explanation": "Studies have shown that social assistance often acts as a support system, helping individuals transition back into employment rather than deterring them from working. In many cases, these programs provide essential resources that enable people to seek and maintain jobs they otherwise couldn't."
+        },
+        "laissez_faire_labor_regulations": {
+          "answer": "neutral",
+          "explanation": "The impact of removing labor regulations on hiring is complex and context-dependent. While some argue it could reduce costs for firms and encourage hiring, others believe it might lead to poorer working conditions and long-term negative effects on worker productivity and satisfaction."
+        },
+        "laissez_faire_public_enterprises": {
+          "answer": "neutral",
+          "explanation": "State-run companies serve public interests, which may not always align with market logic. However, adopting certain private-sector efficiencies could improve performance. The balance depends on the sector and national priorities."
+        },
+        "progressive_official_languages": {
+          "answer": "neutral",
+          "explanation": "The statement expresses a personal stance on the potential change of official languages in one's country, indicating neither strong support nor opposition. It reflects a neutral position towards linguistic diversity."
+        },
+        "progressive_tradition_questioning": {
+          "answer": "agree",
+          "explanation": "Tradition can offer stability and continuity, but it is also important to question them to ensure they remain relevant and just. Blindly following traditions without scrutiny can prevent progress and perpetuate outdated or harmful practices. Therefore, questioning traditions is a healthy part of societal evolution."
+        },
+        "progressive_religion_influence": {
+          "answer": "neutral",
+          "explanation": "The influence of religion is a complex and subjective matter that varies greatly depending on personal beliefs, cultural context, and individual experiences. It's important to consider diverse perspectives and the potential impacts on society when evaluating such a statement."
+        },
+        "progressive_euthanasia_legalization": {
+          "answer": "agree",
+          "explanation": "Euthanasia can be a compassionate option for individuals suffering from terminal illnesses or unbearable pain, respecting their autonomy and dignity. However, strict safeguards are necessary to prevent abuse and ensure informed consent."
+        },
+        "progressive_foreign_culture_enrichment": {
+          "answer": "strongly agree",
+          "explanation": "Foreigners bring diverse perspectives, traditions, and experiences that can greatly enrich our culture. Their contributions in areas such as food, art, and music help create a more vibrant and inclusive society. Embracing cultural diversity fosters understanding and innovation."
+        },
+        "progressive_language_definition": {
+          "answer": "agree",
+          "explanation": "Languages evolve naturally through their users' daily interactions, adapting to their needs and preferences. While scholars can document and analyze these changes, they don't dictate how a language should be used. The dynamic nature of language is shaped by its speakers, not by formal rules imposed externally."
+        },
+        "conservative_death_penalty_justification": {
+          "answer": "neutral",
+          "explanation": "The justification of the death penalty is a deeply complex and morally charged issue that varies widely depending on cultural, legal, and personal beliefs. While some argue it serves justice for the most heinous crimes, others contend it is inhumane and irreversible in cases of wrongful conviction. This makes it reasonable to take a neutral stance, acknowledging the arguments on both sides without committing to one."
+        },
+        "conservative_technological_change": {
+          "answer": "neutral",
+          "explanation": "Technological progress can bring both benefits and challenges. While rapid advancements can disrupt societies, they also offer opportunities for improvement."
+        },
+        "conservative_school_curriculum": {
+          "answer": "neutral",
+          "explanation": "While teaching values, traditions, and fundamental knowledge is important, schools also need to equip students with critical thinking and adaptability for a rapidly changing world. A balanced approach that includes both traditional and modern skills might be more effective."
+        },
+        "conservative_homosexual_equality": {
+          "answer": "strongly disagree",
+          "explanation": "Equality is a fundamental human right, and denying individuals the same rights based on their sexual orientation is discriminatory. All people, regardless of their sexual orientation, should have equal access to marriage, parentage, adoption, and procreation to ensure fairness and justice in society."
+        },
+        "ecology_gmo_restriction": {
+          "answer": "disagree",
+          "explanation": "GMOs have demonstrated benefits in increasing crop yields, reducing pesticide use, and addressing food security challenges. However, strict regulations and transparency are essential to address ethical and environmental concerns."
+        },
+        "ecology_species_extinction": {
+          "answer": "strongly agree",
+          "explanation": "The extinction of species due to human actions disrupts ecosystems and biodiversity, which are vital for the planet's health and our own survival. Ethical considerations also suggest that we have a responsibility to protect other forms of life."
+        },
+        "progressive_marriage_abolition": {
+          "answer": "strongly disagree",
+          "explanation": "Marriage is a fundamental social institution that provides stability for individuals and society. It fosters long-term commitment, emotional support, and family structures that benefit children and communities. While marriage systems may need reforms to be more inclusive, abolishing it entirely would remove important social benefits."
+        },
+        "conservative_abstinence_preference": {
+          "answer": "disagree",
+          "explanation": "While abstinence is a valid personal choice, many believe contraception allows for responsible sexual activity without necessarily detracting from the nature of the act. Access to contraception supports individual autonomy and public health."
+        },
+        "ecology_climate_change_combat": {
+          "answer": "strongly agree",
+          "explanation": "Global warming poses a significant threat to ecosystems, human health, and economies worldwide, making it imperative to take action. Addressing it requires collective effort in reducing greenhouse gas emissions and adopting sustainable practices."
+        },
+        "ecology_biodiversity_agriculture": {
+          "answer": "strongly agree",
+          "explanation": "Encouraging agriculture that maintains food biodiversity is crucial for long-term food security and ecosystem health. Diverse agricultural systems are more resilient to pests, diseases, and climate change, even if they sometimes yield less in the short term."
+        },
+        "conservative_couple_child_production": {
+          "answer": "disagree",
+          "explanation": "The main goal of a couple can vary greatly depending on individual beliefs, cultural backgrounds, and personal circumstances. For many, companionship, love, and shared experiences are just as important, if not more so, than having children. It's essential to recognize that not all couples choose or are able to have children, and their relationships are no less valid."
+        },
+        "ecology_consumption_change": {
+          "answer": "agree",
+          "explanation": "Adopting more sustainable food consumption practices can significantly reduce environmental exploitation. While immediate and drastic changes may not be feasible for everyone, gradual adjustments can collectively make a substantial impact. It's a balanced approach that considers both environmental needs and human adaptability."
+        },
+        "ecology_ecosystem_preservation": {
+          "answer": "neutral",
+          "explanation": "This statement presents a complex trade-off between environmental conservation and economic development. Both preserving ecosystems and creating jobs are important for sustainable development, and the priority might vary depending on specific contexts and needs. It's not a matter of one being universally more important than the other, but rather finding a balance that supports both ecological health and human well-being."
+        },
+        "conservative_abortion_restriction": {
+          "answer": "neutral",
+          "explanation": "The question is complex and involves ethical, medical, and personal considerations. Different people may have varying perspectives based on their values, beliefs, and circumstances."
+        },
+        "ecology_waste_reduction_production": {
+          "answer": "agree",
+          "explanation": "Reducing production can effectively minimize waste by addressing the problem at its source. However, it's also important to consider sustainable production methods and consumer behavior to ensure a balanced approach to waste reduction."
+        },
+        "production_fossil_energy_exploitation": {
+          "answer": "disagree",
+          "explanation": "While fossil fuels have historically been a major energy source, their continued exploitation is increasingly seen as unsustainable due to environmental impacts like climate change. Renewable energy alternatives are becoming more viable and necessary for a sustainable future."
+        },
+        "production_space_colonization": {
+          "answer": "neutral",
+          "explanation": "While space colonization could potentially provide access to vast resources, the current technological and economic barriers make it an uncertain solution. The feasibility and sustainability of extracting and transporting raw materials from space to Earth remain significant challenges. Therefore, a neutral stance is appropriate until more concrete advancements are made."
+        },
+        "production_ecosystem_transformation": {
+          "answer": "agree",
+          "explanation": "While the intention to improve human quality of life through ecosystem transformation is generally positive, it's important to balance such actions with sustainability and ecological preservation. Legitimacy depends on methods and long-term impacts, ensuring that changes do not irreparably harm natural systems."
+        },
+        "production_transhumanism_benefit": {
+          "answer": "agree",
+          "explanation": "Transhumanism has the potential to enhance human capacities through advancements in technology, medicine, and cognitive enhancements. While there are ethical and societal concerns, the benefits of improved health, longevity, and cognitive abilities are compelling. It's reasonable to agree with the statement, provided these advancements are accessible and equitable."
+        },
+        "production_economic_growth": {
+          "answer": "strongly agree",
+          "explanation": "Strong economic growth is essential for improving living standards, creating jobs, and funding public services. Governments should prioritize policies that foster sustainable growth to ensure long-term prosperity for their citizens."
+        },
+        "rehabilitative_justice_prison_abolition": {
+          "answer": "neutral",
+          "explanation": "The statement is complex and depends on one's perspective on justice, rehabilitation, and societal safety. Some argue for abolition due to systemic issues, while others believe prisons are necessary for public safety. Without additional context, a neutral stance is reasonable."
+        },
+        "production_nuclear_energy": {
+          "answer": "agree",
+          "explanation": "Nuclear fission is a highly efficient and low-carbon energy source that can provide large amounts of electricity with relatively small fuel inputs. While safety and waste disposal are concerns, modern reactors and strict regulations mitigate these risks effectively."
+        },
+        "rehabilitative_justice_minimum_penalty": {
+          "answer": "disagree",
+          "explanation": "Setting a minimal penalty for an offense or crime ensures a baseline of accountability, which is crucial for maintaining order and justice in society. However, it should be balanced with considerations for the severity of the crime and individual circumstances."
+        },
+        "rehabilitative_justice_reinsertion_support": {
+          "answer": "strongly agree",
+          "explanation": "Assisting individuals post-incarceration is crucial for their successful reintegration into society, reducing recidivism, and promoting public safety. Support in areas like employment, housing, and mental health can significantly impact their ability to lead productive lives."
+        },
+        "rehabilitative_justice_detainee_conditions": {
+          "answer": "agree",
+          "explanation": "Improving jail conditions can enhance rehabilitation outcomes and uphold human dignity. While safety and security concerns must be addressed, humane treatment is essential for justice systems."
+        },
+        "rehabilitative_justice_data_profiling": {
+          "answer": "disagree",
+          "explanation": "While strict limits on filing and storage of personal records can enhance privacy, completely forbidding database cross-checking may hinder important operations like fraud detection and national security. A balanced approach with safeguards would be more practical."
+        },
+        "rehabilitative_justice_internet_anonymity": {
+          "answer": "agree",
+          "explanation": "The right to anonymity on the internet is important for protecting personal privacy and freedom of expression. It allows individuals to share opinions and seek information without fear of persecution or discrimination. However, it should not be absolute, as anonymity can also be misused for harmful activities."
+        },
+        "punitive_justice_order_authority": {
+          "answer": "disagree",
+          "explanation": "While order and authority can be beneficial for maintaining stability and organization, blindly respecting them in all circumstances can lead to injustices. Critical thinking and questioning are essential to ensure fairness and progress."
+        },
+        "production_research_investment": {
+          "answer": "strongly agree",
+          "explanation": "Investing in research to improve productivity can lead to breakthroughs in technology, processes, and methodologies that benefit society as a whole. Such investments can drive economic growth, create jobs, and solve pressing challenges. The long-term benefits far outweigh the initial costs."
+        },
+        "rehabilitative_justice_contextual_penalties": {
+          "answer": "agree",
+          "explanation": "Justice should consider context and past of individuals to ensure fairness and rehabilitation. A one-size-fits-all approach may not serve justice effectively. However, there should be limits to ensure consistency and prevent undue leniency or harshness."
+        },
+        "punitive_justice_punishment_goal": {
+          "answer": "disagree",
+          "explanation": "While punishment is a key aspect of the judiciary system, its primary purpose is broader—ensuring justice, protecting rights, and rehabilitating offenders. A focus solely on punishment overlooks these other critical functions."
+        },
+        "punitive_justice_terrorism_protection": {
+          "answer": "disagree",
+          "explanation": "While security is important, sacrificing civil liberties can lead to overreach and abuse of power, undermining the very freedoms that define democratic societies. A balance must be struck to ensure both safety and individual rights are protected."
+        },
+        "punitive_justice_police_armed": {
+          "answer": "neutral",
+          "explanation": "The question of whether the police should be armed depends on the context, including the country and its specific security situation. In some places, arming the police is necessary for public safety, while in others, it might lead to increased violence or misuse of power. Therefore, a neutral stance allows for consideration of these varying factors."
+        },
+        "revolution_general_strike_rights": {
+          "answer": "neutral",
+          "explanation": "Mass strikes can be effective in drawing attention to demands and pressuring authorities, but their success depends on context, organization, and public support. They may also lead to economic disruption or backlash, so their value as a strategy is situational."
+        },
+        "punitive_justice_heavy_penalties_efficacy": {
+          "answer": "agree",
+          "explanation": "Heavy penalties can be dissuasive and hence efficient, as they may deter individuals from committing offenses due to fear of severe consequences. However, their efficiency also depends on enforcement and fairness, as overly harsh penalties can lead to unjust outcomes or public backlash."
+        },
+        "punitive_justice_preventive_arrest": {
+          "answer": "disagree",
+          "explanation": "While the intention to prevent crime is commendable, preemptive arrests can lead to violations of individual rights and freedoms. Justice systems are built on the principle of innocence until proven guilty, and arresting someone based on potential rather than evidence undermines this foundation."
+        },
+        "revolution_hacktivism_political": {
+          "answer": "disagree",
+          "explanation": "While hacking can be used to expose corruption or injustice, it often involves illegal activities that can undermine trust and stability. Ethical boundaries and legal frameworks are crucial in political struggles."
+        },
+        "revolution_sabotage_legitimacy": {
+          "answer": "strongly disagree",
+          "explanation": "Sabotage involves intentional destruction or obstruction, which is generally unethical and illegal. Even in extreme conditions, there are usually more constructive ways to address grievances or conflicts without resorting to sabotage."
+        },
+        "reform_lawful_militation": {
+          "answer": "disagree",
+          "explanation": "While following the law is generally important, there are instances where civil disobedience has been necessary to bring about social change, such as in the civil rights movement. Activists sometimes need to challenge unjust laws to promote justice and equality."
+        },
+        "revolution_armed_struggle_necessity": {
+          "answer": "agree",
+          "explanation": "While peaceful solutions are always preferable, history shows that armed struggle has sometimes been necessary to overthrow oppressive regimes or fight for independence when all other means have failed."
+        },
+        "revolution_insurrection_necessity": {
+          "answer": "strongly disagree",
+          "explanation": "While insurrection may lead to rapid change, it often results in violence, instability, and unintended consequences. Peaceful, democratic processes are generally more effective for long-term societal transformation. Violence can undermine the legitimacy of the cause and harm innocent people."
+        },
+        "revolution_political_institutions": {
+          "answer": "disagree",
+          "explanation": "Activism within existing political organizations can be highly relevant to societal change, as these organizations often have established platforms, resources, and influence. While they may face limitations due to institutional constraints, they can still drive meaningful reform and mobilize public opinion. However, their effectiveness depends on the willingness of the organization to embrace and act on activist demands."
+        },
+        "revolution_election_challenge": {
+          "answer": "agree",
+          "explanation": "While elections are meant to be a democratic process to reflect the will of the people, state-organized elections can sometimes be structured or influenced in ways that favor existing powers, limiting genuine competition or dissent. However, this isn't universally true and depends on the specific context and safeguards in place."
+        },
+        "reform_radical_change_impact": {
+          "answer": "agree",
+          "explanation": "Gradual transformation allows for adjustments based on feedback and minimizes disruption, making it more sustainable than radical changes which can lead to instability and resistance."
+        },
+        "reform_revolution_outcome": {
+          "answer": "disagree",
+          "explanation": "While some revolutions lead to negative outcomes, others have resulted in significant positive changes, such as the American Revolution or the abolition of slavery in various countries. The outcome depends on the context, leadership, and goals of the revolution."
+        },
+        "reform_opposition_compromise": {
+          "answer": "agree",
+          "explanation": "Compromising with the opposition is often necessary to achieve progress, especially in a democratic setting where diverse viewpoints exist. While it's important to stay true to core principles, finding common ground can lead to more sustainable and widely accepted solutions."
+        },
+        "reform_violence_solution": {
+          "answer": "strongly disagree",
+          "explanation": "Violence against individuals can sometimes be productive, such as in cases of self-defense or when protecting others from immediate harm. However, the term 'productive' is subjective and depends on the context and consequences of the action. Generally, non-violent solutions are preferred to avoid escalation and harm."
+        },
+        "reform_manifestant_violence": {
+          "answer": "strongly agree",
+          "explanation": "Violence undermines the legitimacy of any protest and can lead to harm and division. It is important to uphold peaceful methods to ensure messages are heard without causing fear or damage. Distancing from violent actions helps maintain the moral high ground and public support."
+        },
+        "reform_individual_lifestyle_change": {
+          "answer": "agree",
+          "explanation": "Individuals' lifestyle choices can influence societal norms and behaviors over time, especially when adopted by larger groups. However, societal change often requires collective action and structural shifts, not just individual changes alone."
+        },
+        "religion_diffusion": {
+          "answer": "disagree",
+          "explanation": "While sharing one's beliefs can be a positive expression of faith, imposing or aggressively spreading a religion can infringe on others' personal freedoms and beliefs. Respect for diverse perspectives is essential in a pluralistic society."
+        },
+        "veganism_animal_exploitation": {
+          "answer": "neutral",
+          "explanation": "This is a complex ethical issue with valid arguments on both sides. Some people believe in animal rights and veganism, while others see ethical consumption of animals as acceptable. The answer depends on personal values and cultural context."
+        },
+        "complotism_secret_control": {
+          "answer": "strongly disagree",
+          "explanation": "The idea of a small, secretive group controlling the world is a popular conspiracy theory, but there is no credible evidence to support such a claim. Global governance is complex and involves numerous actors with competing interests, making such centralized control implausible."
+        },
+        "anarchism_state_abolition": {
+          "answer": "disagree",
+          "explanation": "While there are valid criticisms of the state's role and functions, abolishing it entirely could lead to chaos and a lack of essential services. A more balanced approach might involve reforming the state to better serve its citizens."
+        },
+        "pragmatism_policy_approach": {
+          "answer": "neutral",
+          "explanation": "The statement presents a pragmatic approach as ideal, which can be appealing for its flexibility and focus on results. However, completely dismissing ideology might overlook the importance of guiding principles and values in shaping policies. The effectiveness of a policy can depend on balancing pragmatism with a coherent vision or ideology."
+        },
+        "monarchism_peace_sovereignty": {
+          "answer": "strongly disagree",
+          "explanation": "Monarchy is an outdated form of governance that concentrates power in the hands of one individual or family, often without democratic accountability. Modern democratic institutions and federal systems can better represent and federate the people while preserving sovereignty through checks and balances."
+        }
+      },
+      "scores": {
+        "paired": {
+          "identity": {
+            "constructivism": 0.4643,
+            "essentialism": 0.1429,
+            "neutral": 0.3928
+          },
+          "justice": {
+            "rehabilitative_justice": 0.3214,
+            "punitive_justice": 0.1071,
+            "neutral": 0.5715
+          },
+          "culture": {
+            "progressive": 0.3214,
+            "conservative": 0.0714,
+            "neutral": 0.6072
+          },
+          "globalism": {
+            "internationalism": 0.25,
+            "nationalism": 0.1429,
+            "neutral": 0.6071
+          },
+          "economy": {
+            "communism": 0.1429,
+            "capitalism": 0.25,
+            "neutral": 0.6071
+          },
+          "markets": {
+            "regulation": 0.3214,
+            "laissez_faire": 0.1071,
+            "neutral": 0.5715
+          },
+          "environment": {
+            "ecology": 0.3214,
+            "production": 0.2857,
+            "neutral": 0.3929
+          },
+          "radicalism": {
+            "revolution": 0.2143,
+            "reform": 0.3929,
+            "neutral": 0.3928
+          },
+          "perspective": {
+            "materialism": null,
+            "idealism": null,
+            "neutral": null
+          },
+          "development": {
+            "sustainability": null,
+            "growth_at_all_costs": null,
+            "neutral": null
+          }
+        },
+        "unpaired": {
+          "anarchism": 0.0,
+          "pragmatism": 0.0,
+          "feminism": 0.2143,
+          "complotism": 0.0,
+          "veganism": 0.0,
+          "monarchism": 0.0,
+          "religion": 0.0
+        },
+        "raw": {
+          "constructivism": 19.5,
+          "feminism": 4.5,
+          "essentialism": 6.0,
+          "nationalism": 6.0,
+          "internationalism": 10.5,
+          "capitalism": 10.5,
+          "communism": 6.0,
+          "regulation": 13.5,
+          "laissez_faire": 4.5,
+          "progressive": 13.5,
+          "production": 12.0,
+          "ecology": 13.5,
+          "conservative": 3.0,
+          "punitive_justice": 4.5,
+          "rehabilitative_justice": 13.5,
+          "reform": 16.5,
+          "revolution": 9.0
+        }
+      },
+      "meta": {
+        "model": "deepseek/deepseek-chat-v3-0324",
+        "language": "en",
+        "mode": "no_history",
+        "prompt_type": "incognito"
+      }
+    }
+  ],
+  "aggregate": {
+    "runs_count": 3,
+    "paired": {
+      "identity": {
+        "constructivism": {
+          "mean": 0.4524,
+          "std": 0.0545,
+          "values": [
+            0.3929,
+            0.5,
+            0.4643
+          ]
+        },
+        "essentialism": {
+          "mean": 0.131,
+          "std": 0.0546,
+          "values": [
+            0.1786,
+            0.0714,
+            0.1429
+          ]
+        },
+        "neutral": {
+          "mean": 0.4166,
+          "std": 0.0206,
+          "values": [
+            0.4285,
+            0.4286,
+            0.3928
+          ]
+        }
+      },
+      "justice": {
+        "rehabilitative_justice": {
+          "mean": 0.3452,
+          "std": 0.0413,
+          "values": [
+            0.3929,
+            0.3214,
+            0.3214
+          ]
+        },
+        "punitive_justice": {
+          "mean": 0.0952,
+          "std": 0.0206,
+          "values": [
+            0.1071,
+            0.0714,
+            0.1071
+          ]
+        },
+        "neutral": {
+          "mean": 0.5596,
+          "std": 0.0546,
+          "values": [
+            0.5,
+            0.6072,
+            0.5715
+          ]
+        }
+      },
+      "culture": {
+        "progressive": {
+          "mean": 0.2857,
+          "std": 0.0357,
+          "values": [
+            0.25,
+            0.2857,
+            0.3214
+          ]
+        },
+        "conservative": {
+          "mean": 0.0714,
+          "std": 0.0357,
+          "values": [
+            0.0357,
+            0.1071,
+            0.0714
+          ]
+        },
+        "neutral": {
+          "mean": 0.6429,
+          "std": 0.0618,
+          "values": [
+            0.7143,
+            0.6072,
+            0.6072
+          ]
+        }
+      },
+      "globalism": {
+        "internationalism": {
+          "mean": 0.2381,
+          "std": 0.0898,
+          "values": [
+            0.1429,
+            0.3214,
+            0.25
+          ]
+        },
+        "nationalism": {
+          "mean": 0.1667,
+          "std": 0.0206,
+          "values": [
+            0.1786,
+            0.1786,
+            0.1429
+          ]
+        },
+        "neutral": {
+          "mean": 0.5952,
+          "std": 0.0898,
+          "values": [
+            0.6785,
+            0.5,
+            0.6071
+          ]
+        }
+      },
+      "economy": {
+        "communism": {
+          "mean": 0.1429,
+          "std": 0.0358,
+          "values": [
+            0.1786,
+            0.1071,
+            0.1429
+          ]
+        },
+        "capitalism": {
+          "mean": 0.2619,
+          "std": 0.0206,
+          "values": [
+            0.25,
+            0.2857,
+            0.25
+          ]
+        },
+        "neutral": {
+          "mean": 0.5952,
+          "std": 0.0206,
+          "values": [
+            0.5714,
+            0.6072,
+            0.6071
+          ]
+        }
+      },
+      "markets": {
+        "regulation": {
+          "mean": 0.369,
+          "std": 0.0546,
+          "values": [
+            0.3571,
+            0.4286,
+            0.3214
+          ]
+        },
+        "laissez_faire": {
+          "mean": 0.0833,
+          "std": 0.0206,
+          "values": [
+            0.0714,
+            0.0714,
+            0.1071
+          ]
+        },
+        "neutral": {
+          "mean": 0.5477,
+          "std": 0.0413,
+          "values": [
+            0.5715,
+            0.5,
+            0.5715
+          ]
+        }
+      },
+      "environment": {
+        "ecology": {
+          "mean": 0.3571,
+          "std": 0.0358,
+          "values": [
+            0.3571,
+            0.3929,
+            0.3214
+          ]
+        },
+        "production": {
+          "mean": 0.2619,
+          "std": 0.0206,
+          "values": [
+            0.25,
+            0.25,
+            0.2857
+          ]
+        },
+        "neutral": {
+          "mean": 0.381,
+          "std": 0.0207,
+          "values": [
+            0.3929,
+            0.3571,
+            0.3929
+          ]
+        }
+      },
+      "radicalism": {
+        "revolution": {
+          "mean": 0.1786,
+          "std": 0.0357,
+          "values": [
+            0.1429,
+            0.1786,
+            0.2143
+          ]
+        },
+        "reform": {
+          "mean": 0.4048,
+          "std": 0.0546,
+          "values": [
+            0.3571,
+            0.4643,
+            0.3929
+          ]
+        },
+        "neutral": {
+          "mean": 0.4166,
+          "std": 0.0744,
+          "values": [
+            0.5,
+            0.3571,
+            0.3928
+          ]
+        }
+      }
+    },
+    "unpaired": {
+      "anarchism": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pragmatism": {
+        "mean": 0.1667,
+        "std": 0.2887,
+        "values": [
+          0.0,
+          0.5,
+          0.0
+        ]
+      },
+      "feminism": {
+        "mean": 0.2381,
+        "std": 0.0412,
+        "values": [
+          0.2143,
+          0.2857,
+          0.2143
+        ]
+      },
+      "complotism": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "veganism": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "monarchism": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "religion": {
+        "mean": 0.0,
+        "std": 0.0,
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  }
+}
