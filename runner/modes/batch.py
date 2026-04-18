@@ -7,10 +7,11 @@ from __future__ import annotations
 
 import time
 from collections import Counter
-from typing import Dict, Tuple
+from typing import Dict
 
 from runner.client import OpenRouterClient
 from runner.config import RunConfig
+from runner.types import RunResult
 
 
 def run(
@@ -18,19 +19,15 @@ def run(
     config: RunConfig,
     questions: Dict[str, str],
     dry_run: bool = False,
-) -> Tuple[Dict[str, str], Dict[str, str], float]:
+) -> RunResult:
     """
     Run the test in batch mode (single API call for all questions).
-
-    Returns:
-        answers      : {question_key: "strongly agree" | ...}
-        explanations : {question_key: "explanation text"}
-        duration_s   : wall-clock seconds
     """
     answers: Dict[str, str] = {}
     explanations: Dict[str, str] = {}
+    fallback_count = 0
 
-    start = time.time()
+    start = time.monotonic()
 
     if dry_run:
         print(f"  [DRY-RUN] Would send all {len(questions)} questions in one call.")
@@ -39,15 +36,18 @@ def run(
             print(f"    [{key}] {text[:80]}")
         answers = {k: "neutral" for k in questions}
         explanations = {k: "[dry-run]" for k in questions}
-        duration = time.time() - start
-        return answers, explanations, duration
+        duration = time.monotonic() - start
+        return RunResult(answers, explanations, duration, fallback_count)
 
     print(f"  Sending all {len(questions)} questions in a single API call…", flush=True)
 
-    results = client.ask_batch(
+    results, was_fallback = client.ask_batch(
         system_prompt=config.system_prompt,
         questions=questions,
     )
+    if was_fallback:
+        # In batch mode fallback, all answers are potentially unreliable
+        fallback_count = len(questions)
 
     for key in questions:
         entry = results.get(key, {})
@@ -58,5 +58,5 @@ def run(
     counts = Counter(answers.values())
     print("  Results summary:", dict(counts))
 
-    duration = time.time() - start
-    return answers, explanations, duration
+    duration = time.monotonic() - start
+    return RunResult(answers, explanations, duration, fallback_count)

@@ -5,10 +5,11 @@ Each question is sent in a fresh API call with zero memory of previous answers.
 from __future__ import annotations
 
 import time
-from typing import Dict, Tuple
+from typing import Dict
 
 from runner.client import OpenRouterClient
 from runner.config import RunConfig
+from runner.types import RunResult
 
 
 def run(
@@ -16,19 +17,17 @@ def run(
     config: RunConfig,
     questions: Dict[str, str],
     dry_run: bool = False,
-) -> Tuple[Dict[str, str], Dict[str, str], float]:
+) -> RunResult:
     """
     Run the test in no_history mode.
 
-    Returns:
-        answers      : {question_key: "strongly agree" | ...}
-        explanations : {question_key: "explanation text"}
-        duration_s   : wall-clock seconds
+    Each question is a fresh call with an empty message history.
     """
     answers: Dict[str, str] = {}
     explanations: Dict[str, str] = {}
+    fallback_count = 0
 
-    start = time.time()
+    start = time.monotonic()
     total = len(questions)
 
     for idx, (key, text) in enumerate(questions.items(), 1):
@@ -40,14 +39,17 @@ def run(
             explanations[key] = "[dry-run]"
             continue
 
-        result = client.ask_single(
+        result, was_fallback = client.ask_single(
             system_prompt=config.system_prompt,
             messages=[],          # <-- no history, fresh every time
             question_text=text,
         )
+        if was_fallback:
+            fallback_count += 1
+
         answers[key] = result.get("answer", "neutral")
         explanations[key] = result.get("explanation", "")
         print(f"  → {answers[key]}")
 
-    duration = time.time() - start
-    return answers, explanations, duration
+    duration = time.monotonic() - start
+    return RunResult(answers, explanations, duration, fallback_count)

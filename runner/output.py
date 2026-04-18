@@ -23,13 +23,15 @@ def build_run_record(
     explanations: Dict[str, str],
     duration_s: float,
     tokens_used: int,
+    fallback_count: int = 0,
 ) -> Dict:
     """Build the per-run record (answers + scores + metadata)."""
     scores = compute_scores(answers)
     return {
-        "run_id":          run_id,
+        "run_id":           run_id,
         "duration_seconds": round(duration_s, 2),
-        "total_tokens":    tokens_used,
+        "total_tokens":     tokens_used,
+        "fallback_count":   fallback_count,
         "answers": {
             key: {
                 "answer":      answers[key],
@@ -65,6 +67,8 @@ def save_results(
     all_scores = [r["scores"] for r in run_records]
     aggregate  = aggregate_scores(all_scores) if len(all_scores) > 1 else None
 
+    total_fallbacks = sum(r.get("fallback_count", 0) for r in run_records)
+
     payload = {
         "meta": {
             "model":          config.model,
@@ -76,8 +80,9 @@ def save_results(
             "system_prompt":  config.system_prompt,
             "runs":           config.runs,
             "notes":          config.notes,
+            "total_fallbacks": total_fallbacks,
             "timestamp":      _iso_now(),
-            "version":        "1.0.0",
+            "version":        "1.1.0",
         },
         "runs":      run_records,
         "aggregate": aggregate,

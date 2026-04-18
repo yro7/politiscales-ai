@@ -1,7 +1,7 @@
 """
 OpenRouter API client — OpenAI-compatible endpoint.
 
-Uses the `openai` Python SDK pointed at https://openrouter.ai/api/v1.
+Uses the ``openai`` Python SDK pointed at https://openrouter.ai/api/v1.
 Structured output (JSON schema) is used for every question response.
 """
 from __future__ import annotations
@@ -12,6 +12,8 @@ import time
 from typing import Any, Dict, List, Optional, Tuple
 
 from openai import OpenAI, APIError, APIConnectionError, RateLimitError, APITimeoutError
+
+from runner.types import Answer, ANSWER_VALUES_LONGEST_FIRST
 
 logger = logging.getLogger(__name__)
 
@@ -36,13 +38,7 @@ SINGLE_Q_SCHEMA = {
             },
             "answer": {
                 "type": "string",
-                "enum": [
-                    "strongly agree",
-                    "agree",
-                    "neutral",
-                    "disagree",
-                    "strongly disagree",
-                ],
+                "enum": [a.value for a in Answer],
                 "description": "Your stance on the statement.",
             },
         },
@@ -65,10 +61,7 @@ def batch_schema(question_keys: List[str]) -> Dict:
                         "explanation": {"type": "string"},
                         "answer": {
                             "type": "string",
-                            "enum": [
-                                "strongly agree", "agree", "neutral",
-                                "disagree", "strongly disagree",
-                            ],
+                            "enum": [a.value for a in Answer],
                         },
                     },
                     "required": ["explanation", "answer"],
@@ -115,7 +108,7 @@ class OpenRouterClient:
             model=self.model,
             messages=messages,
             temperature=self.temperature,
-            max_tokens=max_tokens_override or self.max_tokens,
+            max_tokens=max_tokens_override if max_tokens_override is not None else self.max_tokens,
             top_p=self.top_p,
         )
         if response_format is not None:
@@ -159,11 +152,13 @@ class OpenRouterClient:
         system_prompt: str,
         messages: List[Dict[str, str]],
         question_text: str,
-    ) -> Dict[str, str]:
+    ) -> Tuple[Dict[str, str], bool]:
         """
         Ask a single question.
         Appends the question as a new user message and calls the API.
-        Returns {"explanation": "...", "answer": "..."}.
+
+        Returns:
+            ({"explanation": "...", "answer": "..."}, fallback_used)
         """
         full_messages = [{"role": "system", "content": system_prompt}]
         full_messages.extend(messages)
@@ -171,19 +166,29 @@ class OpenRouterClient:
 
         content, _ = self._call(full_messages, response_format=SINGLE_Q_SCHEMA)
         try:
-            return json.loads(content)
+            parsed = json.loads(content)
+            # Validate that the answer is actually one of the enum values
+            if Answer.from_str(parsed.get("answer", "")) is None:
+                logger.warning(
+                    f"Structured response contained invalid answer "
+                    f"'{parsed.get('answer')}', treating as fallback"
+                )
+                return _fallback_parse_single(content), True
+            return parsed, False
         except json.JSONDecodeError:
             # Graceful fallback — extract answer with heuristics
-            return _fallback_parse_single(content)
+            return _fallback_parse_single(content), True
 
     def ask_batch(
         self,
         system_prompt: str,
         questions: Dict[str, str],
-    ) -> Dict[str, Dict[str, str]]:
+    ) -> Tuple[Dict[str, Dict[str, str]], bool]:
         """
         Send all questions in one prompt.
-        Returns {question_key: {"explanation": ..., "answer": ...}}.
+
+        Returns:
+            ({question_key: {"explanation": ..., "answer": ...}}, fallback_used)
         """
         question_keys = list(questions.keys())
         lines = [
@@ -207,31 +212,25 @@ class OpenRouterClient:
             messages, response_format=schema, max_tokens_override=batch_max_tokens
         )
         try:
-            return json.loads(content)
+            parsed = json.loads(content)
+            return parsed, False
         except json.JSONDecodeError:
             logger.warning(
                 "Batch response was not valid JSON, falling back to heuristic parsing. "
                 f"Response length: {len(content)} chars"
             )
-            return _fallback_parse_batch(content, question_keys)
+            return _fallback_parse_batch(content, question_keys), True
 
 
 # ---------------------------------------------------------------------------
 # Fallback parsers (in case structured output is not supported by the model)
 # ---------------------------------------------------------------------------
 
-# Ordered longest-first to avoid substring false matches
-# ("agree" is a substring of "disagree" and "strongly agree")
-_VALID_ANSWERS = [
-    "strongly disagree", "strongly agree", "disagree", "agree", "neutral",
-]
-
-
 def _fallback_parse_single(text: str) -> Dict[str, str]:
     """Try to extract answer from free-form text."""
     text_lower = text.lower()
-    answer = "neutral"
-    for candidate in _VALID_ANSWERS:
+    answer = Answer.NEUTRAL.value
+    for candidate in ANSWER_VALUES_LONGEST_FIRST:
         if candidate in text_lower:
             answer = candidate
             break
@@ -248,8 +247,8 @@ def _fallback_parse_batch(text: str, keys: List[str]) -> Dict[str, Dict[str, str
             if key in parsed and isinstance(parsed[key], dict):
                 result[key] = parsed[key]
             else:
-                result[key] = {"explanation": "", "answer": "neutral"}
+                result[key] = {"explanation": "", "answer": Answer.NEUTRAL.value}
     except json.JSONDecodeError:
         for key in keys:
-            result[key] = {"explanation": "", "answer": "neutral"}
+            result[key] = {"explanation": "", "answer": Answer.NEUTRAL.value}
     return result

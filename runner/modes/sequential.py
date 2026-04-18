@@ -10,10 +10,11 @@ from __future__ import annotations
 import json
 import logging
 import time
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from runner.client import OpenRouterClient
 from runner.config import RunConfig
+from runner.types import RunResult
 
 logger = logging.getLogger(__name__)
 
@@ -23,23 +24,21 @@ def run(
     config: RunConfig,
     questions: Dict[str, str],
     dry_run: bool = False,
-) -> Tuple[Dict[str, str], Dict[str, str], float]:
+) -> RunResult:
     """
     Run the test in sequential mode.
 
-    Returns:
-        answers      : {question_key: "strongly agree" | ...}
-        explanations : {question_key: "explanation text"}
-        duration_s   : wall-clock seconds
+    Questions are asked one-by-one with growing chat history.
     """
     answers: Dict[str, str] = {}
     explanations: Dict[str, str] = {}
     history: List[Dict[str, str]] = []  # growing chat context
+    fallback_count = 0
 
     # max_history = 0 means unlimited; otherwise keep last N exchanges (2 msgs each)
     max_pairs = config.max_history
 
-    start = time.time()
+    start = time.monotonic()
     total = len(questions)
 
     for idx, (key, text) in enumerate(questions.items(), 1):
@@ -59,11 +58,14 @@ def run(
         else:
             window = history
 
-        result = client.ask_single(
+        result, was_fallback = client.ask_single(
             system_prompt=config.system_prompt,
             messages=window,
             question_text=text,
         )
+        if was_fallback:
+            fallback_count += 1
+
         answer = result.get("answer", "neutral")
         explanation = result.get("explanation", "")
 
@@ -85,5 +87,5 @@ def run(
             f"(out of {len(history) // 2} total)"
         )
 
-    duration = time.time() - start
-    return answers, explanations, duration
+    duration = time.monotonic() - start
+    return RunResult(answers, explanations, duration, fallback_count)

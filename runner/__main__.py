@@ -5,12 +5,13 @@ from __future__ import annotations
 
 import logging
 import sys
-from pathlib import Path
+from typing import Dict
 
 from runner.client import OpenRouterClient
 from runner.config import parse_args
 from runner.output import build_run_record, save_results
 from runner.questions import load_questions
+from runner.types import ModeRunner, RunResult
 from runner import modes
 
 # Configure logging — show warnings and above to stderr
@@ -59,8 +60,8 @@ def main() -> None:
         top_p=config.top_p,
     )
 
-    # Resolve mode runner
-    mode_runners = {
+    # Resolve mode runner (typed via ModeRunner protocol)
+    mode_runners: Dict[str, ModeRunner] = {
         "no_history": modes.no_history.run,
         "sequential": modes.sequential.run,
         "batch":      modes.batch.run,
@@ -76,7 +77,7 @@ def main() -> None:
         tokens_before = client.total_tokens
 
         try:
-            answers, explanations, duration = run_fn(client, config, questions, config.dry_run)
+            result: RunResult = run_fn(client, config, questions, config.dry_run)
         except RuntimeError as exc:
             print(f"\n[ERROR] Run {run_id} failed: {exc}", file=sys.stderr)
             continue
@@ -85,14 +86,20 @@ def main() -> None:
 
         record = build_run_record(
             run_id=run_id,
-            answers=answers,
-            explanations=explanations,
-            duration_s=duration,
+            answers=result.answers,
+            explanations=result.explanations,
+            duration_s=result.duration_s,
             tokens_used=tokens_this_run,
+            fallback_count=result.fallback_count,
         )
         run_records.append(record)
 
-        print(f"\n  Run {run_id} done in {duration:.1f}s  ({tokens_this_run} tokens)")
+        print(f"\n  Run {run_id} done in {result.duration_s:.1f}s  ({tokens_this_run} tokens)")
+        if result.fallback_count > 0:
+            print(
+                f"  ⚠️  {result.fallback_count} answer(s) used fallback parsing "
+                f"(structured output was not valid JSON)"
+            )
         _print_scores_summary(record["scores"])
         print()
 
