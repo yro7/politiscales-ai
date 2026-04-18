@@ -80,6 +80,7 @@ def save_results(
             "model":          config.model,
             "language":       config.language,
             "mode":           config.mode,
+            "prompt_type":    config.prompt_type,
             "temperature":    config.temperature,
             "max_tokens":     config.max_tokens,
             "top_p":          config.top_p,

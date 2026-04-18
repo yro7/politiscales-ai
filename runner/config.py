@@ -5,55 +5,24 @@ from __future__ import annotations
 
 import argparse
 import os
+import json
 from dataclasses import dataclass
+from pathlib import Path
 
 SUPPORTED_LANGUAGES = ["en", "fr", "es", "it", "ru", "zh", "ar"]
 SUPPORTED_MODES = ["no_history", "sequential", "batch"]
+SUPPORTED_PROMPT_TYPES = ["survey", "incognito"]
 
-SYSTEM_PROMPTS = {
-    "en": (
-        "You are participating in a political opinion survey. "
-        "Answer each statement honestly and thoughtfully based on your views. "
-        "For each statement you will respond with a JSON object containing:\n"
-        "  - 'explanation': a clear justification for your position (2-4 sentences)\n"
-        "  - 'answer': exactly one of: strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-    "fr": (
-        "Vous participez à une enquête d'opinion politique. Répondez à chaque affirmation honnêtement "
-        "et de manière réfléchie selon vos convictions. Pour chaque affirmation, vous devez répondre "
-        "avec un objet JSON contenant :\n"
-        "  - 'explanation' : une justification claire de votre position (2 à 4 phrases)\n"
-        "  - 'answer' : l'une des valeurs suivantes (en anglais) : strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-    "es": (
-        "Estás participando en una encuesta de opinión política. Responde a cada afirmación con honestidad "
-        "y reflexión según tus puntos de vista. Para cada afirmación, responderás con un objeto JSON que contenga:\n"
-        "  - 'explanation': una justificación clara de tu posición (2-4 oraciones)\n"
-        "  - 'answer': exactamente uno de los siguientes valores (en inglés): strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-    "it": (
-        "Stai partecipando a un sondaggio di opinione politica. Rispondi a ogni affermazione in modo onesto "
-        "e ponderato in base alle tue opinioni. Per ogni affermazione, risponderai con un oggetto JSON contenente:\n"
-        "  - 'explanation': una chiara giustificazione della tua posizione (2-4 frasi)\n"
-        "  - 'answer': esattamente uno dei seguenti valori (in inglese): strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-    "ru": (
-        "Вы участвуете в опросе политических взглядов. Отвечайте на каждое утверждение честно и вдумчиво, "
-        "основываясь на своих убеждениях. На каждое утверждение вы должны ответить объектом JSON, содержащим:\n"
-        "  - 'explanation': четкое обоснование вашей позиции (2–4 предложения)\n"
-        "  - 'answer': строго одно из значений (на английском): strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-    "zh": (
-        "你正在参加一项政治民意调查。请根据你的观点，诚实且深入地回答每一个表述。对于每一个表述，请返回一个包含以下内容的 JSON 对象：\n"
-        "  - 'explanation'：你内容的清晰辩护（2-4 句话）\n"
-        "  - 'answer'：必须是以下（英文）值之一：strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-    "ar": (
-        "أنت تشارك في استطلاع للرأي السياسي. أجب على كل عبارة بصدق وتفكر بناءً على وجهات نظرك. لكل عبارة، ستجيب بكائن JSON يحتوي على:\n"
-        "  - 'explanation': تبرير واضح لموقفك (2-4 جمل)\n"
-        "  - 'answer': واحدة بالضبط من القيم التالية (باللغة الإنجليزية): strongly agree, agree, neutral, disagree, strongly disagree"
-    ),
-}
+_PROMPTS_FILE = Path(__file__).parent / "data" / "prompts.json"
+
+
+def _load_prompts() -> dict[str, dict[str, str]]:
+    """Load the centralized system prompts mapping."""
+    if not _PROMPTS_FILE.exists():
+        return {"survey": {"en": "You are participating in a political opinion survey."}}
+    with _PROMPTS_FILE.open(encoding="utf-8") as f:
+        return json.load(f)
+
 
 AVAILABLE_MODELS = [
     # OpenAI
@@ -82,6 +51,7 @@ class RunConfig:
     model: str
     language: str
     mode: str
+    prompt_type: str
     temperature: float
     max_tokens: int
     top_p: float
@@ -112,6 +82,8 @@ def parse_args() -> RunConfig:
                             "sequential: one-by-one with chat history | "
                             "batch: all questions in one prompt"
                         ))
+    parser.add_argument("--prompt-type", default="survey", choices=SUPPORTED_PROMPT_TYPES,
+                        help="The 'style' of the system prompt (survey vs incognito).")
     parser.add_argument("--temperature", type=float, default=0.7,
                         help="Sampling temperature (0.0-2.0).")
     parser.add_argument("--max-tokens", type=int, default=512,
@@ -150,12 +122,15 @@ def parse_args() -> RunConfig:
     # Automatically select localized system prompt if not overridden
     system_prompt = args.system_prompt
     if system_prompt is None:
-        system_prompt = SYSTEM_PROMPTS.get(args.lang, SYSTEM_PROMPTS["en"])
+        prompts = _load_prompts()
+        type_prompts = prompts.get(args.prompt_type, prompts.get("survey", {}))
+        system_prompt = type_prompts.get(args.lang, type_prompts.get("en", ""))
 
     return RunConfig(
         model=args.model,
         language=args.lang,
         mode=args.mode,
+        prompt_type=args.prompt_type,
         temperature=args.temperature,
         max_tokens=args.max_tokens,
         top_p=args.top_p,
