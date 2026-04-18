@@ -24,6 +24,13 @@ def _load_prompts() -> dict[str, dict[str, str]]:
         return json.load(f)
 
 
+def get_default_system_prompt(prompt_type: str, lang: str) -> str:
+    """Resolve the localized system prompt for a given type and language."""
+    prompts = _load_prompts()
+    type_prompts = prompts.get(prompt_type, prompts.get("survey", {}))
+    return type_prompts.get(lang, type_prompts.get("en", ""))
+
+
 AVAILABLE_MODELS = [
     # OpenAI
     "openai/gpt-4.1", "openai/gpt-4.1-mini", "openai/gpt-4.1-nano", "openai/gpt-4o",
@@ -62,6 +69,9 @@ class RunConfig:
     output_dir: str
     dry_run: bool
     api_key: str
+    compare_langs: bool = False
+    compare_modes: bool = False
+    compare_prompts: bool = False
     api_base: str = "https://openrouter.ai/api/v1"
     notes: str | None = None
 
@@ -114,6 +124,14 @@ def parse_args() -> RunConfig:
     parser.add_argument("--api-base", default="https://openrouter.ai/api/v1",
                         help="API base URL (override for testing).")
 
+    # Comparison flags
+    parser.add_argument("--compare-langs", action="store_true",
+                        help="Run benchmark for all supported languages.")
+    parser.add_argument("--compare-modes", action="store_true",
+                        help="Run benchmark for all supported execution modes.")
+    parser.add_argument("--compare-prompts", action="store_true",
+                        help="Run benchmark for all supported system prompt types.")
+
     args = parser.parse_args()
 
     api_key = args.api_key or os.environ.get("OPENROUTER_API_KEY", "")
@@ -125,9 +143,7 @@ def parse_args() -> RunConfig:
     # Automatically select localized system prompt if not overridden
     system_prompt = args.system_prompt
     if system_prompt is None:
-        prompts = _load_prompts()
-        type_prompts = prompts.get(args.prompt_type, prompts.get("survey", {}))
-        system_prompt = type_prompts.get(args.lang, type_prompts.get("en", ""))
+        system_prompt = get_default_system_prompt(args.prompt_type, args.lang)
 
     return RunConfig(
         models=args.model,
@@ -145,5 +161,8 @@ def parse_args() -> RunConfig:
         dry_run=args.dry_run,
         notes=args.notes,
         api_key=api_key,
+        compare_langs=args.compare_langs,
+        compare_modes=args.compare_modes,
+        compare_prompts=args.compare_prompts,
         api_base=args.api_base,
     )
