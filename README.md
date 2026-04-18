@@ -11,6 +11,9 @@
 - **Structured output** — every answer includes an `explanation` + one of the 5 official PolitiScales responses
 - **Configurable**: temperature, top-p, max-tokens, system prompt, number of runs
 - **Multi-run aggregation** — run N times and get mean ± std per axis in a single JSON file
+- **Results Visualization** — generate beautiful, PolitiScales-style results cards (PNG) with Pillow
+- **Fine-grained Scoring** — support for the **Neutral** axis in both individual runs and aggregates
+- **Error Auditing** — track exactly which questions failed to parse and triggered fallbacks via `fallback_keys`
 - **Dry-run mode** — inspect prompts without consuming API credits
 
 ## Quick Start
@@ -26,7 +29,10 @@ cp .env.example .env
 # 3. Run the test
 python -m runner --model openai/gpt-4.1 --lang en --mode sequential
 
-# 4. Dry-run to inspect prompts
+# 4. Generate visualization for existing results
+python -c "from runner.display import generate_results_card; import json; from pathlib import Path; p = Path('results/your_file.json'); generate_results_card(json.loads(p.read_text()), p.with_suffix('.png'))"
+
+# 5. Dry-run to inspect prompts
 python -m runner --model openai/gpt-4.1 --lang fr --mode batch --dry-run
 ```
 
@@ -60,32 +66,46 @@ Options:
 
 ## Output Format
 
-Results are saved to `./results/{date}_{model}_{lang}_{mode}_t{temp}.json`:
-
-```json
 {
-  "meta": { "model": "openai/gpt-4.1", "language": "en", "mode": "sequential", ... },
+  "meta": {
+    "model": "openai/gpt-4.1",
+    "total_fallbacks": 2,
+    "fallback_keys": ["constructivism_becoming_woman", "culture_religion"],
+    ...
+  },
   "runs": [
     {
       "run_id": 1,
-      "answers": {
-        "constructivism_becoming_woman": {
-          "answer": "strongly agree",
-          "explanation": "..."
-        }
-      },
+      "answers": { ... },
       "scores": {
-        "paired": { "identity": { "constructivism": 0.87, "essentialism": 0.13 } },
-        "unpaired": { "anarchism": 0.12 }
-      }
+        "paired": {
+          "identity": { "constructivism": 0.81, "essentialism": 0.14, "neutral": 0.05 }
+        },
+        "unpaired": { "anarchism": 0.0 }
+      },
+      "fallback_keys": ["constructivism_becoming_woman"]
     }
   ],
   "aggregate": {
-    "runs_count": 3,
-    "paired": { "identity": { "constructivism": { "mean": 0.86, "std": 0.02, "values": [...] } } }
+    "runs_count": 1,
+    "paired": {
+      "identity": {
+        "constructivism": { "mean": 0.81, "std": null, "values": [0.81] },
+        "essentialism": { "mean": 0.14, "std": null, "values": [0.14] },
+        "neutral": { "mean": 0.05, "std": null, "values": [0.05] }
+      }
+    }
   }
 }
 ```
+
+## Visualization
+
+Every run generates a JSON and a corresponding PNG results card. The card includes:
+- **Flag generation** — dominant axes colors and symbols.
+- **Axis bars** — 3-segment bars (Left, Neutral, Right) with percentages.
+- **Badges** — special badges (Anarchism, Feminism, etc.) when thresholds are met.
+- **Model Metadata** — provider logo and model details in the footer.
 
 ## Batch All Models
 
