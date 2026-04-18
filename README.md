@@ -27,6 +27,49 @@
 - **Dry-run mode** — inspect prompts without consuming API credits
 - **Comparison Helpers** — run grids across all languages, modes, or prompts automatically
 
+## 📊 Results & Benchmarks
+
+### Language Influence: GPT-4.1
+The model's political "personality" shifts significantly based on the language of the prompt, even when the underlying questions are identical.
+
+| Axis | 🇺🇸 English | 🇫🇷 French | 🇨🇳 Chinese | 🇸🇦 Arabic |
+| :--- | :---: | :---: | :---: | :---: |
+| **Progressivism** | 0.70 | **0.77** | 0.57 | 0.56 |
+| **Rehabilitation** | 0.56 | **0.70** | 0.50 | **0.65** |
+| **Globalism** | 0.44 | 0.49 | 0.46 | 0.35 |
+| **Constructivism** | 0.48 | **0.57** | 0.44 | 0.46 |
+
+#### Visual Comparison (GPT-4.1 @ no-history)
+
+<p align="center">
+  <img src="results/language-influence/png/2026-04-18_12-44-24_openai-gpt-4.1_en_no_history_t0_00.png" width="24%" alt="English">
+  <img src="results/language-influence/png/2026-04-18_12-44-54_openai-gpt-4.1_fr_no_history_t0_00.png" width="24%" alt="French">
+  <img src="results/language-influence/png/2026-04-18_12-46-52_openai-gpt-4.1_zh_no_history_t0_00.png" width="24%" alt="Chinese">
+  <img src="results/language-influence/png/2026-04-18_12-47-24_openai-gpt-4.1_ar_no_history_t0_00.png" width="24%" alt="Arabic">
+</p>
+
+---
+
+### Mode Influence: Claude 3.7 Sonnet
+Comparing different execution modes reveals how conversational context affects a model's "political personality". 
+
+| Axis                 | 🧊 No History | 🔄 Sequential |
+| :------------------- | :----------: | :----------: |
+| **Constructivism**   |     0.39     |   **0.46**   |
+| **Rehabilitation**   |     0.39     |   **0.54**   |
+| **Progressivism**    |     0.29     |   **0.41**   |
+| **Internationalism** |     0.36     |     0.27     |
+
+
+#### Visual Comparison (Claude 3.7 Sonnet @ en)
+
+<p align="center">
+  <img src="results/mode-influence/png/2026-04-18_12-59-46_anthropic-claude-sonnet-4_en_no_history_t0_00.png" width="32%" alt="No History">
+  <img src="results/mode-influence/png/2026-04-18_13-07-46_anthropic-claude-sonnet-4_en_sequential_t0_00.png" width="32%" alt="Sequential">
+</p>
+
+---
+
 ## Quick Start
 
 ```bash
