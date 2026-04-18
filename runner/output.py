@@ -49,18 +49,13 @@ def save_results(
     config: RunConfig,
     run_records: list[dict],
     output_path: Path | None = None,
-) -> Path:
-    """Aggregate all run_records and write the final JSON file.
+) -> dict:
+    """Aggregate all run_records, optionally write to disk, and return payload.
 
     Filename format:  ``{date}_{model}_{lang}_{mode}_t{temp}.json``
-
-    Aggregation is always computed (even for a single run) so downstream
-    consumers can rely on the ``aggregate`` key being present.
     """
     json_dir = Path(config.output_dir) / "json"
     png_dir = Path(config.output_dir) / "png"
-    os.makedirs(json_dir, exist_ok=True)
-    os.makedirs(png_dir, exist_ok=True)
 
     # Use UTC for the filename so it is reproducible across timezones
     date_str  = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M-%S")
@@ -99,8 +94,16 @@ def save_results(
         "aggregate": aggregate,
     }
 
+    if config.dry_run:
+        print("  [DRY-RUN] Skipping file saving (JSON & PNG).")
+        return payload
+
+    os.makedirs(json_dir, exist_ok=True)
+    os.makedirs(png_dir, exist_ok=True)
+
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
+    print(f"\n  Results for {config.model} saved -> {output_path}")
 
     # Automatically generate the visualization PNG
     try:
@@ -113,4 +116,4 @@ def save_results(
     except Exception as exc:
         print(f"  WARNING: Could not generate visualization: {exc}")
 
-    return output_path
+    return payload

@@ -147,19 +147,13 @@ def run_benchmark(config: RunConfig) -> dict | None:
             
             _print_scores_summary(record["scores"])
 
-        # Save model-specific results
+        # Save model-specific results (skip saving if dry_run, handled in save_results)
         class _ModelConfigShim:
             def __getattr__(self, name): return getattr(config, name)
             @property
             def model(self): return model
             
-        output_path = save_results(_ModelConfigShim(), model_records)
-        print(f"\n  Results for {model} saved -> {output_path}")
-        
-        # Load the payload just saved to return it
-        import json
-        with open(output_path, "r", encoding="utf-8") as f:
-            last_payload = json.load(f)
+        last_payload = save_results(_ModelConfigShim(), model_records)
 
     return last_payload
 
