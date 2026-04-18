@@ -7,6 +7,8 @@ import logging
 import sys
 from typing import Dict
 
+from dotenv import load_dotenv
+
 from runner.client import OpenRouterClient
 from runner.config import parse_args
 from runner.output import build_run_record, save_results
@@ -14,30 +16,38 @@ from runner.questions import load_questions
 from runner.types import ModeRunner, RunResult
 from runner import modes
 
+# Load .env before anything reads environment variables
+load_dotenv()
+
 # Configure logging — show warnings and above to stderr
 logging.basicConfig(
     level=logging.WARNING,
-    format="  ⚠  %(name)s: %(message)s",
+    format="  WARNING %(name)s: %(message)s",
     stream=sys.stderr,
 )
+
+_LABEL_WIDTH = 14
 
 
 def main() -> None:
     config = parse_args()
 
-    print("\n🏛️  PolitiScales-AI")
-    print(f"  model       : {config.model}")
-    print(f"  language    : {config.language}")
-    print(f"  mode        : {config.mode}")
-    print(f"  temperature : {config.temperature}")
-    print(f"  max_tokens  : {config.max_tokens}")
-    print(f"  top_p       : {config.top_p}")
-    print(f"  runs        : {config.runs}")
+    print(f"\n{'PolitiScales-AI':>20}")
+    for label, value in [
+        ("model",       config.model),
+        ("language",    config.language),
+        ("mode",        config.mode),
+        ("temperature", config.temperature),
+        ("max_tokens",  config.max_tokens),
+        ("top_p",       config.top_p),
+        ("runs",        config.runs),
+    ]:
+        print(f"  {label:>{_LABEL_WIDTH}} : {value}")
     if config.mode == "sequential" and config.max_history > 0:
-        print(f"  max_history : {config.max_history}")
-    print(f"  dry_run     : {config.dry_run}")
+        print(f"  {'max_history':>{_LABEL_WIDTH}} : {config.max_history}")
+    print(f"  {'dry_run':>{_LABEL_WIDTH}} : {config.dry_run}")
     if config.notes:
-        print(f"  notes       : {config.notes}")
+        print(f"  {'notes':>{_LABEL_WIDTH}} : {config.notes}")
     print()
 
     # Load questions for the requested language
@@ -61,7 +71,7 @@ def main() -> None:
     )
 
     # Resolve mode runner (typed via ModeRunner protocol)
-    mode_runners: Dict[str, ModeRunner] = {
+    mode_runners: dict[str, ModeRunner] = {
         "no_history": modes.no_history.run,
         "sequential": modes.sequential.run,
         "batch":      modes.batch.run,
@@ -69,12 +79,10 @@ def main() -> None:
     run_fn = mode_runners[config.mode]
 
     # Execute runs
-    run_records = []
+    run_records: list[dict] = []
     for run_id in range(1, config.runs + 1):
         if config.runs > 1:
-            print(f"━━━ Run {run_id}/{config.runs} ━━━")
-
-        tokens_before = client.total_tokens
+            print(f"--- Run {run_id}/{config.runs} ---")
 
         try:
             result: RunResult = run_fn(client, config, questions, config.dry_run)
@@ -82,22 +90,20 @@ def main() -> None:
             print(f"\n[ERROR] Run {run_id} failed: {exc}", file=sys.stderr)
             continue
 
-        tokens_this_run = client.total_tokens - tokens_before
-
         record = build_run_record(
             run_id=run_id,
             answers=result.answers,
             explanations=result.explanations,
             duration_s=result.duration_s,
-            tokens_used=tokens_this_run,
+            tokens_used=result.tokens_used,
             fallback_count=result.fallback_count,
         )
         run_records.append(record)
 
-        print(f"\n  Run {run_id} done in {result.duration_s:.1f}s  ({tokens_this_run} tokens)")
+        print(f"\n  Run {run_id} done in {result.duration_s:.1f}s  ({result.tokens_used} tokens)")
         if result.fallback_count > 0:
             print(
-                f"  ⚠️  {result.fallback_count} answer(s) used fallback parsing "
+                f"  WARNING: {result.fallback_count} answer(s) used fallback parsing "
                 f"(structured output was not valid JSON)"
             )
         _print_scores_summary(record["scores"])
@@ -109,26 +115,26 @@ def main() -> None:
 
     # Save everything to JSON
     output_path = save_results(config, run_records)
-    print(f"\n✅  Results saved → {output_path}\n")
+    print(f"\n  Results saved -> {output_path}\n")
 
 
 def _print_scores_summary(scores: dict) -> None:
     """Print a brief score table to stdout."""
-    print("\n  ── Paired axes ─────────────────────────────────────")
+    print("\n  -- Paired axes --")
     for pair_name, pair_scores in scores["paired"].items():
         parts = []
         for axis, val in pair_scores.items():
             if val is not None:
-                bar = "█" * int(val * 20)
+                bar = "#" * int(val * 20)
                 parts.append(f"    {axis:<30} {val:.2f}  {bar}")
         if parts:
             print(f"  {pair_name.upper()}")
             print("\n".join(parts))
 
-    print("\n  ── Unpaired axes (badges) ──────────────────────────")
+    print("\n  -- Unpaired axes (badges) --")
     for axis, val in scores["unpaired"].items():
         if val is not None:
-            bar = "█" * int(val * 20)
+            bar = "#" * int(val * 20)
             print(f"    {axis:<25} {val:.2f}  {bar}")
 
 

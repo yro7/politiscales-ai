@@ -4,7 +4,7 @@ Shared types for the PolitiScales-AI runner.
 from __future__ import annotations
 
 from enum import Enum
-from typing import TYPE_CHECKING, Dict, NamedTuple, Protocol
+from typing import TYPE_CHECKING, Protocol
 
 if TYPE_CHECKING:
     from runner.client import OpenRouterClient
@@ -48,13 +48,28 @@ ANSWER_VALUES_LONGEST_FIRST: list[str] = [
 # RunResult — return type for all mode runner functions
 # ---------------------------------------------------------------------------
 
-class RunResult(NamedTuple):
-    """Return type for all mode runner functions."""
+class RunResult:
+    """Return type for all mode runner functions.
 
-    answers: Dict[str, str]
-    explanations: Dict[str, str]
-    duration_s: float
-    fallback_count: int = 0
+    Using a plain class with ``__slots__`` instead of NamedTuple to allow
+    clearer field documentation and avoid the tuple-unpacking footgun.
+    """
+
+    __slots__ = ("answers", "explanations", "duration_s", "fallback_count", "tokens_used")
+
+    def __init__(
+        self,
+        answers: dict[str, str],
+        explanations: dict[str, str],
+        duration_s: float,
+        tokens_used: int = 0,
+        fallback_count: int = 0,
+    ) -> None:
+        self.answers = answers
+        self.explanations = explanations
+        self.duration_s = duration_s
+        self.tokens_used = tokens_used
+        self.fallback_count = fallback_count
 
 
 # ---------------------------------------------------------------------------
@@ -68,6 +83,6 @@ class ModeRunner(Protocol):
         self,
         client: OpenRouterClient,
         config: RunConfig,
-        questions: Dict[str, str],
+        questions: dict[str, str],
         dry_run: bool = ...,
     ) -> RunResult: ...

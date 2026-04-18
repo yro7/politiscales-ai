@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 import logging
 import time
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 from openai import OpenAI, APIError, APIConnectionError, RateLimitError, APITimeoutError
 
@@ -48,7 +48,7 @@ SINGLE_Q_SCHEMA = {
 }
 
 # Schema used by batch mode — answers keyed by question ID
-def batch_schema(question_keys: List[str]) -> Dict:
+def batch_schema(question_keys: list[str]) -> dict:
     return {
         "name": "politiscales_batch_answers",
         "strict": True,
@@ -92,19 +92,18 @@ class OpenRouterClient:
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.top_p = top_p
-        self.total_tokens: int = 0
 
     def _call(
         self,
-        messages: List[Dict[str, str]],
-        response_format: Optional[Dict] = None,
-        max_tokens_override: Optional[int] = None,
-    ) -> Tuple[str, int]:
+        messages: list[dict[str, str]],
+        response_format: None | dict = None,
+        max_tokens_override: None | int = None,
+    ) -> tuple[str, int]:
         """
         Call the chat completions endpoint with retry logic.
         Returns (content_string, tokens_used).
         """
-        kwargs: Dict[str, Any] = dict(
+        kwargs: dict[str, Any] = dict(
             model=self.model,
             messages=messages,
             temperature=self.temperature,
@@ -117,13 +116,12 @@ class OpenRouterClient:
                 "json_schema": response_format,
             }
 
-        last_error: Optional[Exception] = None
+        last_error: None | Exception = None
         for attempt in range(1, MAX_RETRIES + 1):
             try:
                 resp = self.client.chat.completions.create(**kwargs)
                 content = resp.choices[0].message.content or ""
                 tokens = resp.usage.total_tokens if resp.usage else 0
-                self.total_tokens += tokens
                 return content, tokens
             except RateLimitError as e:
                 last_error = e
@@ -150,21 +148,21 @@ class OpenRouterClient:
     def ask_single(
         self,
         system_prompt: str,
-        messages: List[Dict[str, str]],
+        messages: list[dict[str, str]],
         question_text: str,
-    ) -> Tuple[Dict[str, str], bool]:
+    ) -> tuple[dict[str, str], int, bool]:
         """
         Ask a single question.
         Appends the question as a new user message and calls the API.
 
         Returns:
-            ({"explanation": "...", "answer": "..."}, fallback_used)
+            ({"explanation": "...", "answer": "..."}, tokens, fallback_used)
         """
         full_messages = [{"role": "system", "content": system_prompt}]
         full_messages.extend(messages)
         full_messages.append({"role": "user", "content": question_text})
 
-        content, _ = self._call(full_messages, response_format=SINGLE_Q_SCHEMA)
+        content, tokens = self._call(full_messages, response_format=SINGLE_Q_SCHEMA)
         try:
             parsed = json.loads(content)
             # Validate that the answer is actually one of the enum values
@@ -173,22 +171,22 @@ class OpenRouterClient:
                     f"Structured response contained invalid answer "
                     f"'{parsed.get('answer')}', treating as fallback"
                 )
-                return _fallback_parse_single(content), True
-            return parsed, False
+                return _fallback_parse_single(content), tokens, True
+            return parsed, tokens, False
         except json.JSONDecodeError:
             # Graceful fallback — extract answer with heuristics
-            return _fallback_parse_single(content), True
+            return _fallback_parse_single(content), tokens, True
 
     def ask_batch(
         self,
         system_prompt: str,
-        questions: Dict[str, str],
-    ) -> Tuple[Dict[str, Dict[str, str]], bool]:
+        questions: dict[str, str],
+    ) -> tuple[dict[str, dict[str, str]], int, bool]:
         """
         Send all questions in one prompt.
 
         Returns:
-            ({question_key: {"explanation": ..., "answer": ...}}, fallback_used)
+            ({question_key: {"explanation": ..., "answer": ...}}, tokens, fallback_used)
         """
         question_keys = list(questions.keys())
         lines = [
@@ -208,25 +206,25 @@ class OpenRouterClient:
         schema = batch_schema(question_keys)
         # Batch mode needs much more output tokens (117 questions × ~100 tokens each)
         batch_max_tokens = max(self.max_tokens, len(question_keys) * 150)
-        content, _ = self._call(
+        content, tokens = self._call(
             messages, response_format=schema, max_tokens_override=batch_max_tokens
         )
         try:
             parsed = json.loads(content)
-            return parsed, False
+            return parsed, tokens, False
         except json.JSONDecodeError:
             logger.warning(
                 "Batch response was not valid JSON, falling back to heuristic parsing. "
                 f"Response length: {len(content)} chars"
             )
-            return _fallback_parse_batch(content, question_keys), True
+            return _fallback_parse_batch(content, question_keys), tokens, True
 
 
 # ---------------------------------------------------------------------------
 # Fallback parsers (in case structured output is not supported by the model)
 # ---------------------------------------------------------------------------
 
-def _fallback_parse_single(text: str) -> Dict[str, str]:
+def _fallback_parse_single(text: str) -> dict[str, str]:
     """Try to extract answer from free-form text."""
     text_lower = text.lower()
     answer = Answer.NEUTRAL.value
@@ -238,9 +236,9 @@ def _fallback_parse_single(text: str) -> Dict[str, str]:
     return {"explanation": text.strip(), "answer": answer}
 
 
-def _fallback_parse_batch(text: str, keys: List[str]) -> Dict[str, Dict[str, str]]:
+def _fallback_parse_batch(text: str, keys: list[str]) -> dict[str, dict[str, str]]:
     """Attempt JSON parse of batch response, defaulting to neutral on failure."""
-    result: Dict[str, Dict[str, str]] = {}
+    result: dict[str, dict[str, str]] = {}
     try:
         parsed = json.loads(text)
         for key in keys:

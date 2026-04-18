@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-LANG="${1:-en}"
+TEST_LANG="${1:-en}"
 MODE="${2:-sequential}"
 TEMP="${3:-0.7}"
 
@@ -35,20 +35,31 @@ MODELS=(
 )
 
 echo "🏛️  PolitiScales-AI — batch run"
-echo "   lang=${LANG}  mode=${MODE}  temperature=${TEMP}"
+echo "   lang=${TEST_LANG}  mode=${MODE}  temperature=${TEMP}"
 echo "   models: ${#MODELS[@]}"
 echo ""
+
+FAILED_MODELS=()
 
 for MODEL in "${MODELS[@]}"; do
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   echo "▶  $MODEL"
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  python -m runner \
+  if ! python -m runner \
     --model "$MODEL" \
-    --lang "$LANG" \
+    --lang "$TEST_LANG" \
     --mode "$MODE" \
-    --temperature "$TEMP" || echo "⚠️  Failed for $MODEL, continuing..."
+    --temperature "$TEMP"; then
+    echo "⚠️  Failed for $MODEL"
+    FAILED_MODELS+=("$MODEL")
+  fi
   echo ""
 done
+
+if [ ${#FAILED_MODELS[@]} -ne 0 ]; then
+  echo "❌  Batch run completed with errors."
+  echo "    Failed models: ${FAILED_MODELS[*]}"
+  exit 1
+fi
 
 echo "✅  All done. Results in ./results/"

@@ -5,7 +5,6 @@ Each question is sent in a fresh API call with zero memory of previous answers.
 from __future__ import annotations
 
 import time
-from typing import Dict
 
 from runner.client import OpenRouterClient
 from runner.config import RunConfig
@@ -15,7 +14,7 @@ from runner.types import RunResult
 def run(
     client: OpenRouterClient,
     config: RunConfig,
-    questions: Dict[str, str],
+    questions: dict[str, str],
     dry_run: bool = False,
 ) -> RunResult:
     """
@@ -23,9 +22,10 @@ def run(
 
     Each question is a fresh call with an empty message history.
     """
-    answers: Dict[str, str] = {}
-    explanations: Dict[str, str] = {}
+    answers: dict[str, str] = {}
+    explanations: dict[str, str] = {}
     fallback_count = 0
+    total_tokens = 0
 
     start = time.monotonic()
     total = len(questions)
@@ -39,11 +39,12 @@ def run(
             explanations[key] = "[dry-run]"
             continue
 
-        result, was_fallback = client.ask_single(
+        result, tokens, was_fallback = client.ask_single(
             system_prompt=config.system_prompt,
             messages=[],          # <-- no history, fresh every time
             question_text=text,
         )
+        total_tokens += tokens
         if was_fallback:
             fallback_count += 1
 
@@ -52,4 +53,4 @@ def run(
         print(f"  → {answers[key]}")
 
     duration = time.monotonic() - start
-    return RunResult(answers, explanations, duration, fallback_count)
+    return RunResult(answers, explanations, duration, total_tokens, fallback_count)

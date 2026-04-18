@@ -7,7 +7,6 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional
 
 from runner.config import RunConfig
 from runner.scorer import compute_scores, aggregate_scores
@@ -19,12 +18,12 @@ def _iso_now() -> str:
 
 def build_run_record(
     run_id: int,
-    answers: Dict[str, str],
-    explanations: Dict[str, str],
+    answers: dict[str, str],
+    explanations: dict[str, str],
     duration_s: float,
     tokens_used: int,
     fallback_count: int = 0,
-) -> Dict:
+) -> dict:
     """Build the per-run record (answers + scores + metadata)."""
     scores = compute_scores(answers)
     return {
@@ -45,17 +44,20 @@ def build_run_record(
 
 def save_results(
     config: RunConfig,
-    run_records: List[Dict],
-    output_path: Optional[Path] = None,
+    run_records: list[dict],
+    output_path: Path | None = None,
 ) -> Path:
-    """
-    Aggregate all run_records and write the final JSON file.
+    """Aggregate all run_records and write the final JSON file.
 
-    Filename format:  {date}_{model}_{lang}_{mode}_t{temp}.json
+    Filename format:  ``{date}_{model}_{lang}_{mode}_t{temp}.json``
+
+    Aggregation is always computed (even for a single run) so downstream
+    consumers can rely on the ``aggregate`` key being present.
     """
     os.makedirs(config.output_dir, exist_ok=True)
 
-    date_str  = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    # Use UTC for the filename so it is reproducible across timezones
+    date_str  = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M-%S")
     temp_str  = f"t{config.temperature:.2f}".replace(".", "_")
     # Sanitize model name for filename
     model_slug = config.model.replace("/", "-").replace(":", "-")
@@ -65,7 +67,7 @@ def save_results(
         output_path = Path(config.output_dir) / filename
 
     all_scores = [r["scores"] for r in run_records]
-    aggregate  = aggregate_scores(all_scores) if len(all_scores) > 1 else None
+    aggregate  = aggregate_scores(all_scores)
 
     total_fallbacks = sum(r.get("fallback_count", 0) for r in run_records)
 
@@ -82,7 +84,7 @@ def save_results(
             "notes":          config.notes,
             "total_fallbacks": total_fallbacks,
             "timestamp":      _iso_now(),
-            "version":        "1.1.0",
+            "version":        "1.2.0",
         },
         "runs":      run_records,
         "aggregate": aggregate,

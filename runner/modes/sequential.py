@@ -10,7 +10,6 @@ from __future__ import annotations
 import json
 import logging
 import time
-from typing import Dict, List
 
 from runner.client import OpenRouterClient
 from runner.config import RunConfig
@@ -22,7 +21,7 @@ logger = logging.getLogger(__name__)
 def run(
     client: OpenRouterClient,
     config: RunConfig,
-    questions: Dict[str, str],
+    questions: dict[str, str],
     dry_run: bool = False,
 ) -> RunResult:
     """
@@ -30,10 +29,11 @@ def run(
 
     Questions are asked one-by-one with growing chat history.
     """
-    answers: Dict[str, str] = {}
-    explanations: Dict[str, str] = {}
-    history: List[Dict[str, str]] = []  # growing chat context
+    answers: dict[str, str] = {}
+    explanations: dict[str, str] = {}
+    history: list[dict[str, str]] = []  # growing chat context
     fallback_count = 0
+    total_tokens = 0
 
     # max_history = 0 means unlimited; otherwise keep last N exchanges (2 msgs each)
     max_pairs = config.max_history
@@ -58,11 +58,12 @@ def run(
         else:
             window = history
 
-        result, was_fallback = client.ask_single(
+        result, tokens, was_fallback = client.ask_single(
             system_prompt=config.system_prompt,
             messages=window,
             question_text=text,
         )
+        total_tokens += tokens
         if was_fallback:
             fallback_count += 1
 
@@ -88,4 +89,4 @@ def run(
         )
 
     duration = time.monotonic() - start
-    return RunResult(answers, explanations, duration, fallback_count)
+    return RunResult(answers, explanations, duration, total_tokens, fallback_count)

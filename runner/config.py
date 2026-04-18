@@ -5,8 +5,7 @@ from __future__ import annotations
 
 import argparse
 import os
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 SUPPORTED_LANGUAGES = ["en", "fr", "es", "it", "ru", "zh", "ar"]
 SUPPORTED_MODES = ["no_history", "sequential", "batch"]
@@ -56,13 +55,7 @@ class RunConfig:
     dry_run: bool
     api_key: str
     api_base: str = "https://openrouter.ai/api/v1"
-    # Extra metadata stored in output but not used as API params
-    notes: Optional[str] = None
-
-    def run_slug(self) -> str:
-        """Generate a short identifier for this configuration."""
-        temp_str = f"t{self.temperature:.2f}".replace(".", "_")
-        return f"{self.model}_{self.language}_{self.mode}_{temp_str}"
+    notes: str | None = None
 
 
 def parse_args() -> RunConfig:
@@ -83,7 +76,7 @@ def parse_args() -> RunConfig:
                             "batch: all questions in one prompt"
                         ))
     parser.add_argument("--temperature", type=float, default=0.7,
-                        help="Sampling temperature (0.0–2.0).")
+                        help="Sampling temperature (0.0-2.0).")
     parser.add_argument("--max-tokens", type=int, default=512,
                         help="Max tokens per API response.")
     parser.add_argument("--top-p", type=float, default=1.0,
@@ -97,7 +90,7 @@ def parse_args() -> RunConfig:
     parser.add_argument("--max-history", type=int, default=0,
                         help=(
                             "Max Q&A pairs to keep in sequential mode history. "
-                            "0 = unlimited (send full history). Recommended: 10–20 "
+                            "0 = unlimited (send full history). Recommended: 10-20 "
                             "for small-context models to avoid token overflow."
                         ))
     parser.add_argument("--dry-run", action="store_true",

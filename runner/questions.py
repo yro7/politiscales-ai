@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict
 
 # Path relative to this file: ../politiscales/i18n/locales/
 _LOCALES_DIR = (
@@ -13,13 +12,14 @@ _LOCALES_DIR = (
 )
 
 
-def load_questions(language: str) -> Dict[str, str]:
-    """
-    Load the question texts for a given language.
+def load_questions(language: str) -> dict[str, str]:
+    """Load the question texts for a given language.
 
     Returns a dict mapping question_key -> question_text.
-    Raises FileNotFoundError if the locale file does not exist.
-    Raises KeyError if the locale file has no 'questions' section.
+
+    Raises:
+        FileNotFoundError: if the locale file does not exist.
+        KeyError: if the locale file has no ``questions`` section.
     """
     locale_file = _LOCALES_DIR / f"{language}.json"
     if not locale_file.exists():
@@ -31,16 +31,9 @@ def load_questions(language: str) -> Dict[str, str]:
     with locale_file.open(encoding="utf-8") as f:
         data = json.load(f)
 
-    questions: Dict[str, str] = data.get("questions", {})
+    questions: dict[str, str] = data.get("questions", {})
     if not questions:
         raise KeyError(
             f"Locale file '{locale_file}' has no 'questions' key or it is empty."
         )
     return questions
-
-
-def load_ui_strings(language: str) -> Dict[str, str]:
-    """Load all UI strings (including questions) for a given language."""
-    locale_file = _LOCALES_DIR / f"{language}.json"
-    with locale_file.open(encoding="utf-8") as f:
-        return json.load(f)

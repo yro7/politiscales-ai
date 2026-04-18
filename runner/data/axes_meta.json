@@ -1,0 +1,42 @@
+{
+  "paired": {
+    "constructivism": {"color": "#a425b6", "slogan": "equality"},
+    "essentialism": {"color": "#34b634", "slogan": null},
+    "rehabilitative_justice": {"color": "#14bee1", "slogan": "justice"},
+    "punitive_justice": {"color": "#e6cc27", "slogan": "order"},
+    "progressive": {"color": "#850083", "slogan": null},
+    "conservative": {"color": "#970000", "slogan": "family"},
+    "internationalism": {"color": "#3e6ffd", "slogan": "humanity"},
+    "nationalism": {"color": "#ff8500", "slogan": "fatherland"},
+    "communism": {"color": "#cc0000", "slogan": "socialism"},
+    "capitalism": {"color": "#ffb800", "slogan": "work"},
+    "regulation": {"color": "#269B32", "slogan": null},
+    "laissez_faire": {"color": "#6608C0", "slogan": "liberty"},
+    "ecology": {"color": "#a0e90d", "slogan": "ecology"},
+    "production": {"color": "#4deae9", "slogan": null},
+    "revolution": {"color": "#eb1a66", "slogan": "revolution"},
+    "reform": {"color": "#0ee4c8", "slogan": null},
+    "materialism": {"color": "#ff00ff", "slogan": null},
+    "idealism": {"color": "#00ffff", "slogan": null},
+    "sustainability": {"color": "#00ff00", "slogan": null},
+    "growth_at_all_costs": {"color": "#ff0000", "slogan": null}
+  },
+  "labels": {
+    "constructivism": "Constructivism",
+    "essentialism": "Essentialism",
+    "rehabilitative_justice": "Rehabilitative Justice",
+    "punitive_justice": "Punitive Justice",
+    "progressive": "Progressive",
+    "conservative": "Conservative",
+    "internationalism": "Internationalism",
+    "nationalism": "Nationalism",
+    "communism": "Communism",
+    "capitalism": "Capitalism",
+    "regulation": "Regulation",
+    "laissez_faire": "Laissez-faire",
+    "ecology": "Ecology",
+    "production": "Production",
+    "revolution": "Revolution",
+    "reform": "Reform"
+  }
+}
