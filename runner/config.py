@@ -95,7 +95,7 @@ def parse_args() -> RunConfig:
                         ))
     parser.add_argument("--prompt-type", default="survey", choices=SUPPORTED_PROMPT_TYPES,
                         help="The 'style' of the system prompt (survey vs incognito).")
-    parser.add_argument("--temperature", type=float, default=0.7,
+    parser.add_argument("--temperature", type=float, default=0.0,
                         help="Sampling temperature (0.0-2.0).")
     parser.add_argument("--max-tokens", type=int, default=512,
                         help="Max tokens per API response.")

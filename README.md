@@ -25,6 +25,7 @@
 - **Fine-grained Scoring** — support for the **Neutral** axis in both individual runs and aggregates
 - **Error Auditing** — track exactly which questions failed to parse and triggered fallbacks via `fallback_keys`
 - **Dry-run mode** — inspect prompts without consuming API credits
+- **Comparison Helpers** — run grids across all languages, modes, or prompts automatically
 
 ## Quick Start
 
@@ -52,16 +53,19 @@ python -m runner --model openai/gpt-4o --lang fr --mode batch --dry-run
 python -m runner [options]
 ```
 
-| Option          | Description                                  | Default         |
-| :-------------- | :------------------------------------------- | :-------------- |
-| `--model MODEL` | Model ID in `provider/model` format          | `openai/gpt-4o` |
-| `--lang LANG`   | Language: `en` `fr` `es` `it` `ru` `zh` `ar` | `en`            |
-| `--mode MODE`   | `no_history` \| `sequential` \| `batch`      | `sequential`    |
-| `--temperature` | Sampling temperature 0.0–2.0                 | `0.7`           |
-| `--max-tokens`  | Max tokens per response                      | `512`           |
-| `--runs INT`    | Repeat N times and aggregate results         | `1`             |
-| `--output-dir`  | Directory to save results                    | `./results`     |
-| `--dry-run`     | Print prompts without calling the API        | -               |
+| Option              | Description                                  | Default         |
+| :------------------ | :------------------------------------------- | :-------------- |
+| `--model MODEL`     | Model ID in `provider/model` format          | `openai/gpt-4o` |
+| `--lang LANG`       | Language: `en` `fr` `es` `it` `ru` `zh` `ar` | `en`            |
+| `--mode MODE`       | `no_history` \| `sequential` \| `batch`      | `sequential`    |
+| `--temperature`     | Sampling temperature 0.0–2.0                 | `0.7`           |
+| `--max-tokens`      | Max tokens per response                      | `512`           |
+| `--runs INT`        | Repeat N times and aggregate results         | `1`             |
+| `--output-dir`      | Directory to save results                    | `./results`     |
+| `--dry-run`         | Print prompts without saving files           | -               |
+| `--compare-langs`   | Run for all 7 supported languages            | -               |
+| `--compare-modes`   | Run for all 3 execution modes                | -               |
+| `--compare-prompts` | Run for both system prompt types             | -               |
 
 ---
 
@@ -108,6 +112,23 @@ Every run generates a JSON and a corresponding **PNG results card**. The card in
 - 🤖 **Model Metadata** — provider logo and model details in the footer.
 
 ---
+
+## 📊 Comparison Benchmarking
+
+The runner provides built-in helpers to test configurations across multiple dimensions. If multiple comparison flags are provided, it performs a **Cartesian Product** (grid search).
+
+### Comparison Flags
+- `--compare-langs`: Run the benchmark for all 7 supported languages.
+- `--compare-modes`: Run the benchmark for `no_history`, `sequential`, and `batch`.
+- `--compare-prompts`: Run the benchmark for `survey` and `incognito` prompt types.
+
+### Example: Grid Search
+```bash
+# Test a model across all modes and prompt types (3 modes * 2 prompts = 6 runs)
+python -m runner --model x-ai/grok-3-mini --compare-modes --compare-prompts
+```
+
+At the end of a comparison run, a **Comparison Summary Table** is printed to the console, allowing you to easily compare scores across the entire grid.
 
 ## Batch All Models
 
