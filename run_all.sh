@@ -39,26 +39,12 @@ echo "   lang=${TEST_LANG}  mode=${MODE}  temperature=${TEMP}"
 echo "   models: ${#MODELS[@]}"
 echo ""
 
-FAILED_MODELS=()
-
-for MODEL in "${MODELS[@]}"; do
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  echo "▶  $MODEL"
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  if ! python3 -m runner \
-    --model "$MODEL" \
-    --lang "$TEST_LANG" \
-    --mode "$MODE" \
-    --temperature "$TEMP"; then
-    echo "⚠️  Failed for $MODEL"
-    FAILED_MODELS+=("$MODEL")
-  fi
-  echo ""
-done
-
-if [ ${#FAILED_MODELS[@]} -ne 0 ]; then
-  echo "❌  Batch run completed with errors."
-  echo "    Failed models: ${FAILED_MODELS[*]}"
+if ! python3 -m runner \
+  --model "${MODELS[@]}" \
+  --lang "$TEST_LANG" \
+  --mode "$MODE" \
+  --temperature "$TEMP"; then
+  echo "⚠️  Batch run failed"
   exit 1
 fi
 

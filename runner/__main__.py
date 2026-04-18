@@ -35,7 +35,7 @@ def main() -> None:
 
     print(f"\n{'PolitiScales-AI':>20}")
     for label, value in [
-        ("model",       config.model),
+        ("models",      ", ".join(config.models)),
         ("language",    config.language),
         ("mode",        config.mode),
         ("prompt_type", config.prompt_type),
@@ -62,16 +62,6 @@ def main() -> None:
     print(f"  Loaded {len(questions)} questions in '{config.language}'.")
     print()
 
-    # Instantiate the API client
-    client = OpenRouterClient(
-        api_key=config.api_key,
-        api_base=config.api_base,
-        model=config.model,
-        temperature=config.temperature,
-        max_tokens=config.max_tokens,
-        top_p=config.top_p,
-    )
-
     # Resolve mode runner (typed via ModeRunner protocol)
     mode_runners: dict[str, ModeRunner] = {
         "no_history": modes.no_history.run,
@@ -80,10 +70,20 @@ def main() -> None:
     }
     run_fn = mode_runners[config.mode]
 
-    def _execute_single_run(run_id: int) -> dict | None:
-        """Helper to execute a single run and return its record."""
+    def _execute_run(model: str, run_id: int) -> dict | None:
+        """Helper to execute a single run for a model and return its record."""
         try:
-            result: RunResult = run_fn(client, config, questions, config.dry_run, run_id=run_id)
+            # Instantiate a client for this specific thread/model
+            model_client = OpenRouterClient(
+                api_key=config.api_key,
+                api_base=config.api_base,
+                model=model,
+                temperature=config.temperature,
+                max_tokens=config.max_tokens,
+                top_p=config.top_p,
+            )
+
+            result: RunResult = run_fn(model_client, config, questions, config.dry_run, run_id=run_id, model_name=model)
             
             record = build_run_record(
                 run_id=run_id,
@@ -94,46 +94,68 @@ def main() -> None:
                 fallback_count=result.fallback_count,
                 fallback_keys=result.fallback_keys,
             )
+            # Inject model name into the record for saving later
+            record["meta"] = {
+                "model": model,
+                "language": config.language,
+                "mode": config.mode,
+                "prompt_type": config.prompt_type,
+            }
             return record
         except Exception as exc:
-            print(f"\n[ERROR] Run {run_id} failed: {exc}", file=sys.stderr)
+            print(f"\n[ERROR] [{model}] Run {run_id} failed: {exc}", file=sys.stderr)
             return None
 
-    # Execute runs in parallel
+    # Prepare all work items (model, run_id pairs)
+    tasks = []
+    for model in config.models:
+        for run_id in range(1, config.runs + 1):
+            tasks.append((model, run_id))
+
+    # Execute all benchmarks in parallel
     run_records: list[dict] = []
     with ThreadPoolExecutor(max_workers=config.concurrency) as executor:
-        results = list(executor.map(_execute_single_run, range(1, config.runs + 1)))
+        results = list(executor.map(lambda t: _execute_run(*t), tasks))
         run_records = [r for r in results if r is not None]
 
     if not run_records:
         print("[ERROR] All runs failed. No results saved.", file=sys.stderr)
         sys.exit(1)
 
-    print(f"\n  Finished {len(run_records)}/{config.runs} runs.")
+    print(f"\n  Finished {len(run_records)} benchmark jobs across {len(config.models)} models.")
 
-    # Show summaries after everything is done to avoid garbled logs
-    for record in run_records:
-        print(f"\n--- Run {record['run_id']} Summary ---")
-        print(f"  Duration: {record['duration_seconds']:.1f}s")
-        print(f"  Tokens:   {record['total_tokens']}")
+    # Show summaries per model
+    for model in config.models:
+        model_records = [r for r in run_records if r["meta"]["model"] == model]
+        if not model_records:
+            continue
+            
+        print(f"\n{'='*60}")
+        print(f" MODEL: {model}")
+        print(f"{'='*60}")
         
-        fallback_count = record.get("fallback_count", 0)
-        if fallback_count > 0:
-            fallback_keys = record.get("fallback_keys", [])
-            print(
-                f"  WARNING: {fallback_count} answer(s) used fallback parsing "
-                f"(structured output was not valid JSON)"
-            )
-            if fallback_count <= 10:
-                print(f"  Questions concernées : {fallback_keys}")
-            else:
-                print(f"  Questions concernées : {fallback_keys[:10]} ... (+{fallback_count - 10} autres)")
-        
-        _print_scores_summary(record["scores"])
+        for record in model_records:
+            print(f"\n--- Run {record['run_id']} Summary ---")
+            print(f"  Duration: {record['duration_seconds']:.1f}s")
+            print(f"  Tokens:   {record['total_tokens']}")
+            
+            fallback_count = record.get("fallback_count", 0)
+            if fallback_count > 0:
+                print(f"  WARNING: {fallback_count} answer(s) used fallback parsing.")
+            
+            _print_scores_summary(record["scores"])
 
-    # Save everything to JSON
-    output_path = save_results(config, run_records)
-    print(f"\n  Results saved -> {output_path}\n")
+        # Save model-specific results
+        # We need to temporarily pass a modified config to save_results for each model
+        class _ModelConfigShim:
+            def __getattr__(self, name): return getattr(config, name)
+            @property
+            def model(self): return model
+            
+        output_path = save_results(_ModelConfigShim(), model_records)
+        print(f"\n  Results for {model} saved -> {output_path}")
+
+    print("\n✅ All benchmarks completed.")
 
 
 def _print_scores_summary(scores: dict) -> None:

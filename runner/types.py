@@ -88,4 +88,5 @@ class ModeRunner(Protocol):
         questions: dict[str, str],
         dry_run: bool = ...,
         run_id: int = 1,
+        model_name: str = "",
     ) -> RunResult: ...

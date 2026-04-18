@@ -48,7 +48,7 @@ AVAILABLE_MODELS = [
 class RunConfig:
     """All parameters that define a single test run."""
 
-    model: str
+    models: list[str]
     language: str
     mode: str
     prompt_type: str
@@ -73,8 +73,8 @@ def parse_args() -> RunConfig:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
-    parser.add_argument("--model", default="openai/gpt-4.1",
-                        help=f"Model ID (provider/model format). Known models: {', '.join(AVAILABLE_MODELS)}")
+    parser.add_argument("--model", nargs="+", default=["openai/gpt-4.1"],
+                        help=f"Model ID(s) (provider/model format). Accepts multiple models. Known: {', '.join(AVAILABLE_MODELS)}")
     parser.add_argument("--lang", default="en", choices=SUPPORTED_LANGUAGES,
                         help="Language of the questionnaire.")
     parser.add_argument("--mode", default="sequential", choices=SUPPORTED_MODES,
@@ -130,7 +130,7 @@ def parse_args() -> RunConfig:
         system_prompt = type_prompts.get(args.lang, type_prompts.get("en", ""))
 
     return RunConfig(
-        model=args.model,
+        models=args.model,
         language=args.lang,
         mode=args.mode,
         prompt_type=args.prompt_type,

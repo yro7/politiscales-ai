@@ -17,24 +17,16 @@ PROMPT_TYPE="incognito"
 TEMP="0.7"
 RUNS="3"
 
-echo "🧪 Incognito Comparison Benchmark"
-echo "   Settings: lang=$LANG, mode=$MODE, type=$PROMPT_TYPE, temp=$TEMP, runs=$RUNS"
-echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🚀 Running Benchmark for all models"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-for MODEL in "${MODELS[@]}"; do
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  echo "🚀 Running: $MODEL ($RUNS runs)"
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  
-  python3 -m runner \
-    --model "$MODEL" \
-    --lang "$LANG" \
-    --mode "$MODE" \
-    --prompt-type "$PROMPT_TYPE" \
-    --temperature "$TEMP" \
-    --runs "$RUNS"
-    
-  echo ""
-done
+python3 -m runner \
+  --model "${MODELS[@]}" \
+  --lang "$LANG" \
+  --mode "$MODE" \
+  --prompt-type "$PROMPT_TYPE" \
+  --temperature "$TEMP" \
+  --runs "$RUNS"
 
 echo "✅ Benchmark complete. Results and images are in ./results/"

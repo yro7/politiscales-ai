@@ -24,6 +24,7 @@ def run(
     questions: dict[str, str],
     dry_run: bool = False,
     run_id: int = 1,
+    model_name: str = "",
 ) -> RunResult:
     """
     Run the test in sequential mode.
@@ -37,7 +38,7 @@ def run(
     total_tokens = 0
 
     # Context for logging
-    model_slug = config.model.split("/")[-1]
+    model_slug = model_name.split("/")[-1]
     prefix = f"[{model_slug}][Run {run_id}]"
 
     # max_history = 0 means unlimited; otherwise keep last N exchanges (2 msgs each)
