@@ -18,6 +18,7 @@ def run(
     config: RunConfig,
     questions: dict[str, str],
     dry_run: bool = False,
+    run_id: int = 1,
 ) -> RunResult:
     """
     Run the test in batch mode (single API call for all questions).

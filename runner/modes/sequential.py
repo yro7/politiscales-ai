@@ -23,6 +23,7 @@ def run(
     config: RunConfig,
     questions: dict[str, str],
     dry_run: bool = False,
+    run_id: int = 1,
 ) -> RunResult:
     """
     Run the test in sequential mode.
@@ -32,9 +33,12 @@ def run(
     answers: dict[str, str] = {}
     explanations: dict[str, str] = {}
     history: list[dict[str, str]] = []  # growing chat context
-    fallback_count = 0
     fallback_keys: list[str] = []
     total_tokens = 0
+
+    # Context for logging
+    model_slug = config.model.split("/")[-1]
+    prefix = f"[{model_slug}][Run {run_id}]"
 
     # max_history = 0 means unlimited; otherwise keep last N exchanges (2 msgs each)
     max_pairs = config.max_history
@@ -43,7 +47,7 @@ def run(
     total = len(questions)
 
     for idx, (key, text) in enumerate(questions.items(), 1):
-        print(f"  [{idx:3}/{total}] {key[:55]:<55}", end="", flush=True)
+        print(f"  {prefix} [{idx:3}/{total}] {key[:40]:<40}", end="", flush=True)
 
         if dry_run:
             print(f"  [DRY-RUN] Would ask: {text[:80]}")
@@ -66,7 +70,6 @@ def run(
         )
         total_tokens += tokens
         if was_fallback:
-            fallback_count += 1
             fallback_keys.append(key)
 
         answer = result.get("answer", "neutral")
@@ -91,4 +94,4 @@ def run(
         )
 
     duration = time.monotonic() - start
-    return RunResult(answers, explanations, duration, total_tokens, fallback_count, fallback_keys)
+    return RunResult(answers, explanations, duration, total_tokens, len(fallback_keys), fallback_keys)

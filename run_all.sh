@@ -45,7 +45,7 @@ for MODEL in "${MODELS[@]}"; do
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   echo "▶  $MODEL"
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  if ! python -m runner \
+  if ! python3 -m runner \
     --model "$MODEL" \
     --lang "$TEST_LANG" \
     --mode "$MODE" \

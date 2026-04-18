@@ -87,4 +87,5 @@ class ModeRunner(Protocol):
         config: RunConfig,
         questions: dict[str, str],
         dry_run: bool = ...,
+        run_id: int = 1,
     ) -> RunResult: ...

@@ -15,6 +15,7 @@ from runner.output import build_run_record, save_results
 from runner.questions import load_questions
 from runner.types import ModeRunner, RunResult
 from runner import modes
+from concurrent.futures import ThreadPoolExecutor
 
 # Load .env before anything reads environment variables
 load_dotenv()
@@ -79,45 +80,56 @@ def main() -> None:
     }
     run_fn = mode_runners[config.mode]
 
-    # Execute runs
-    run_records: list[dict] = []
-    for run_id in range(1, config.runs + 1):
-        if config.runs > 1:
-            print(f"--- Run {run_id}/{config.runs} ---")
-
+    def _execute_single_run(run_id: int) -> dict | None:
+        """Helper to execute a single run and return its record."""
         try:
-            result: RunResult = run_fn(client, config, questions, config.dry_run)
-        except RuntimeError as exc:
-            print(f"\n[ERROR] Run {run_id} failed: {exc}", file=sys.stderr)
-            continue
-
-        record = build_run_record(
-            run_id=run_id,
-            answers=result.answers,
-            explanations=result.explanations,
-            duration_s=result.duration_s,
-            tokens_used=result.tokens_used,
-            fallback_count=result.fallback_count,
-            fallback_keys=result.fallback_keys,
-        )
-        run_records.append(record)
-
-        print(f"\n  Run {run_id} done in {result.duration_s:.1f}s  ({result.tokens_used} tokens)")
-        if result.fallback_count > 0:
-            print(
-                f"  WARNING: {result.fallback_count} answer(s) used fallback parsing "
-                f"(structured output was not valid JSON)"
+            result: RunResult = run_fn(client, config, questions, config.dry_run, run_id=run_id)
+            
+            record = build_run_record(
+                run_id=run_id,
+                answers=result.answers,
+                explanations=result.explanations,
+                duration_s=result.duration_s,
+                tokens_used=result.tokens_used,
+                fallback_count=result.fallback_count,
+                fallback_keys=result.fallback_keys,
             )
-            if result.fallback_count <= 10:
-                print(f"  Questions concernées : {result.fallback_keys}")
-            else:
-                print(f"  Questions concernées : {result.fallback_keys[:10]} ... (+{result.fallback_count - 10} autres)")
-        _print_scores_summary(record["scores"])
-        print()
+            return record
+        except Exception as exc:
+            print(f"\n[ERROR] Run {run_id} failed: {exc}", file=sys.stderr)
+            return None
+
+    # Execute runs in parallel
+    run_records: list[dict] = []
+    with ThreadPoolExecutor(max_workers=config.concurrency) as executor:
+        results = list(executor.map(_execute_single_run, range(1, config.runs + 1)))
+        run_records = [r for r in results if r is not None]
 
     if not run_records:
         print("[ERROR] All runs failed. No results saved.", file=sys.stderr)
         sys.exit(1)
+
+    print(f"\n  Finished {len(run_records)}/{config.runs} runs.")
+
+    # Show summaries after everything is done to avoid garbled logs
+    for record in run_records:
+        print(f"\n--- Run {record['run_id']} Summary ---")
+        print(f"  Duration: {record['duration_seconds']:.1f}s")
+        print(f"  Tokens:   {record['total_tokens']}")
+        
+        fallback_count = record.get("fallback_count", 0)
+        if fallback_count > 0:
+            fallback_keys = record.get("fallback_keys", [])
+            print(
+                f"  WARNING: {fallback_count} answer(s) used fallback parsing "
+                f"(structured output was not valid JSON)"
+            )
+            if fallback_count <= 10:
+                print(f"  Questions concernées : {fallback_keys}")
+            else:
+                print(f"  Questions concernées : {fallback_keys[:10]} ... (+{fallback_count - 10} autres)")
+        
+        _print_scores_summary(record["scores"])
 
     # Save everything to JSON
     output_path = save_results(config, run_records)

@@ -57,6 +57,7 @@ class RunConfig:
     top_p: float
     system_prompt: str
     runs: int
+    concurrency: int
     max_history: int
     output_dir: str
     dry_run: bool
@@ -94,6 +95,8 @@ def parse_args() -> RunConfig:
                         help="System prompt sent to the model (defaults to localized prompt if not set).")
     parser.add_argument("--runs", type=int, default=1,
                         help="Number of times to repeat the full test. Results are aggregated into one file.")
+    parser.add_argument("--concurrency", type=int, default=10,
+                        help="Max parallel API calls (for no_history mode and multi-runs).")
     parser.add_argument("--output-dir", default="./results",
                         help="Directory to save result JSON files.")
     parser.add_argument("--max-history", type=int, default=0,
@@ -136,6 +139,7 @@ def parse_args() -> RunConfig:
         top_p=args.top_p,
         system_prompt=system_prompt,
         runs=args.runs,
+        concurrency=args.concurrency,
         max_history=args.max_history,
         output_dir=args.output_dir,
         dry_run=args.dry_run,
