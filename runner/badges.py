@@ -16,28 +16,28 @@ logger = logging.getLogger(__name__)
 _LOGOS_DIR = Path(__file__).parent / "data" / "assets" / "logos"
 _SUBMODULE_IMAGES = Path(__file__).parent.parent / "politiscales" / "public" / "images"
 
-# Mapping from model string prefix to logo filename
-PROVIDER_LOGOS = {
-    "openai": "openai.png",
-    "google": "google.png",
-    "mistral": "mistral.png",
-    "anthropic": "anthropic.png",
-    "meta": "meta.png",
-    "deepseek": "deepseek.png",
-}
 
 
 def get_provider_logo(model_id: str) -> Image.Image | None:
-    """Load the logo for the given model's provider."""
+    """Load the logo for the given model's provider dynamically."""
+    # Handle cases like "google/gemini-pro" -> "google"
+    # or "anthropic/claude-3" -> "anthropic"
     provider = model_id.split("/")[0].lower()
-    logo_file = PROVIDER_LOGOS.get(provider)
     
-    if not logo_file:
-        return None
-        
-    logo_path = _LOGOS_DIR / logo_file
-    if logo_path.exists():
-        return Image.open(logo_path).convert("RGBA")
+    # Common mappings for providers that might have different names in logos
+    mappings = {
+        "google": ["google", "gemini"],
+        "anthropic": ["anthropic", "claude"],
+        "meta": ["meta", "llama"],
+    }
+    
+    search_names = mappings.get(provider, [provider])
+    
+    for name in search_names:
+        logo_path = _LOGOS_DIR / f"{name}.png"
+        if logo_path.exists():
+            return Image.open(logo_path).convert("RGBA")
+    
     return None
 
 

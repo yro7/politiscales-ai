@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@lobehub/icons": "^5.4.0",
+    "@lobehub/icons-static-png": "^1.87.0"
+  }
+}
