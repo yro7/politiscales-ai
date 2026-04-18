@@ -47,7 +47,8 @@ def draw_model_branding(
     x: int,
     y: int,
     font: ImageFont.FreeTypeFont,
-    font_color: str = "#ffffff"
+    font_color: str = "#ffffff",
+    scale: int = 1
 ) -> None:
     """Draw the model provider logo and model name in the header."""
     logo = get_provider_logo(model_name)
@@ -55,13 +56,14 @@ def draw_model_branding(
     
     current_x = x
     if logo:
-        # Resize logo to fit header height nicely (around 40px)
-        logo.thumbnail((40, 40), Image.Resampling.LANCZOS)
+        # Resize logo to fit header height nicely (baseline ~40px)
+        logo_size = 40 * scale
+        logo.thumbnail((logo_size, logo_size), Image.Resampling.LANCZOS)
         img.paste(logo, (current_x, y), logo)
-        current_x += logo.width + 12
+        current_x += logo.width + (12 * scale)
     
     # Draw model name
-    draw.text((current_x, y + 5), model_name, font=font, fill=font_color)
+    draw.text((current_x, y + (5 * scale)), model_name, font=font, fill=font_color)
 
 
 def draw_axis_badges(
@@ -69,7 +71,8 @@ def draw_axis_badges(
     scores: dict,
     start_x: int,
     y: int,
-    spacing: int = 120
+    spacing: int = 120,
+    scale: int = 1
 ) -> int:
     """Draw large PolitiScales icons for any unpaired axis that exceeds its threshold.
     
@@ -77,6 +80,7 @@ def draw_axis_badges(
     """
     unpaired_scores = scores.get("unpaired", {})
     current_x = start_x
+    scaled_spacing = spacing * scale
     
     for axis, threshold in UNPAIRED_AXES.items():
         score = unpaired_scores.get(axis)
@@ -84,9 +88,10 @@ def draw_axis_badges(
             icon_path = _SUBMODULE_IMAGES / f"{axis}.png"
             if icon_path.exists():
                 icon_img = Image.open(icon_path).convert("RGBA")
-                # Large badge size
-                icon_img.thumbnail((100, 100), Image.Resampling.LANCZOS)
+                # Large badge size (baseline ~100px)
+                icon_size = 100 * scale
+                icon_img.thumbnail((icon_size, icon_size), Image.Resampling.LANCZOS)
                 img.paste(icon_img, (current_x, y), icon_img)
-                current_x += spacing
+                current_x += scaled_spacing
                 
     return current_x - start_x

@@ -57,7 +57,10 @@ def save_results(
     Aggregation is always computed (even for a single run) so downstream
     consumers can rely on the ``aggregate`` key being present.
     """
-    os.makedirs(config.output_dir, exist_ok=True)
+    json_dir = Path(config.output_dir) / "json"
+    png_dir = Path(config.output_dir) / "png"
+    os.makedirs(json_dir, exist_ok=True)
+    os.makedirs(png_dir, exist_ok=True)
 
     # Use UTC for the filename so it is reproducible across timezones
     date_str  = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M-%S")
@@ -67,7 +70,7 @@ def save_results(
     filename  = f"{date_str}_{model_slug}_{config.language}_{config.mode}_{temp_str}.json"
 
     if output_path is None:
-        output_path = Path(config.output_dir) / filename
+        output_path = json_dir / filename
 
     all_scores = [r["scores"] for r in run_records]
     aggregate  = aggregate_scores(all_scores)
@@ -101,7 +104,10 @@ def save_results(
 
     # Automatically generate the visualization PNG
     try:
-        image_path = output_path.with_suffix(".png")
+        # Save PNG in the specialized png/ directory
+        image_filename = output_path.with_suffix(".png").name
+        image_path = png_dir / image_filename
+        
         generate_results_card(payload, image_path)
         print(f"  Visualization saved -> {image_path}")
     except Exception as exc:

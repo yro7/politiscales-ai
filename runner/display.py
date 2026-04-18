@@ -27,9 +27,16 @@ TEXT_COLOR = "#333333"
 WHITE = "#ffffff"
 GREY = "#cccccc"
 
-# Card dimensions
-WIDTH = 800
-HEIGHT = 1450 # Increased height
+# Resolution Scaling
+SCALE = 2
+
+def res_scale(val: float) -> int:
+    """Scale a coordinate or dimension."""
+    return int(val * SCALE)
+
+# Card dimensions (scaled)
+WIDTH = res_scale(800)
+HEIGHT = res_scale(1450)
 
 # Font paths (macOS defaults)
 FONT_PATHS = [
@@ -67,9 +74,10 @@ def _draw_text_with_shadow(
 ) -> None:
     """Draw text with a subtle shadow for better contrast."""
     x, y = position
+    off = res_scale(shadow_offset)
     # Draw shadow in 4 directions for better outline effect
     for dx, dy in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
-        draw.text((x + dx*shadow_offset, y + dy*shadow_offset), text, font=font, fill=shadow_color)
+        draw.text((x + dx*off, y + dy*off), text, font=font, fill=shadow_color)
     draw.text((x, y), text, font=font, fill=fill)
 
 
@@ -110,16 +118,17 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
     draw = ImageDraw.Draw(img)
 
     # 1. Header
-    draw.rectangle([0, 0, WIDTH, 65], fill=HEADER_BG)
-    font_header_title = _get_font(30, bold=True)
-    draw.text((20, 15), "PolitiScales", font=font_header_title, fill=WHITE)
+    header_h = res_scale(65)
+    draw.rectangle([0, 0, WIDTH, header_h], fill=HEADER_BG)
+    font_header_title = _get_font(res_scale(30), bold=True)
+    draw.text((res_scale(20), res_scale(15)), "PolitiScales", font=font_header_title, fill=WHITE)
     
-    # NEW: Model Branding in Header (Right-aligned or beside title)
-    font_model = _get_font(20)
-    badges.draw_model_branding(img, model_id, 220, 15, font_model, font_color=WHITE)
+    # NEW: Model Branding in Header
+    font_model = _get_font(res_scale(20))
+    badges.draw_model_branding(img, model_id, res_scale(220), res_scale(15), font_model, font_color=WHITE, scale=SCALE)
     
-    font_url = _get_font(18)
-    draw.text((WIDTH - 150, 20), "politiscales.party", font=font_url, fill=WHITE)
+    font_url = _get_font(res_scale(18))
+    draw.text((WIDTH - res_scale(150), res_scale(20)), "politiscales.party", font=font_url, fill=WHITE)
 
     # 2. Simplified Flag
     # Sort axes by score to find dominant ones for flag colors (exclude neutral)
@@ -131,9 +140,9 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
     axis_scores.sort(key=lambda x: x[1], reverse=True)
     
     # Flag Background (3 horizontal strips)
-    flag_w, flag_h = 400, 240
+    flag_w, flag_h = res_scale(400), res_scale(240)
     flag_x = (WIDTH - flag_w) // 2
-    flag_y = 120
+    flag_y = res_scale(120)
     
     # Pick top 3 colors
     top_colors = [meta_json["paired"].get(a[0], {}).get("color", GREY) for a in axis_scores[:3]]
@@ -141,8 +150,10 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
         top_colors.append(GREY)
         
     for i, color in enumerate(top_colors):
+        segment_y_start = flag_y + i*(flag_h//3)
+        segment_y_end = flag_y + (i+1)*(flag_h//3)
         draw.rectangle(
-            [flag_x, flag_y + i*(flag_h//3), flag_x + flag_w, flag_y + (i+1)*(flag_h//3)],
+            [flag_x, segment_y_start, flag_x + flag_w, segment_y_end],
             fill=color
         )
         
@@ -151,31 +162,32 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
     symbol_path = _ASSETS_DIR / f"{top_axis}.png"
     if symbol_path.exists():
         symbol_img = Image.open(symbol_path).convert("RGBA")
-        symbol_img.thumbnail((120, 120), Image.Resampling.LANCZOS)
+        symbol_size = res_scale(120)
+        symbol_img.thumbnail((symbol_size, symbol_size), Image.Resampling.LANCZOS)
         img.paste(symbol_img, (flag_x + (flag_w - symbol_img.width)//2, flag_y + (flag_h - symbol_img.height)//2), symbol_img)
 
     # 3. Slogans
     slogans = []
     for axis_name, _ in axis_scores:
-        s = meta_json["paired"].get(axis_name, {}).get("slogan")
-        if s and s not in slogans:
-            slogans.append(s.capitalize())
+        slogan = meta_json["paired"].get(axis_name, {}).get("slogan")
+        if slogan and slogan not in slogans:
+            slogans.append(slogan.capitalize())
         if len(slogans) >= 3:
             break
             
-    font_slogan = _get_font(28, bold=True)
+    font_slogan = _get_font(res_scale(28), bold=True)
     slogan_text = " · ".join(slogans) if slogans else "Neutral"
     w = draw.textlength(slogan_text, font=font_slogan)
-    draw.text(((WIDTH - w) // 2, flag_y + flag_h + 20), slogan_text, font=font_slogan, fill=TEXT_COLOR)
+    draw.text(((WIDTH - w) // 2, flag_y + flag_h + res_scale(20)), slogan_text, font=font_slogan, fill=TEXT_COLOR)
 
     # 4. Paired Axis Bars
-    bar_y = flag_y + flag_h + 100
-    bar_h = 35
-    bar_w = 400
+    bar_y = flag_y + flag_h + res_scale(100)
+    bar_h = res_scale(35)
+    bar_w = res_scale(400)
     bar_x = (WIDTH - bar_w) // 2
     
-    font_label = _get_font(18)
-    font_pct = _get_font(16, bold=True)
+    font_label = _get_font(res_scale(18))
+    font_pct = _get_font(res_scale(16), bold=True)
 
     for pair_name, (left, right) in PAIRED_AXES.items():
         pair_data = scores["paired"].get(pair_name)
@@ -189,52 +201,53 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
         # Draw Labels
         left_label = meta_json["labels"].get(left, left)
         right_label = meta_json["labels"].get(right, right)
-        draw.text((bar_x, bar_y - 25), left_label, font=font_label, fill=TEXT_COLOR)
+        draw.text((bar_x, bar_y - res_scale(25)), left_label, font=font_label, fill=TEXT_COLOR)
         w_right = draw.textlength(right_label, font=font_label)
-        draw.text((bar_x + bar_w - w_right, bar_y - 25), right_label, font=font_label, fill=TEXT_COLOR)
+        draw.text((bar_x + bar_w - w_right, bar_y - res_scale(25)), right_label, font=font_label, fill=TEXT_COLOR)
 
         # Draw Icons
-        for icon_name, x_pos in [(left, bar_x - 85), (right, bar_x + bar_w + 10)]:
+        for icon_name, x_pos in [(left, bar_x - res_scale(85)), (right, bar_x + bar_w + res_scale(10))]:
             icon_path = _ASSETS_DIR / f"{icon_name}_small.png"
             if not icon_path.exists():
                 icon_path = _ASSETS_DIR / f"{icon_name}.png"
             if icon_path.exists():
                 icon_img = Image.open(icon_path).convert("RGBA")
-                icon_img.thumbnail((75, 75), Image.Resampling.LANCZOS)
-                img.paste(icon_img, (int(x_pos), int(bar_y - 20)), icon_img)
+                icon_dim = res_scale(75)
+                icon_img.thumbnail((icon_dim, icon_dim), Image.Resampling.LANCZOS)
+                img.paste(icon_img, (int(x_pos), int(bar_y - res_scale(20))), icon_img)
 
         # Draw Three-Segment Bar
         # 1. Left axis
         l_w = int(bar_w * lp)
         draw.rectangle([bar_x, bar_y, bar_x + l_w, bar_y + bar_h], fill=meta_json["paired"][left]["color"])
         if lp > 0.05:
-            _draw_text_with_shadow(draw, (bar_x + 5, bar_y + 8), f"{int(lp*100)}%", font=font_pct)
+            _draw_text_with_shadow(draw, (bar_x + res_scale(5), bar_y + res_scale(8)), f"{int(lp*100)}%", font=font_pct)
             
         # 2. Neutral axis
         n_w = int(bar_w * np)
         draw.rectangle([bar_x + l_w, bar_y, bar_x + l_w + n_w, bar_y + bar_h], fill=GREY)
-        if np > 0.05: # Lowered threshold from 0.15 to 0.05
+        if np > 0.05:
             nw_full = draw.textlength(f"{int(np*100)}%", font=font_pct)
-            _draw_text_with_shadow(draw, (bar_x + l_w + (n_w - nw_full)//2, bar_y + 8), f"{int(np*100)}%", font=font_pct)
+            _draw_text_with_shadow(draw, (bar_x + l_w + (n_w - nw_full)//2, bar_y + res_scale(8)), f"{int(np*100)}%", font=font_pct)
 
         # 3. Right axis
         r_w = bar_w - l_w - n_w
         draw.rectangle([bar_x + l_w + n_w, bar_y, bar_x + bar_w, bar_y + bar_h], fill=meta_json["paired"][right]["color"])
         if rp > 0.05:
             rw_full = draw.textlength(f"{int(rp*100)}%", font=font_pct)
-            _draw_text_with_shadow(draw, (bar_x + bar_w - rw_full - 5, bar_y + 8), f"{int(rp*100)}%", font=font_pct)
+            _draw_text_with_shadow(draw, (bar_x + bar_w - rw_full - res_scale(5), bar_y + res_scale(8)), f"{int(rp*100)}%", font=font_pct)
 
-        bar_y += 90 
+        bar_y += res_scale(90) 
 
-    # 5. NEW: Axis Badges (unpaired) at the bottom
-    badges.draw_axis_badges(img, scores, bar_x, bar_y + 20)
+    # 5. Axis Badges (unpaired) at the bottom
+    badges.draw_axis_badges(img, scores, bar_x, bar_y + res_scale(20), scale=SCALE)
 
-    # 6. NEW: Footer with metadata
-    footer_y = HEIGHT - 80
-    draw.line([50, footer_y - 10, WIDTH - 50, footer_y - 10], fill=GREY, width=1)
+    # 6. Footer with metadata
+    footer_y = HEIGHT - res_scale(80)
+    draw.line([res_scale(50), footer_y - res_scale(10), WIDTH - res_scale(50), footer_y - res_scale(10)], fill=GREY, width=max(1, res_scale(1)))
     
-    font_footer = _get_font(14)
-    font_footer_bold = _get_font(14, bold=True)
+    font_footer = _get_font(res_scale(14))
+    font_footer_bold = _get_font(res_scale(14), bold=True)
     
     # Model info
     meta_line1 = f"Model: {model_id}"
@@ -248,13 +261,13 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
         f"Tokens: {tokens}"
     )
     
-    draw.text((50, footer_y), meta_line1, font=font_footer_bold, fill=TEXT_COLOR)
-    draw.text((50, footer_y + 20), meta_line2, font=font_footer, fill=TEXT_COLOR)
-    draw.text((50, footer_y + 40), meta_line3, font=font_footer, fill=TEXT_COLOR)
+    draw.text((res_scale(50), footer_y), meta_line1, font=font_footer_bold, fill=TEXT_COLOR)
+    draw.text((res_scale(50), footer_y + res_scale(20)), meta_line2, font=font_footer, fill=TEXT_COLOR)
+    draw.text((res_scale(50), footer_y + res_scale(40)), meta_line3, font=font_footer, fill=TEXT_COLOR)
     
     timestamp = run_meta.get("timestamp", "")
-    draw.text((WIDTH - 250, footer_y), f"Generated on: {timestamp[:19]}", font=font_footer, fill=TEXT_COLOR)
-    draw.text((WIDTH - 250, footer_y + 20), f"Runner Version: {run_meta.get('version')}", font=font_footer, fill=TEXT_COLOR)
+    draw.text((WIDTH - res_scale(250), footer_y), f"Generated on: {timestamp[:19]}", font=font_footer, fill=TEXT_COLOR)
+    draw.text((WIDTH - res_scale(250), footer_y + res_scale(20)), f"Runner Version: {run_meta.get('version')}", font=font_footer, fill=TEXT_COLOR)
 
     # Save
     img.save(output_path)
