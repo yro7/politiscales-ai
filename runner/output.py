@@ -10,6 +10,7 @@ from pathlib import Path
 
 from runner.config import RunConfig
 from runner.scorer import compute_scores, aggregate_scores
+from runner.display import generate_results_card
 
 
 def _iso_now() -> str:
@@ -23,6 +24,7 @@ def build_run_record(
     duration_s: float,
     tokens_used: int,
     fallback_count: int = 0,
+    fallback_keys: list[str] | None = None,
 ) -> dict:
     """Build the per-run record (answers + scores + metadata)."""
     scores = compute_scores(answers)
@@ -31,6 +33,7 @@ def build_run_record(
         "duration_seconds": round(duration_s, 2),
         "total_tokens":     tokens_used,
         "fallback_count":   fallback_count,
+        "fallback_keys":    fallback_keys or [],
         "answers": {
             key: {
                 "answer":      answers[key],
@@ -70,6 +73,7 @@ def save_results(
     aggregate  = aggregate_scores(all_scores)
 
     total_fallbacks = sum(r.get("fallback_count", 0) for r in run_records)
+    all_fallback_keys = sorted(list(set().union(*(r.get("fallback_keys", []) for r in run_records))))
 
     payload = {
         "meta": {
@@ -83,6 +87,7 @@ def save_results(
             "runs":           config.runs,
             "notes":          config.notes,
             "total_fallbacks": total_fallbacks,
+            "fallback_keys":   all_fallback_keys,
             "timestamp":      _iso_now(),
             "version":        "1.2.0",
         },
@@ -92,5 +97,13 @@ def save_results(
 
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
+
+    # Automatically generate the visualization PNG
+    try:
+        image_path = output_path.with_suffix(".png")
+        generate_results_card(payload, image_path)
+        print(f"  Visualization saved -> {image_path}")
+    except Exception as exc:
+        print(f"  WARNING: Could not generate visualization: {exc}")
 
     return output_path

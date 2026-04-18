@@ -97,6 +97,7 @@ def main() -> None:
             duration_s=result.duration_s,
             tokens_used=result.tokens_used,
             fallback_count=result.fallback_count,
+            fallback_keys=result.fallback_keys,
         )
         run_records.append(record)
 
@@ -106,6 +107,10 @@ def main() -> None:
                 f"  WARNING: {result.fallback_count} answer(s) used fallback parsing "
                 f"(structured output was not valid JSON)"
             )
+            if result.fallback_count <= 10:
+                print(f"  Questions concernées : {result.fallback_keys}")
+            else:
+                print(f"  Questions concernées : {result.fallback_keys[:10]} ... (+{result.fallback_count - 10} autres)")
         _print_scores_summary(record["scores"])
         print()
 
@@ -125,8 +130,11 @@ def _print_scores_summary(scores: dict) -> None:
         parts = []
         for axis, val in pair_scores.items():
             if val is not None:
+                # Use different color or label for neutral in CLI is hard, 
+                # just ensure it's listed.
                 bar = "#" * int(val * 20)
-                parts.append(f"    {axis:<30} {val:.2f}  {bar}")
+                label = f"({axis})" if axis == "neutral" else f"{axis:<30}"
+                parts.append(f"    {label:<30} {val:.2f}  {bar}")
         if parts:
             print(f"  {pair_name.upper()}")
             print("\n".join(parts))

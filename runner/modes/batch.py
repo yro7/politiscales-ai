@@ -25,6 +25,7 @@ def run(
     answers: dict[str, str] = {}
     explanations: dict[str, str] = {}
     fallback_count = 0
+    fallback_keys: list[str] = []
     total_tokens = 0
 
     start = time.monotonic()
@@ -49,6 +50,7 @@ def run(
     if was_fallback:
         # In batch mode fallback, all answers are potentially unreliable
         fallback_count = len(questions)
+        fallback_keys = list(questions.keys())
 
     for key in questions:
         entry = results.get(key, {})
@@ -60,4 +62,4 @@ def run(
     print("  Results summary:", dict(counts))
 
     duration = time.monotonic() - start
-    return RunResult(answers, explanations, duration, total_tokens, fallback_count)
+    return RunResult(answers, explanations, duration, total_tokens, fallback_count, fallback_keys)

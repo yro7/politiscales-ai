@@ -33,6 +33,7 @@ def run(
     explanations: dict[str, str] = {}
     history: list[dict[str, str]] = []  # growing chat context
     fallback_count = 0
+    fallback_keys: list[str] = []
     total_tokens = 0
 
     # max_history = 0 means unlimited; otherwise keep last N exchanges (2 msgs each)
@@ -66,6 +67,7 @@ def run(
         total_tokens += tokens
         if was_fallback:
             fallback_count += 1
+            fallback_keys.append(key)
 
         answer = result.get("answer", "neutral")
         explanation = result.get("explanation", "")
@@ -89,4 +91,4 @@ def run(
         )
 
     duration = time.monotonic() - start
-    return RunResult(answers, explanations, duration, total_tokens, fallback_count)
+    return RunResult(answers, explanations, duration, total_tokens, fallback_count, fallback_keys)

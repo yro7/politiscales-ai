@@ -55,7 +55,7 @@ class RunResult:
     clearer field documentation and avoid the tuple-unpacking footgun.
     """
 
-    __slots__ = ("answers", "explanations", "duration_s", "fallback_count", "tokens_used")
+    __slots__ = ("answers", "explanations", "duration_s", "fallback_count", "tokens_used", "fallback_keys")
 
     def __init__(
         self,
@@ -64,12 +64,14 @@ class RunResult:
         duration_s: float,
         tokens_used: int = 0,
         fallback_count: int = 0,
+        fallback_keys: list[str] | None = None,
     ) -> None:
         self.answers = answers
         self.explanations = explanations
         self.duration_s = duration_s
         self.tokens_used = tokens_used
         self.fallback_count = fallback_count
+        self.fallback_keys = fallback_keys or []
 
 
 # ---------------------------------------------------------------------------
