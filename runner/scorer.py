@@ -318,13 +318,17 @@ def aggregate_scores(all_scores: list[dict]) -> dict:
 
     agg_paired: dict = {}
     for pair_name, (left, right) in paired_keys.items():
-        left_vals  = [s["paired"][pair_name][left]  for s in all_scores if s["paired"][pair_name][left]  is not None]
-        right_vals = [s["paired"][pair_name][right] for s in all_scores if s["paired"][pair_name][right] is not None]
+        left_vals    = [s["paired"][pair_name][left]             for s in all_scores if s["paired"][pair_name].get(left)      is not None]
+        right_vals   = [s["paired"][pair_name][right]            for s in all_scores if s["paired"][pair_name].get(right)     is not None]
+        neutral_vals = [s["paired"][pair_name].get("neutral", 0) for s in all_scores if s["paired"][pair_name].get(left)      is not None] # neutral exists if left exists
+
         agg_paired[pair_name] = {}
         if left_vals:
-            agg_paired[pair_name][left]  = _stats(left_vals)
+            agg_paired[pair_name][left] = _stats(left_vals)
         if right_vals:
             agg_paired[pair_name][right] = _stats(right_vals)
+        if neutral_vals:
+            agg_paired[pair_name]["neutral"] = _stats(neutral_vals)
 
     agg_unpaired: dict = {}
     for axis in UNPAIRED_AXES:

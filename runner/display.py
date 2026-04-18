@@ -56,6 +56,23 @@ def _get_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
 # Drawing Helpers
 # ---------------------------------------------------------------------------
 
+def _draw_text_with_shadow(
+    draw: ImageDraw.Draw,
+    position: tuple[float, float],
+    text: str,
+    font: ImageFont.FreeTypeFont,
+    fill: str = WHITE,
+    shadow_color: str = "black",
+    shadow_offset: int = 1
+) -> None:
+    """Draw text with a subtle shadow for better contrast."""
+    x, y = position
+    # Draw shadow in 4 directions for better outline effect
+    for dx, dy in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
+        draw.text((x + dx*shadow_offset, y + dy*shadow_offset), text, font=font, fill=shadow_color)
+    draw.text((x, y), text, font=font, fill=fill)
+
+
 def generate_results_card(result_data: dict, output_path: Path) -> None:
     """Generate the full results card image."""
     meta_json = _load_meta()
@@ -71,7 +88,21 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
         duration = run_record.get("duration_seconds", 0)
         tokens = run_record.get("total_tokens", 0)
     else:
-        scores = result_data.get("scores", result_data.get("aggregate", {}))
+        # Aggregate logic: aggregate_scores returns a dict with mean for each axis
+        # We need to flatten it back to just scores for the display engine
+        raw_aggregate = result_data.get("aggregate", {})
+        scores = {"paired": {}, "unpaired": {}}
+        
+        # Flatten paired axes
+        for pair_name, axes_data in raw_aggregate.get("paired", {}).items():
+            scores["paired"][pair_name] = {}
+            for axis_name, stats in axes_data.items():
+                scores["paired"][pair_name][axis_name] = stats.get("mean")
+        
+        # Flatten unpaired axes
+        for axis_name, stats in raw_aggregate.get("unpaired", {}).items():
+            scores["unpaired"][axis_name] = stats.get("mean")
+            
         duration = 0
         tokens = 0
 
@@ -91,11 +122,11 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
     draw.text((WIDTH - 150, 20), "politiscales.party", font=font_url, fill=WHITE)
 
     # 2. Simplified Flag
-    # Sort axes by score to find dominant ones for flag colors
+    # Sort axes by score to find dominant ones for flag colors (exclude neutral)
     axis_scores = []
     for pair_name, axes_data in scores["paired"].items():
         for axis_name, val in axes_data.items():
-            if val is not None:
+            if val is not None and axis_name != "neutral":
                 axis_scores.append((axis_name, val))
     axis_scores.sort(key=lambda x: x[1], reverse=True)
     
@@ -173,22 +204,25 @@ def generate_results_card(result_data: dict, output_path: Path) -> None:
                 img.paste(icon_img, (int(x_pos), int(bar_y - 20)), icon_img)
 
         # Draw Three-Segment Bar
+        # 1. Left axis
         l_w = int(bar_w * lp)
         draw.rectangle([bar_x, bar_y, bar_x + l_w, bar_y + bar_h], fill=meta_json["paired"][left]["color"])
         if lp > 0.05:
-            draw.text((bar_x + 5, bar_y + 8), f"{int(lp*100)}%", font=font_pct, fill=WHITE)
+            _draw_text_with_shadow(draw, (bar_x + 5, bar_y + 8), f"{int(lp*100)}%", font=font_pct)
             
+        # 2. Neutral axis
         n_w = int(bar_w * np)
         draw.rectangle([bar_x + l_w, bar_y, bar_x + l_w + n_w, bar_y + bar_h], fill=GREY)
-        if np > 0.15:
+        if np > 0.05: # Lowered threshold from 0.15 to 0.05
             nw_full = draw.textlength(f"{int(np*100)}%", font=font_pct)
-            draw.text((bar_x + l_w + (n_w - nw_full)//2, bar_y + 8), f"{int(np*100)}%", font=font_pct, fill=WHITE)
+            _draw_text_with_shadow(draw, (bar_x + l_w + (n_w - nw_full)//2, bar_y + 8), f"{int(np*100)}%", font=font_pct)
 
+        # 3. Right axis
         r_w = bar_w - l_w - n_w
         draw.rectangle([bar_x + l_w + n_w, bar_y, bar_x + bar_w, bar_y + bar_h], fill=meta_json["paired"][right]["color"])
         if rp > 0.05:
             rw_full = draw.textlength(f"{int(rp*100)}%", font=font_pct)
-            draw.text((bar_x + bar_w - rw_full - 5, bar_y + 8), f"{int(rp*100)}%", font=font_pct, fill=WHITE)
+            _draw_text_with_shadow(draw, (bar_x + bar_w - rw_full - 5, bar_y + 8), f"{int(rp*100)}%", font=font_pct)
 
         bar_y += 90 
 
