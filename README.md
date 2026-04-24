@@ -11,6 +11,8 @@
   <img src="results/png/2026-04-18_11-11-57_anthropic-claude-sonnet-4_en_no_history_t0_70.png" width="32%" alt="Claude 3.7 Sonnet Results">
 </p>
 
+Grok is vegan and I don't know what to do with this information
+
 ---
 
 ## Features
